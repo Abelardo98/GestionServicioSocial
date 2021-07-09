@@ -8,6 +8,7 @@
         #titulo {
             text-align: center;
         }
+
     </style>
 
 </asp:Content>
