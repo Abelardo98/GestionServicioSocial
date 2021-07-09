@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaMaestra.master.cs" Inherits="GestionServicioSocial.PaginaMaestra" %>
+
+<!DOCTYPE html>
+
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+
+        #footer {
+          padding-top: 40px;
+        }
+        #img1 {
+            text-align:center;
+        }
+       #img2 {
+            text-align:center;
+        }
+        #ContentPlaceHolder1 {
+            
+        }
+
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <header>
+                <div id="img1">
+                    <img  src="imagenes/ENCABEZADOWEB.PNG" alt="cargando imagen" style="width: 1297px; height: 273px" />
+                </div>
+                
+
+            </header>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <footer id="footer" style="background-color: #FFFFFF">
+              <div id="img2" class="last-div">
+                    <div class="container">
+                        <div class="row">
+                            <div class="copyright" style="text-align: center; background-color: #FFFFFF; width: 1353px;">
+                                Carretera Acuaco-Zacapoaxtla Km. 8, Col. Totoltepec, 73680 Zacapoaxtla, Puebla<br />
+                                Teléfono y Fax: 01 233 317 5000<br />
+                                <a href="mailto:webmaster@live.itsz.edu.mx">webmaster@live.itsz.edu.mx</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+
+        </div>
+    </form>
+</body>
+</html>

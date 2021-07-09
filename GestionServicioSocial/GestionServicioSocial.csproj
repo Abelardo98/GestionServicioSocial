@@ -1,0 +1,773 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7510833A-84C3-4854-A992-DC16C4D9557A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GestionServicioSocial</RootNamespace>
+    <AssemblyName>GestionServicioSocial</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44337</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.LiveShare, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.LiveShare.1.1.57\lib\net461\Microsoft.VisualStudio.LiveShare.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\animate.css" />
+    <Content Include="css\animate.min.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\demo.css" />
+    <Content Include="css\EstilosVista.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\img\bx_loader.gif" />
+    <Content Include="css\img\controls.png" />
+    <Content Include="css\isotope.css" />
+    <Content Include="css\jquery.bxslider.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\overwrite.css" />
+    <Content Include="css\set1.css" />
+    <Content Include="css\set2.css" />
+    <Content Include="css\style.css" />
+    <Content Include="editar.aspx" />
+    <Content Include="EditarPermisos.aspx" />
+    <Content Include="EditarResidencia.aspx" />
+    <Content Include="EditarResidenciaAlumno.aspx" />
+    <Content Include="ExportarReportes.aspx" />
+    <Content Include="ExportarReportesReci.aspx" />
+    <Content Include="imagenes\enbacezado.PNG" />
+    <Content Include="imagenes\encabezadoDoc 2.png" />
+    <Content Include="imagenes\encabezadoDoc 3.png" />
+    <Content Include="imagenes\encabezadoDoc.png" />
+    <Content Include="imagenes\encabezadoFinal.png" />
+    <Content Include="imagenes\ENCABEZADOWEB.png" />
+    <Content Include="imagenes\img_avatar2.PNG" />
+    <Content Include="imagenes\ISO 9001.jpg" />
+    <Content Include="imagenes\ITSZ.jpg" />
+    <Content Include="imagenes\ITSZ.png" />
+    <Content Include="imagenes\membrete 2021.png" />
+    <Content Include="imagenes\membrete2022.png" />
+    <Content Include="imagenes\Pie de pagina 2.png" />
+    <Content Include="imagenes\Pie de pagina 3.png" />
+    <Content Include="imagenes\piePagina.PNG" />
+    <Content Include="index.aspx" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\fliplightbox.min.js" />
+    <Content Include="js\functions.js" />
+    <Content Include="js\jquery-2.1.1.min.js" />
+    <Content Include="js\jquery.bxslider.min.js" />
+    <Content Include="js\jquery.easing.1.3.js" />
+    <Content Include="js\jquery.isotope.min.js" />
+    <Content Include="js\wow.min.js" />
+    <Content Include="Model\DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DB.Context.cs</LastGenOutput>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.cs</LastGenOutput>
+    </Content>
+    <Content Include="planTrabajo.aspx" />
+    <Content Include="presentacionPermiso2.aspx" />
+    <Content Include="presentacionPermiso3.aspx" />
+    <Content Include="presentación\1.jpg" />
+    <Content Include="presentación\10.jpg" />
+    <Content Include="presentación\11.jpg" />
+    <Content Include="presentación\12.jpg" />
+    <Content Include="presentación\13.jpg" />
+    <Content Include="presentación\14.jpg" />
+    <Content Include="presentación\15.jpg" />
+    <Content Include="presentación\16.jpg" />
+    <Content Include="presentación\18.jpg" />
+    <Content Include="presentación\19.jpg" />
+    <Content Include="presentación\2.jpg" />
+    <Content Include="presentación\20.jpg" />
+    <Content Include="presentación\3.jpg" />
+    <Content Include="presentación\4.jpg" />
+    <Content Include="presentación\5.jpg" />
+    <Content Include="presentación\6.jpg" />
+    <Content Include="presentación\7.jpg" />
+    <Content Include="presentación\8.jpg" />
+    <Content Include="presentación\9.jpg" />
+    <Content Include="ReporteConstanciaTerminacion2.aspx" />
+    <Content Include="ReportePermisos.aspx" />
+    <Content Include="ReportePermisos2.aspx" />
+    <Content Include="ReportePresentacion2.aspx" />
+    <Content Include="ReportePresentacionInterno2.aspx" />
+    <Content Include="ReportePrecentacionResidencia2.aspx" />
+    <Content Include="ReportePrecentacionResidenciaInterno2.aspx" />
+    <Content Include="ReporteSolicitud.aspx" />
+    <Content Include="ReporteSolicitud2.aspx" />
+    <Content Include="ReporteSolicitudRecidencia2.aspx" />
+    <Content Include="ReporteSolicitudResidencia.aspx" />
+    <Content Include="reportesxd.aspx" />
+    <Content Include="Residencia1.aspx" />
+    <Content Include="Residencia2.aspx" />
+    <Content Include="Residencia3.aspx" />
+    <Content Include="SalidaDeEstudios.aspx" />
+    <Content Include="servicio1.aspx" />
+    <Content Include="servicio2.aspx" />
+    <Content Include="servicio3.aspx" />
+    <Content Include="sesion.aspx" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="liberacion.aspx" />
+    <Content Include="UsuarioResidencia.aspx" />
+    <Content Include="UsuarioServicio.aspx" />
+    <Content Include="UsuarioServicioAdmin.aspx" />
+    <Content Include="vista.aspx" />
+    <Content Include="vistaAsesoresResicencia.aspx" />
+    <Content Include="vistaAsesoresServicio.aspx" />
+    <Content Include="vistaPermisos.aspx" />
+    <Content Include="vistaRecidencia.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="presentacionPermisos.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CartaPrecentacionPermisos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CartaPrecentacionPermisos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CartaPrecentacionPermisos2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CartaPrecentacionPermisos2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CartaPrecentacionPermisos3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CartaPrecentacionPermisos3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConstanciaTerminacion2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConstanciaTerminacion2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DatosPermiso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatosPermiso.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="editar.aspx.cs">
+      <DependentUpon>editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editar.aspx.designer.cs">
+      <DependentUpon>editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarPermisos.aspx.cs">
+      <DependentUpon>EditarPermisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarPermisos.aspx.designer.cs">
+      <DependentUpon>EditarPermisos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarResidencia.aspx.cs">
+      <DependentUpon>EditarResidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarResidencia.aspx.designer.cs">
+      <DependentUpon>EditarResidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarResidenciaAlumno.aspx.cs">
+      <DependentUpon>EditarResidenciaAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarResidenciaAlumno.aspx.designer.cs">
+      <DependentUpon>EditarResidenciaAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExportarReportes.aspx.cs">
+      <DependentUpon>ExportarReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExportarReportes.aspx.designer.cs">
+      <DependentUpon>ExportarReportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExportarReportesReci.aspx.cs">
+      <DependentUpon>ExportarReportesReci.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExportarReportesReci.aspx.designer.cs">
+      <DependentUpon>ExportarReportesReci.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Final.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Final.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="informePrecentacion2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>informePrecentacion2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="informePrecentacionInterno2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>informePrecentacionInterno2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InformePrecentacionRecidencia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InformePrecentacionRecidencia.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="informePrecentacionRecidenciaInterno2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>informePrecentacionRecidenciaInterno2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="informeSolicitud.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>informeSolicitud.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InformeSolicitudResidencia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InformeSolicitudResidencia.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model\DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\documentos.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaMaestra.Master.cs">
+      <DependentUpon>PaginaMaestra.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginaMaestra.Master.designer.cs">
+      <DependentUpon>PaginaMaestra.Master</DependentUpon>
+    </Compile>
+    <Compile Include="permisoIndustrial.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>permisoIndustrial.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="planTrabajo.aspx.cs">
+      <DependentUpon>planTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="planTrabajo.aspx.designer.cs">
+      <DependentUpon>planTrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="presentacionPermiso2.aspx.cs">
+      <DependentUpon>presentacionPermiso2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="presentacionPermiso2.aspx.designer.cs">
+      <DependentUpon>presentacionPermiso2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="presentacionPermiso3.aspx.cs">
+      <DependentUpon>presentacionPermiso3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="presentacionPermiso3.aspx.designer.cs">
+      <DependentUpon>presentacionPermiso3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteConstanciaTerminacion2.aspx.cs">
+      <DependentUpon>ReporteConstanciaTerminacion2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteConstanciaTerminacion2.aspx.designer.cs">
+      <DependentUpon>ReporteConstanciaTerminacion2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePermisos.aspx.cs">
+      <DependentUpon>ReportePermisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePermisos.aspx.designer.cs">
+      <DependentUpon>ReportePermisos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePermisos2.aspx.cs">
+      <DependentUpon>ReportePermisos2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePermisos2.aspx.designer.cs">
+      <DependentUpon>ReportePermisos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePresentacion2.aspx.cs">
+      <DependentUpon>ReportePresentacion2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePresentacion2.aspx.designer.cs">
+      <DependentUpon>ReportePresentacion2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePresentacionInterno2.aspx.cs">
+      <DependentUpon>ReportePresentacionInterno2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePresentacionInterno2.aspx.designer.cs">
+      <DependentUpon>ReportePresentacionInterno2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePrecentacionResidencia2.aspx.cs">
+      <DependentUpon>ReportePrecentacionResidencia2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePrecentacionResidencia2.aspx.designer.cs">
+      <DependentUpon>ReportePrecentacionResidencia2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePrecentacionResidenciaInterno2.aspx.cs">
+      <DependentUpon>ReportePrecentacionResidenciaInterno2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePrecentacionResidenciaInterno2.aspx.designer.cs">
+      <DependentUpon>ReportePrecentacionResidenciaInterno2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteSolicitud.aspx.cs">
+      <DependentUpon>ReporteSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteSolicitud.aspx.designer.cs">
+      <DependentUpon>ReporteSolicitud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteSolicitud2.aspx.cs">
+      <DependentUpon>ReporteSolicitud2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteSolicitud2.aspx.designer.cs">
+      <DependentUpon>ReporteSolicitud2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteSolicitudRecidencia2.aspx.cs">
+      <DependentUpon>ReporteSolicitudRecidencia2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteSolicitudRecidencia2.aspx.designer.cs">
+      <DependentUpon>ReporteSolicitudRecidencia2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteSolicitudResidencia.aspx.cs">
+      <DependentUpon>ReporteSolicitudResidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteSolicitudResidencia.aspx.designer.cs">
+      <DependentUpon>ReporteSolicitudResidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reportesxd.aspx.cs">
+      <DependentUpon>reportesxd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reportesxd.aspx.designer.cs">
+      <DependentUpon>reportesxd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Residencia1.aspx.cs">
+      <DependentUpon>Residencia1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Residencia1.aspx.designer.cs">
+      <DependentUpon>Residencia1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Residencia2.aspx.cs">
+      <DependentUpon>Residencia2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Residencia2.aspx.designer.cs">
+      <DependentUpon>Residencia2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Residencia3.aspx.cs">
+      <DependentUpon>Residencia3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Residencia3.aspx.designer.cs">
+      <DependentUpon>Residencia3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalidaDeEstudios.aspx.cs">
+      <DependentUpon>SalidaDeEstudios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalidaDeEstudios.aspx.designer.cs">
+      <DependentUpon>SalidaDeEstudios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="servicio1.aspx.cs">
+      <DependentUpon>servicio1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="servicio1.aspx.designer.cs">
+      <DependentUpon>servicio1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="servicio2.aspx.cs">
+      <DependentUpon>servicio2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="servicio2.aspx.designer.cs">
+      <DependentUpon>servicio2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="servicio3.aspx.cs">
+      <DependentUpon>servicio3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="servicio3.aspx.designer.cs">
+      <DependentUpon>servicio3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sesion.aspx.cs">
+      <DependentUpon>sesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sesion.aspx.designer.cs">
+      <DependentUpon>sesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudReporteResidencia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SolicitudReporteResidencia.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="liberacion.aspx.cs">
+      <DependentUpon>liberacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liberacion.aspx.designer.cs">
+      <DependentUpon>liberacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioResidencia.aspx.cs">
+      <DependentUpon>UsuarioResidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioResidencia.aspx.designer.cs">
+      <DependentUpon>UsuarioResidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioServicio.aspx.cs">
+      <DependentUpon>UsuarioServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioServicio.aspx.designer.cs">
+      <DependentUpon>UsuarioServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioServicioAdmin.aspx.cs">
+      <DependentUpon>UsuarioServicioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioServicioAdmin.aspx.designer.cs">
+      <DependentUpon>UsuarioServicioAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista.aspx.cs">
+      <DependentUpon>vista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista.aspx.designer.cs">
+      <DependentUpon>vista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAsesoresResicencia.aspx.cs">
+      <DependentUpon>vistaAsesoresResicencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistaAsesoresResicencia.aspx.designer.cs">
+      <DependentUpon>vistaAsesoresResicencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAsesoresServicio.aspx.cs">
+      <DependentUpon>vistaAsesoresServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistaAsesoresServicio.aspx.designer.cs">
+      <DependentUpon>vistaAsesoresServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistaPermisos.aspx.cs">
+      <DependentUpon>vistaPermisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistaPermisos.aspx.designer.cs">
+      <DependentUpon>vistaPermisos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistaRecidencia.aspx.cs">
+      <DependentUpon>vistaRecidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistaRecidencia.aspx.designer.cs">
+      <DependentUpon>vistaRecidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="presentacionPermisos.aspx.cs">
+      <DependentUpon>presentacionPermisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="presentacionPermisos.aspx.designer.cs">
+      <DependentUpon>presentacionPermisos.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
+    <EntityDeploy Include="Model\DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\DB.edmx.diagram">
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="DatosPermiso.xsc">
+      <DependentUpon>DatosPermiso.xsd</DependentUpon>
+    </Content>
+    <None Include="DatosPermiso.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatosPermiso.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DatosPermiso.xss">
+      <DependentUpon>DatosPermiso.xsd</DependentUpon>
+    </Content>
+    <Content Include="Final.xsc">
+      <DependentUpon>Final.xsd</DependentUpon>
+    </Content>
+    <None Include="Final.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Final.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Final.xss">
+      <DependentUpon>Final.xsd</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="PaginaMaestra.Master" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <Content Include="SolicitudReporteResidencia.xsc">
+      <DependentUpon>SolicitudReporteResidencia.xsd</DependentUpon>
+    </Content>
+    <None Include="SolicitudReporteResidencia.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SolicitudReporteResidencia.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="SolicitudReporteResidencia.xss">
+      <DependentUpon>SolicitudReporteResidencia.xsd</DependentUpon>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CartaPrecentacionPermisos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CartaPrecentacionPermisos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CartaPrecentacionPermisos2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CartaPrecentacionPermisos2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CartaPrecentacionPermisos3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CartaPrecentacionPermisos3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConstanciaTerminacion2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ConstanciaTerminacion2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="informePrecentacion2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>informePrecentacion2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="informePrecentacionInterno2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>informePrecentacionInterno2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformePrecentacionRecidencia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InformePrecentacionRecidencia.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="informePrecentacionRecidenciaInterno2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>informePrecentacionRecidenciaInterno2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="informeSolicitud.rdlc" />
+    <EmbeddedResource Include="informeSolicitud.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>informeSolicitud.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="informeSolicitudResidencia.rdlc" />
+    <EmbeddedResource Include="InformeSolicitudResidencia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InformeSolicitudResidencia.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="permisoIndustrial.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>permisoIndustrial.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Permisos.rdlc" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51396</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44337/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
