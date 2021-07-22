@@ -18,6 +18,11 @@
 
             text-align:center;
         }
+        #tb {
+            text-align:center;
+            padding-left: 180px;
+
+        }
 
         #carga
         {
@@ -257,6 +262,30 @@
             <p>* Campos Obligatorios || 1 - 4 es la calificación permitida</p>
         </div>
         <div id="carga">
+            <h2>Reportes subidos </h2>
+        </div>
+        <div style="padding-left: 30px; width: 1453px;">
+            <div id="tb" style="overflow: scroll; width: 1448px; height: 100px;">
+
+                <asp:GridView ID="GridView2" runat="server" CellPadding="3" GridLines="Vertical" Width="1088px" BorderColor="#999999" BackColor="White" BorderStyle="None" BorderWidth="1px">
+                    <AlternatingRowStyle BackColor="#DCDCDC" />
+                    <EditRowStyle BorderColor="Red" BorderStyle="Solid" />
+                    <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                    <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EEEEEE" BorderColor="Red" ForeColor="Black" />
+                    <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" BorderColor="#00CCFF" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#0000A9" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#000065" />
+                </asp:GridView>
+
+            </div>
+        </div>
+        <br />
+        
+        <div id="carga">
             <h2>Cargar reportes</h2>
         </div>
         <div style="text-align: center;">
@@ -284,5 +313,7 @@
             </tr>
         </table>
       </div>
+        
+
     </section>
 </asp:Content>

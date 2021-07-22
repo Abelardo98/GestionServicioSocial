@@ -34,7 +34,7 @@ namespace GestionServicioSocial
                 try 
                 {
                     conn.Open();
-                    string cadena = "SELECT alu.numerocontrol,nombre,apellidoP,apellidoM,carrera, seguroFacultativo,nombreTitular,puestoTitular,razonSocial,nombreAcesor,puestoAcesor,contador from infoEscolarReci inf join AlumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='"+txtNumeroControl.Text+"';";
+                    string cadena = "SELECT alu.numerocontrol,nombre,apellidoP,apellidoM,carrera, seguroFacultativo,nombreTitular,puestoTitular,razonSocial,nombreAcesor,puestoAcesor,contador,copiaNombrePersona,copiaPuestoPersona from infoEscolarReci inf join AlumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='" + txtNumeroControl.Text+"';";
                     SqlCommand comando = new SqlCommand(cadena, conn);
                     SqlDataReader registro = comando.ExecuteReader();
                     if (registro.Read())
@@ -52,6 +52,8 @@ namespace GestionServicioSocial
                         reporte.SetParameterValue("@imss", registro["seguroFacultativo"].ToString());
                         reporte.SetParameterValue("@contador", registro["contador"].ToString());
                         reporte.SetParameterValue("@fecha", dateTime.ToString("dd/MMMM/yyyy"));
+                        reporte.SetParameterValue("@copiaNombre", registro["copiaNombrePersona"]);
+                        reporte.SetParameterValue("@copiaPuesto", registro["copiaPuestoPersona"]);
                         //mensaje.Text = registro["nombre"].ToString();
                         CrystalReportViewer1.ReportSource = reporte;
                     }

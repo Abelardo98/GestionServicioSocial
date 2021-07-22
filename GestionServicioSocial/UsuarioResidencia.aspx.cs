@@ -14,6 +14,7 @@ namespace GestionServicioSocial
 {
     public partial class UsuarioResidencia : System.Web.UI.Page
     {
+        DateTime dateTime = DateTime.UtcNow.Date;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,14 +29,66 @@ namespace GestionServicioSocial
                 }
 
             }
-            
+            llenarTablaCalificaciones();
+            llenarDatosCalificaciones();
+
             if (!IsPostBack) 
             {
                 
                 llenarTabla();
                 llenarDatos();
+                llenarTablaCalificaciones();
+                llenarDatosCalificaciones();
             }
             
+        }
+
+        public void llenarTablaCalificaciones() {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select * from documentosReci where numeroControl = '" + txtNc.Text + "';", conn);
+
+                    ArrayList lista = new ArrayList();
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView2.DataSource = dt;
+                    GridView2.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
+
+        public void llenarDatosCalificaciones() {
+            foreach (GridViewRow row in GridView2.Rows)
+            {
+
+                solicitud.Text = row.Cells[1].Text;
+                presentacion.Text = row.Cells[2].Text;
+                aceptacion.Text = row.Cells[3].Text;
+                responsiva.Text = row.Cells[4].Text;
+                liberacion.Text = row.Cells[5].Text;
+                cumplimiento.Text = row.Cells[6].Text;
+                
+
+
+            }
         }
 
         public void llenarTabla() {
@@ -71,7 +124,6 @@ namespace GestionServicioSocial
             }
 
         }
-
         public void llenarDatos()
         {
             
@@ -92,10 +144,8 @@ namespace GestionServicioSocial
             
         }
 
-        
 
-        protected void BtnSubirSolicitud_Click1(object sender, EventArgs e)
-        {
+        public void subirSolicitud() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
             //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
@@ -105,7 +155,7 @@ namespace GestionServicioSocial
                 if (Directory.Exists(MapPath(ruta)))
                 {
 
-                    if (File.Exists(MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl+".pdf")))
+                    if (File.Exists(MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl + ".pdf")))
                     {
                         //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
@@ -116,7 +166,10 @@ namespace GestionServicioSocial
 
 
                         //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                        FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "SolicitudResidencia-"+ NoControl+".pdf"));
+                        FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl + ".pdf"));
+                        actulizarSolicitudResi();
+                        llenarTablaCalificaciones();
+                        llenarDatosCalificaciones();
                         //BtnSubirSolicitud.Text = "Subido con éxito";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                         //solicitud.Text = "Subido con éxito";
@@ -126,8 +179,11 @@ namespace GestionServicioSocial
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                    FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl+".pdf"));
+                    FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl + ".pdf"));
                     //BtnSubirSolicitud.Text = "Subida con éxito";
+                    actulizarSolicitudResi();
+                    llenarTablaCalificaciones();
+                    llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                     //solicitud.Text = "Subido con éxito";
                 }
@@ -138,10 +194,217 @@ namespace GestionServicioSocial
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
                 //solicitud.Text = "Selecciona un archivo primero";
             }
+
+        }
+        protected void BtnSubirSolicitud_Click1(object sender, EventArgs e)
+        {           
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string cadena = "select * from documentosReci where numeroControl='" + txtNc.Text + "';";
+                    SqlCommand comando = new SqlCommand(cadena, conn);
+                    SqlDataReader registro = comando.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        subirSolicitud();
+                    }
+                    else
+                    {
+                        insertarDocumentoReci();
+                        subirSolicitud();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    //mensaje.Text = e.Message;
+                }
+            }
+        }
+        public void insertarDocumentoReci()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "insertarDocumentoReci";
+                    cmd.Parameters.Add("@numeroControl", SqlDbType.VarChar).Value = txtNc.Text.Trim();
+                    cmd.Parameters.Add("@solicitudRecidencia", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@cartaPresentacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@cartaAceptacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@responsiva", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@cartaLiveracion", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@constanciaCumplimiento", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    solicitud.Text = ex.Message.ToString();
+                }
+            }
         }
 
-        protected void BTNSubirAceptacionRP_Click(object sender, EventArgs e)
+        public void actulizarSolicitudResi() {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+   
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosReci set solicitudRecidencia=@solicitudRecidencia where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@solicitudRecidencia", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarCartaPresentacion()
         {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosReci set cartaPresentacion=@cartaPresentacion where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@cartaPresentacion", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizararCartaAceptacion()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosReci set cartaAceptacion=@cartaAceptacion where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@cartaAceptacion", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarResponsiva()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosReci set responsiva=@responsiva where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@responsiva", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarCartaLiveracion()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosReci set cartaLiveracio=@cartaLiveracio where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@cartaLiveracio", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarConstanciaCumplimiento()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosReci set constanciaCumplimiento=@constanciaCumplimiento where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@constanciaCumplimiento", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+
+
+        public void subirAceptacionRP() {
+
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
             //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
@@ -151,7 +414,7 @@ namespace GestionServicioSocial
                 if (Directory.Exists(MapPath(ruta)))
                 {
 
-                    if (File.Exists(MapPath(ruta + "/" + "CartaAceptación-"+NoControl+".pdf")))
+                    if (File.Exists(MapPath(ruta + "/" + "CartaAceptación-" + NoControl + ".pdf")))
                     {
                         //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
@@ -163,6 +426,9 @@ namespace GestionServicioSocial
 
                         FileUpload3.SaveAs(Server.MapPath(ruta + "/" + "CartaAceptación-" + NoControl + ".pdf"));
                         //BtnSubirSolicitud.Text = "Subido con éxito";
+                        actulizararCartaAceptacion();
+                        llenarTablaCalificaciones();
+                        llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con exito')", true);
                         //aceptacion.Text = "Subido con éxito";
                     }
@@ -172,6 +438,9 @@ namespace GestionServicioSocial
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload3.SaveAs(Server.MapPath(ruta + "/" + "CartaAceptación-" + NoControl + ".pdf"));
                     //BtnSubirSolicitud.Text = "Subida con éxito";
+                    actulizararCartaAceptacion();
+                    llenarTablaCalificaciones();
+                    llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con exito')", true);
                     //aceptacion.Text = "Subido con éxito";
                 }
@@ -182,10 +451,37 @@ namespace GestionServicioSocial
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
                 //aceptacion.Text = "Selecciona un archivo primero";
             }
+
+        }
+        protected void BTNSubirAceptacionRP_Click(object sender, EventArgs e)
+        {
+                        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string cadena = "select * from documentosReci where numeroControl='" + txtNc.Text + "';";
+                    SqlCommand comando = new SqlCommand(cadena, conn);
+                    SqlDataReader registro = comando.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        subirAceptacionRP();
+                    }
+                    else
+                    {
+                        insertarDocumentoReci();
+                        subirAceptacionRP();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    //mensaje.Text = e.Message;
+                }
+            }
         }
 
-        protected void BTNSubirResponsiva_Click(object sender, EventArgs e)
-        {
+        public void subirResponsiva() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
             //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
@@ -195,7 +491,7 @@ namespace GestionServicioSocial
                 if (Directory.Exists(MapPath(ruta)))
                 {
 
-                    if (File.Exists(MapPath(ruta + "/" + "Responsiva-"+NoControl+".pdf")))
+                    if (File.Exists(MapPath(ruta + "/" + "Responsiva-" + NoControl + ".pdf")))
                     {
                         //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
@@ -207,6 +503,9 @@ namespace GestionServicioSocial
 
                         FileUpload4.SaveAs(Server.MapPath(ruta + "/" + "Responsiva-" + NoControl + ".pdf"));
                         //BtnSubirSolicitud.Text = "Subido con éxito";
+                        actulizarResponsiva();
+                        llenarTablaCalificaciones();
+                        llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                         //responsiva.Text = "Subida con éxito";
                     }
@@ -216,6 +515,9 @@ namespace GestionServicioSocial
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload4.SaveAs(Server.MapPath(ruta + "/" + "Responsiva-" + NoControl + ".pdf"));
                     //BtnSubirSolicitud.Text = "Subida con éxito";
+                    actulizarResponsiva();
+                    llenarTablaCalificaciones();
+                    llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                     //responsiva.Text = "Subida con éxito";
                 }
@@ -226,10 +528,37 @@ namespace GestionServicioSocial
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
                 //responsiva.Text = "Selecciona un archivo primero";
             }
+
+        }
+        protected void BTNSubirResponsiva_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string cadena = "select * from documentosReci where numeroControl='" + txtNc.Text + "';";
+                    SqlCommand comando = new SqlCommand(cadena, conn);
+                    SqlDataReader registro = comando.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        subirResponsiva();
+                    }
+                    else
+                    {
+                        insertarDocumentoReci();
+                        subirResponsiva();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    //mensaje.Text = e.Message;
+                }
+            }
         }
 
-        protected void BtnSubirLiberacion_Click(object sender, EventArgs e)
-        {
+        public void subirLiberacion() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
             //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
@@ -239,7 +568,7 @@ namespace GestionServicioSocial
                 if (Directory.Exists(MapPath(ruta)))
                 {
 
-                    if (File.Exists(MapPath(ruta + "/" + "CartaLiberación-"+NoControl+".pdf")))
+                    if (File.Exists(MapPath(ruta + "/" + "CartaLiberación-" + NoControl + ".pdf")))
                     {
                         //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
@@ -251,6 +580,9 @@ namespace GestionServicioSocial
 
                         FileUpload5.SaveAs(Server.MapPath(ruta + "/" + "CartaLiberación-" + NoControl + ".pdf"));
                         //BtnSubirSolicitud.Text = "Subido con éxito";
+                        actulizarCartaLiveracion();
+                        llenarTablaCalificaciones();
+                        llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                         //liberacion.Text = "Subida con éxito";
                     }
@@ -260,6 +592,9 @@ namespace GestionServicioSocial
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload5.SaveAs(Server.MapPath(ruta + "/" + "CartaLiberación-" + NoControl + ".pdf"));
                     //BtnSubirSolicitud.Text = "Subida con éxito";
+                    actulizarCartaLiveracion();
+                    llenarTablaCalificaciones();
+                    llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                     //liberacion.Text = "Subida con éxito";
                 }
@@ -271,9 +606,35 @@ namespace GestionServicioSocial
                 //liberacion.Text = "Selecciona un archivo primero";
             }
         }
-
-        protected void BtnSubirCumplimiento_Click(object sender, EventArgs e)
+        protected void BtnSubirLiberacion_Click(object sender, EventArgs e)
         {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string cadena = "select * from documentosReci where numeroControl='" + txtNc.Text + "';";
+                    SqlCommand comando = new SqlCommand(cadena, conn);
+                    SqlDataReader registro = comando.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        subirLiberacion();
+                    }
+                    else
+                    {
+                        insertarDocumentoReci();
+                        subirLiberacion();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    //mensaje.Text = e.Message;
+                }
+            }
+        }
+
+        public void subirCumplimiento() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
             //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
@@ -283,7 +644,7 @@ namespace GestionServicioSocial
                 if (Directory.Exists(MapPath(ruta)))
                 {
 
-                    if (File.Exists(MapPath(ruta + "/" + "ConstanciaCumplimiento-"+NoControl+".pdf")))
+                    if (File.Exists(MapPath(ruta + "/" + "ConstanciaCumplimiento-" + NoControl + ".pdf")))
                     {
                         //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
@@ -295,6 +656,9 @@ namespace GestionServicioSocial
 
                         FileUpload6.SaveAs(Server.MapPath(ruta + "/" + "ConstanciaCumplimiento-" + NoControl + ".pdf"));
                         //BtnSubirSolicitud.Text = "Subido con éxito";
+                        actulizarConstanciaCumplimiento();
+                        llenarTablaCalificaciones();
+                        llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                         //cumplimiento.Text = "Subida con éxito";
                     }
@@ -304,6 +668,9 @@ namespace GestionServicioSocial
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload6.SaveAs(Server.MapPath(ruta + "/" + "ConstanciaCumplimiento-" + NoControl + ".pdf"));
                     //BtnSubirSolicitud.Text = "Subida con éxito";
+                    actulizarConstanciaCumplimiento();
+                    llenarTablaCalificaciones();
+                    llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                     //cumplimiento.Text = "Subida con éxito";
                 }
@@ -313,6 +680,33 @@ namespace GestionServicioSocial
                 //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
                 //cumplimiento.Text = "Selecciona un archivo primero";
+            }
+        }
+        protected void BtnSubirCumplimiento_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string cadena = "select * from documentosReci where numeroControl='" + txtNc.Text + "';";
+                    SqlCommand comando = new SqlCommand(cadena, conn);
+                    SqlDataReader registro = comando.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        subirCumplimiento();
+                    }
+                    else
+                    {
+                        insertarDocumentoReci();
+                        subirCumplimiento();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    //mensaje.Text = e.Message;
+                }
             }
         }
 
@@ -485,9 +879,7 @@ namespace GestionServicioSocial
             }
         }
 
-
-        protected void BtnSubirPrecentacion_Click(object sender, EventArgs e)
-        {
+        public void subirCartaPrecentacion() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
             //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
@@ -497,7 +889,7 @@ namespace GestionServicioSocial
                 if (Directory.Exists(MapPath(ruta)))
                 {
 
-                    if (File.Exists(MapPath(ruta + "/" + "CartaPresentación-"+NoControl+".pdf")))
+                    if (File.Exists(MapPath(ruta + "/" + "CartaPresentación-" + NoControl + ".pdf")))
                     {
                         //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
@@ -509,6 +901,9 @@ namespace GestionServicioSocial
 
                         FileUpload2.SaveAs(Server.MapPath(ruta + "/" + "CartaPresentación-" + NoControl + ".pdf"));
                         //BtnSubirSolicitud.Text = "Subido con éxito";
+                        actulizarCartaPresentacion();
+                        llenarTablaCalificaciones();
+                        llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con exito')", true);
                         //presentacion.Text = "Subido con éxito";
                     }
@@ -518,6 +913,9 @@ namespace GestionServicioSocial
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload2.SaveAs(Server.MapPath(ruta + "/" + "CartaPresentación-" + NoControl + ".pdf"));
                     //BtnSubirSolicitud.Text = "Subida con éxito";
+                    actulizarCartaPresentacion();
+                    llenarTablaCalificaciones();
+                    llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
                     //presentacion.Text = "Subido con éxito";
                 }
@@ -527,6 +925,34 @@ namespace GestionServicioSocial
                 //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
                 //presentacion.Text = "Selecciona un archivo primero";
+            }
+
+        }
+        protected void BtnSubirPrecentacion_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string cadena = "select * from documentosReci where numeroControl='" + txtNc.Text + "';";
+                    SqlCommand comando = new SqlCommand(cadena, conn);
+                    SqlDataReader registro = comando.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        subirCartaPrecentacion();
+                    }
+                    else
+                    {
+                        insertarDocumentoReci();
+                        subirCartaPrecentacion();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    //mensaje.Text = e.Message;
+                }
             }
         }
 

@@ -150,6 +150,15 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.Label txtNombreProyecto;
 
         /// <summary>
+        /// Control GridView3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView3;
+
+        /// <summary>
         /// Control Label12.
         /// </summary>
         /// <remarks>

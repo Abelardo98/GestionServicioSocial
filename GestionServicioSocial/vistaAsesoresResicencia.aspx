@@ -4,7 +4,11 @@
     
 
     <style>
+        #tb {
+            text-align:center;
+            padding-left: 250px;
 
+        }
         .titu {
             text-align:center;
         width: 1219px;
@@ -58,11 +62,9 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="BTN_BUSCARREGISTRO" class="btn btn-info" runat="server" Text="Buscar Registro" OnClick="BTN_BUSCARREGISTRO_Click" />
 
-        &nbsp;&nbsp;
-        <asp:Label ID="Label2" runat="server" Text="Descargar documentación:"></asp:Label>
         &nbsp;
-        <asp:DropDownList ID="DropDownList1" class="btn btn-info" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"  >
-             <asp:ListItem>Selecciona un archivo</asp:ListItem>
+        &nbsp;<asp:Label ID="Label2" runat="server" Text="Selecciona un archivo:"></asp:Label>
+&nbsp;<asp:DropDownList ID="DropDownList1" class="btn btn-info" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"  >
              <asp:ListItem>Solicitud Residencia</asp:ListItem>
                         <asp:ListItem>Carta presentación</asp:ListItem>
                         <asp:ListItem>Carta aceptación</asp:ListItem>
@@ -71,6 +73,7 @@
                         <asp:ListItem>Constancia cumplimiento</asp:ListItem>
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="BtnDescargar" runat="server" Text="Descargar" class="btn btn-info" OnClick="BtnDescargar_Click"/>
     </section>
 
     <br />
@@ -110,7 +113,7 @@
         <div style="padding-left:30px; width: 1453px;">
 
 
-            <div style="overflow: scroll; width: 1448px;">
+            <div style="overflow: scroll; width: 1448px; height:350px; ">
 
                 &nbsp;
 
@@ -131,8 +134,32 @@
 
             </div>
 
-        </div>
 
+        </div>
+       <br />
+       
+    <header style="text-align: center; border-top-width: medium; " class="auto-style3"><h3>DOCUMENTACIÓN DEL ALUMNO</h3></header>
+      <br />
+
+    <div style="padding-left: 30px; width: 1453px;">
+        <div id="tb" style="overflow: scroll; width: 1448px; height: 350px;">
+
+            <asp:GridView ID="GridView2" runat="server" CellPadding="3" GridLines="Vertical" Width="1088px" BorderColor="#999999" BackColor="White" BorderStyle="None" BorderWidth="1px">
+                <AlternatingRowStyle BackColor="#DCDCDC" />
+                <EditRowStyle BorderColor="Red" BorderStyle="Solid" />
+                <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EEEEEE" BorderColor="Red" ForeColor="Black" />
+                <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" BorderColor="#00CCFF" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#0000A9" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#000065" />
+            </asp:GridView>
+
+        </div>
+    </div>   
 
    <!-- </section>-->
 

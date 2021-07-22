@@ -54,6 +54,7 @@ namespace GestionServicioSocial
                         reporte.SetParameterValue("@puestoAsesor", registro["puestoAcesor"]);
                         reporte.SetParameterValue("@nombreAsesor", registro["nombreAcesor"]);
                         reporte.SetParameterValue("@fecha", dateTime.ToString("dd/MMMM/yyyy"));
+                        
                         //mensaje.Text = registro["nombre"].ToString();
                         CrystalReportViewer1.ReportSource = reporte;
                     }

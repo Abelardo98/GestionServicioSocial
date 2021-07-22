@@ -12,6 +12,7 @@ namespace GestionServicioSocial
 {
     public partial class terminacion : System.Web.UI.Page
     {
+        DateTime dateTime = DateTime.UtcNow.Date;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,7 +27,32 @@ namespace GestionServicioSocial
                 }
             }
         }
+        public void actulizarCartaLiberacion()
+        {
 
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set cartaLiberacion=@cartaLiberacion where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@cartaLiberacion", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             string NoControl = txtNc.Text;
@@ -50,8 +76,10 @@ namespace GestionServicioSocial
                         //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                         
                         FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "ContanciaLiberaciónServicioSocial-" + NoControl + ".pdf"));
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                        actulizarCartaLiberacion();
                         insertarFechas();
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                        
                         //BtnSubirSolicitud.Text = "Subido con éxito";
                     }
                 }
@@ -59,8 +87,10 @@ namespace GestionServicioSocial
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                    FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "ContanciaLiberaciónServicioSocial-" + NoControl + ".pdf"));
+                    actulizarCartaLiberacion();
                     insertarFechas();
+                    FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "ContanciaLiberaciónServicioSocial-" + NoControl + ".pdf"));
+                    
                     //BtnSubirSolicitud.Text = "Subida con éxito";
                 }
             }

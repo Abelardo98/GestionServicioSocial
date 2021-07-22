@@ -12,6 +12,7 @@ namespace GestionServicioSocial
 {
     public partial class planTrabajo : System.Web.UI.Page
     {
+        DateTime dateTime = DateTime.UtcNow.Date;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,6 +28,32 @@ namespace GestionServicioSocial
             }
         }
 
+        public void actulizarPlanTrabajo()
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set planTrabajo=@planTrabajo where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@planTrabajo", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             string NoControl = txtNc.Text;
@@ -53,6 +80,7 @@ namespace GestionServicioSocial
                         {
                             //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "PlanTrabajoServicioSocial-" + NoControl + ".pdf"));
+                            actulizarPlanTrabajo();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             insertarCorreo();
                             //BtnSubirSolicitud.Text = "Subido con éxito";
@@ -70,6 +98,7 @@ namespace GestionServicioSocial
                     else
                     {
                         FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "PlanTrabajoServicioSocial-" + NoControl + ".pdf"));
+                        actulizarPlanTrabajo();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                         insertarCorreo();
                         //BtnSubirSolicitud.Text = "Subida con éxito";

@@ -29,6 +29,39 @@ namespace GestionServicioSocial
             llenarTabla();
             llenarDatos();
             llenarCalificaciones();
+            llenarTablaCalificaciones();
+        }
+        public void llenarTablaCalificaciones()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select solicitudServicio as \"Solicitud de Servicio Social\",cartaPresentacion as \"Carta de Presentación\",cartaAceptacion as \"Carta de Aceptación\",responsiva as \"Responsiva\",cartaCompromiso as \"Carta Compromiso\",planTrabajo as \"Plan de Trabajo\",reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\",reporteFinal as \"Reporte Final\",cartaLiberacion as \"Carta de liberación\",constanciaTerminacion as \"Constancia de Terminación\" from documentosServicio where numeroControl = '" + txtNc.Text + "';", conn);
+
+
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView3.DataSource = dt;
+                    GridView3.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
         }
 
         public void llenarTabla()
@@ -64,7 +97,6 @@ namespace GestionServicioSocial
             }
 
         }
-
         public void llenarDatos()
         {
 
@@ -123,7 +155,6 @@ namespace GestionServicioSocial
             }
 
         }
-
         public void tablaCalificaciones() {
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
@@ -157,6 +188,7 @@ namespace GestionServicioSocial
 
 
         }
+
         public void calcularCalificaciones()
         {
             //hola

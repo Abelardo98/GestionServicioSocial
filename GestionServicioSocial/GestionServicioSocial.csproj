@@ -128,6 +128,7 @@
     <Content Include="EditarPermisos.aspx" />
     <Content Include="EditarResidencia.aspx" />
     <Content Include="EditarResidenciaAlumno.aspx" />
+    <Content Include="EditarServicoAlumno.aspx" />
     <Content Include="ExportarReportes.aspx" />
     <Content Include="ExportarReportesReci.aspx" />
     <Content Include="imagenes\enbacezado.PNG" />
@@ -222,6 +223,7 @@
     </Content>
     <Content Include="liberacion.aspx" />
     <Content Include="UsuarioResidencia.aspx" />
+    <Content Include="UsuarioResidenciaAdmin.aspx" />
     <Content Include="UsuarioServicio.aspx" />
     <Content Include="UsuarioServicioAdmin.aspx" />
     <Content Include="vista.aspx" />
@@ -289,6 +291,13 @@
     </Compile>
     <Compile Include="EditarResidenciaAlumno.aspx.designer.cs">
       <DependentUpon>EditarResidenciaAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarServicoAlumno.aspx.cs">
+      <DependentUpon>EditarServicoAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarServicoAlumno.aspx.designer.cs">
+      <DependentUpon>EditarServicoAlumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExportarReportes.aspx.cs">
       <DependentUpon>ExportarReportes.aspx</DependentUpon>
@@ -564,6 +573,13 @@
     </Compile>
     <Compile Include="UsuarioResidencia.aspx.designer.cs">
       <DependentUpon>UsuarioResidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioResidenciaAdmin.aspx.cs">
+      <DependentUpon>UsuarioResidenciaAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioResidenciaAdmin.aspx.designer.cs">
+      <DependentUpon>UsuarioResidenciaAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsuarioServicio.aspx.cs">
       <DependentUpon>UsuarioServicio.aspx</DependentUpon>

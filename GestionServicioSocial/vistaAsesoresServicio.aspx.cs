@@ -27,6 +27,71 @@ namespace GestionServicioSocial
 
             }
         }
+
+        public void llenarTablaCalificaciones()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select solicitudServicio as \"Solicitud de Servicio Social\",cartaPresentacion as \"Carta de Presentación\",cartaAceptacion as \"Carta de Aceptación\",responsiva as \"Responsiva\",cartaCompromiso as \"Carta Compromiso\",planTrabajo as \"Plan de Trabajo\",reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\",reporteFinal as \"Reporte Final\",cartaLiberacion as \"Carta de liberación\",constanciaTerminacion as \"Constancia de Terminación\" from documentosServicio where numeroControl = '" + txtNumerocontrol.Text + "';", conn);
+
+
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView2.DataSource = dt;
+                    GridView2.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
+        public void llenarTablaCalificacionesGeneral()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select solicitudServicio as \"Solicitud de Servicio Social\",cartaPresentacion as \"Carta de Presentación\",cartaAceptacion as \"Carta de Aceptación\",responsiva as \"Responsiva\",cartaCompromiso as \"Carta Compromiso\",planTrabajo as \"Plan de Trabajo\",reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\",reporteFinal as \"Reporte Final\",cartaLiberacion as \"Carta de liberación\",constanciaTerminacion as \"Constancia de Terminación\" from documentosServicio;", conn);
+
+
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView2.DataSource = dt;
+                    GridView2.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
         public void busquedaIndividual()
         {
 
@@ -82,11 +147,13 @@ namespace GestionServicioSocial
         protected void BTN_BUSCARREGISTRO_Click(object sender, EventArgs e)
         {
             busquedaIndividual();
+            llenarTablaCalificaciones();
         }
 
         protected void BtnVerRegistros_Click(object sender, EventArgs e)
         {
             busquedaGeneral();
+            llenarTablaCalificacionesGeneral();
         }
 
         protected void BtnResidencia_Click(object sender, EventArgs e)
@@ -216,11 +283,17 @@ namespace GestionServicioSocial
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        protected void BtnDescargar_Click(object sender, EventArgs e)
+        {
             if (txtNumerocontrol.Text.Equals("") || txtNumerocontrol.Text == null)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ingresa un numero control valido!')", true);
             }
-            else {
+            else
+            {
                 string nc = txtNumerocontrol.Text;
                 string ruta = "~/" + nc;
                 string documento = DropDownList1.SelectedItem.Value;

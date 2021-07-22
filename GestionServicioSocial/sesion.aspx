@@ -192,7 +192,7 @@
 
             <div class="container">
                 
-                <asp:GridView ID="GridView1" runat="server">
+                <asp:GridView ID="GridView1" runat="server" Visible="False">
                 </asp:GridView>
             </div>
         </form>

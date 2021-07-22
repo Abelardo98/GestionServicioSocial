@@ -85,7 +85,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <header class="titulo">
+    <header class="titulo">
         <h1 class="titulos">Información Personal</h1>
     </header>
 
@@ -154,27 +154,27 @@
                     <td class="auto-style18">
                         <asp:Label ID="Label7" runat="server" Text="Domicilio:" Width="150px"></asp:Label>
             
-                        <asp:TextBox ID="txtDomicilio" runat="server" Width="300px" required placeholder="Calle: Ejemplo # 1, Zacapoaxtla, Puebla"></asp:TextBox>
+                        <asp:TextBox ID="txtDomicilio" runat="server" Width="300px" required placeholder="Calle: Ejemplo # 1, Zacapoaxtla, Puebla" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
             
                     </td>
                     <td>
                         <asp:Label ID="Label8" runat="server" Text="Código Postal:" Width="150px"></asp:Label>
-                        <asp:TextBox ID="txtCodigoPostal" runat="server" Width="300px" pattern="[0-9]+" title="Solo ingresa Números" required></asp:TextBox>
+                        <asp:TextBox ID="txtCodigoPostal" runat="server" Width="300px" pattern="[0-9]+" title="Solo ingresa Números" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style17">
                         <asp:Label ID="Label9" runat="server" Text="Localidad:" Width="150px"></asp:Label>
-                        <asp:TextBox ID="txtLocalidad" runat="server" Width="300px" pattern="[A-Z,a-z, ]+" title="Solo ingresa letras" required></asp:TextBox>
+                        <asp:TextBox ID="txtLocalidad" runat="server" Width="300px" pattern="[A-Z,a-z, ]+" title="Solo ingresa letras" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
                         <asp:Label ID="Label10" runat="server" Text="Municipio:" Width="150px"></asp:Label>
             
-                        <asp:TextBox ID="txtMunicipio" runat="server" Width="300px" pattern="[A-Z,a-z, ]+" title="Solo ingresa letras" required></asp:TextBox>
+                        <asp:TextBox ID="txtMunicipio" runat="server" Width="300px" pattern="[A-Z,a-z, ]+" title="Solo ingresa letras" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                     <td>
                         <asp:Label ID="Label11" runat="server" Text="Estado:" Width="150px"></asp:Label>
-                        <asp:TextBox ID="txtestado" runat="server" Width="300px" pattern="[A-Z,a-z, ]+" title="Solo ingresa letras" required></asp:TextBox>
+                        <asp:TextBox ID="txtestado" runat="server" Width="300px" pattern="[A-Z,a-z, ]+" title="Solo ingresa letras" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -206,7 +206,7 @@
             <table class="auto-style12">
                 <tr>
                     <td class="auto-style18">
-                        <asp:Label ID="Label12" runat="server" Text="Número de control:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label12" runat="server" Text="Número de Control:" Width="150px"></asp:Label>
                         <asp:TextBox ID="txtNumeroControl" runat="server" Width="300px" require ReadOnly="True" ></asp:TextBox>
                     </td>
                      <td class="auto-style19">
@@ -235,7 +235,7 @@
                         </asp:DropDownList>
                     </td>
                      <td class="auto-style21">
-                         <asp:Label ID="Label25" runat="server" Text="Modalidad para el servicio:" Width="150px"></asp:Label>
+                         <asp:Label ID="Label25" runat="server" Text="Modalidad para el Servicio:" Width="150px"></asp:Label>
                         <asp:DropDownList ID="txtModalidad" runat="server" Height="25px" Width="300px">
                             <asp:ListItem>Presencial</asp:ListItem>
                             <asp:ListItem>Virtual</asp:ListItem>
@@ -243,7 +243,7 @@
                         </asp:DropDownList>
                     </td>
                      <td class="auto-style22">
-                         <asp:Label ID="Label5" runat="server" Text="Inscrito" Width="150px"></asp:Label>
+                         <asp:Label ID="Label5" runat="server" Text="Inscrito:" Width="150px"></asp:Label>
                          <asp:DropDownList ID="txtInscrito" runat="server" Width="300px">
                             <asp:ListItem>SI</asp:ListItem>
                             <asp:ListItem>NO</asp:ListItem>
@@ -252,7 +252,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style18">
-                        <asp:Label ID="Label26" runat="server" Text="Créditos aprobados: : " Width="150px"></asp:Label>
+                        <asp:Label ID="Label26" runat="server" Text="Créditos Aprobados:" Width="150px"></asp:Label>
                         <asp:Label ID="txtCreditos" runat="server" Width="300px"></asp:Label>
 
                     </td>

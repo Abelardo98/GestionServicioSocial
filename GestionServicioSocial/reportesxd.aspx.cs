@@ -7,11 +7,13 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace GestionServicioSocial
 {
     public partial class reportesxd : System.Web.UI.Page
     {
+        DateTime dateTime = DateTime.UtcNow.Date;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) 
@@ -24,6 +26,39 @@ namespace GestionServicioSocial
                 {
                     txtNc.Text = Session["userServicio"].ToString();
                 }
+            }
+            llenarTablaCalificaciones();
+        }
+        public void llenarTablaCalificaciones()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\" from documentosServicio where numeroControl = '" + txtNc.Text + "';", conn);
+
+                    
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView2.DataSource = dt;
+                    GridView2.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
             }
         }
 
@@ -397,7 +432,162 @@ namespace GestionServicioSocial
             else { 
             }
         }
+        public void actulizarReporte1()
+        {
 
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set reporte1=@reporte1 where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@reporte1", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarReporte2()
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set reporte2=@reporte2 where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@reporte2", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarReporte3()
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set reporte3=@reporte3 where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@reporte3", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarReporte4()
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set reporte4=@reporte4 where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@reporte4", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarReporte5()
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set reporte5=@reporte5 where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@reporte5", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
+        public void actulizarEvaluacionFinal()
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update documentosServicio set evaluacionFinal=@evaluacionFinal where numeroControl=@numeroControl";
+
+                    cmd.Parameters.AddWithValue("@evaluacionFinal", dateTime.ToString("dd/MM/yyyy"));
+                    cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    //Label3.Text = ex.Message;
+                }
+            }
+        }
         protected void Button1_Click1(object sender, EventArgs e)
         {
             string NoControl = txtNc.Text;
@@ -423,6 +613,7 @@ namespace GestionServicioSocial
                             //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte1-" + NoControl + ".pdf"));
                             isertarCalificaciones();
+                            actulizarReporte1();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             //BtnSubirSolicitud.Text = "Subido con éxito";
                         }
@@ -445,6 +636,7 @@ namespace GestionServicioSocial
                             //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte2-" + NoControl + ".pdf"));
                             isertarCalificaciones();
+                            actulizarReporte2();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             //BtnSubirSolicitud.Text = "Subido con éxito";
                         }
@@ -468,6 +660,7 @@ namespace GestionServicioSocial
                             //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte3-" + NoControl + ".pdf"));
                             isertarCalificaciones();
+                            actulizarReporte3();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             //BtnSubirSolicitud.Text = "Subido con éxito";
                         }
@@ -490,6 +683,7 @@ namespace GestionServicioSocial
                             //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte4-" + NoControl + ".pdf"));
                             isertarCalificaciones();
+                            actulizarReporte4();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             //BtnSubirSolicitud.Text = "Subido con éxito";
                         }
@@ -512,6 +706,7 @@ namespace GestionServicioSocial
                             //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte5-" + NoControl + ".pdf"));
                             isertarCalificaciones();
+                            actulizarReporte5();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             //BtnSubirSolicitud.Text = "Subido con éxito";
                         }
@@ -534,6 +729,7 @@ namespace GestionServicioSocial
                             //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "EvaluaciónFinal-" + NoControl + ".pdf"));
                             isertarCalificaciones();
+                            actulizarEvaluacionFinal();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             //BtnSubirSolicitud.Text = "Subido con éxito";
                         }

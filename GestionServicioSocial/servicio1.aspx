@@ -53,8 +53,10 @@
     </header>
     <br />
     <br />
+    <!--hasta aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii-->
+
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Label ID="Label10" runat="server" Text="Realiza el servicio social en el instituto Tecnológico superior de Zacapoaxtla:"></asp:Label>
+    <asp:Label ID="Label10" runat="server" Text="Realiza el Servicio Social en el Instituto Tecnológico Superior de Zacapoaxtla:"></asp:Label>
            <asp:DropDownList ID="txtServicio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="txtServicio_SelectedIndexChanged">
                 <asp:ListItem>NO</asp:ListItem>
                 <asp:ListItem>SI</asp:ListItem>
@@ -77,14 +79,14 @@
 
                 <tr>
                     <td class="auto-style21" >
-                         <asp:Label ID="Label3" runat="server" Text="Titular de la Dependencia:" Width="400px"></asp:Label>
+                         <asp:Label ID="Label3" runat="server" Text="Titular de la dependencia:" Width="400px"></asp:Label>
                          <asp:TextBox ID="txtTitularDependencia" runat="server" Width="880px" required OnTextChanged="txtTitularDependencia_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td >
                         
-                        <asp:Label ID="Label1" runat="server" Text="Puesto del Titular de la Dependencia:" Width="400px"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="Puesto del titular de la dependencia:" Width="400px"></asp:Label>
             
                         <asp:TextBox ID="txtPuestoTitular" runat="server" Width="880px" required OnTextChanged="txtPuestoTitular_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
@@ -104,7 +106,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label5" runat="server" Text="Nombre de la Persona con la que prestaras el servicio directamente:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente:" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtNombrePersonaServicio" runat="server" Width="880px" value=" " AutoPostBack="True" OnTextChanged="txtNombrePersonaServicio_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
@@ -149,7 +151,7 @@
             <tr>
                 <td >
 
-                    <asp:Label ID="Label9" runat="server" Text="Tipo de Programa:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text="Tipo de programa:" Width="400px"></asp:Label>
                     <asp:DropDownList ID="txttipoprograma" runat="server" Width="880px" AutoPostBack="True" OnSelectedIndexChanged="txttipoprograma_SelectedIndexChanged">
                         <asp:ListItem>EDUCACIÓN PARA ADULTOS</asp:ListItem>
                         <asp:ListItem>ACTIVIDADES CÍVICAS</asp:ListItem>

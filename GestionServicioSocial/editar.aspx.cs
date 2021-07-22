@@ -138,7 +138,16 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@puestoAcesor", SqlDbType.VarChar).Value = txtPuesto.Text.Trim();
                     cmd.Parameters.Add("@nombrePrograma", SqlDbType.VarChar).Value = txtNombrePrograma.Text.Trim();
                     cmd.Parameters.Add("@programaActividad", SqlDbType.VarChar).Value = txtProgramaActividades.Text.Trim();
-                    cmd.Parameters.Add("@tipoPrograma", SqlDbType.VarChar).Value = txttipoprograma.SelectedItem.ToString();
+
+                    if (txttipoprograma.SelectedItem.ToString().Equals("OTRO"))
+                    {
+                        cmd.Parameters.Add("@tipoPrograma", SqlDbType.VarChar).Value = TextBox1.Text.Trim(); ;
+                    }
+                    else
+                    {
+                        cmd.Parameters.Add("@tipoPrograma", SqlDbType.VarChar).Value = txttipoprograma.SelectedItem.ToString();
+                    }
+
                     cmd.Parameters.Add("@servicioTec", SqlDbType.VarChar).Value = txtServicio.SelectedItem.ToString();
                     cmd.Parameters.Add("@correoAsesorExterno", SqlDbType.VarChar).Value = txtCorreoAcesorExterno.Text.Trim();
                     cmd.Parameters.Add("@fechaInicioServ", SqlDbType.VarChar).Value = txtFechaInicioServ.Text.Trim();
@@ -280,6 +289,25 @@ namespace GestionServicioSocial
             actualizarDomicilio();
 
             Server.Transfer("vista.aspx");
+        }
+
+        protected void txttipoprograma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txttipoprograma.SelectedItem.ToString().Equals("OTRO"))
+            {
+
+                Label33.Visible = true;
+                TextBox1.Visible = true;
+
+                //validarTipoPrograma();
+            }
+            else
+            {
+                Label33.Visible = false;
+                TextBox1.Visible = false;
+
+                //validarTipoPrograma();
+            }
         }
     }
 } 

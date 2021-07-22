@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="UsuarioServicio.aspx.cs" Inherits="GestionServicioSocial.UsuarioServicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <style>
         .titulo1 {
             text-align:center;
@@ -52,7 +53,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section style="text-align:right">
        <!-- <asp:Button ID="BtnCerraSesion" runat="server" Text="Cerrar sesion" OnClick="BtnCerraSesion_Click" />-->
-        &nbsp;<asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Cerrar sesión</asp:LinkButton>
+        <asp:Button ID="BtnEditarInformacion" class="btn btn-success" runat="server" OnClick="BtnEditarInformacion_Click" Text="Editar mi información" BackColor="#28A745" ForeColor="White" />
+&nbsp;&nbsp;<asp:Button ID="BtnCerrarSesion" runat="server" OnClick="BtnCerrarSesion_Click" Text="Cerrar sesión" BackColor="#28A745" ForeColor="White" />
     </section>
     <header>
         <h1 class="titulo1">
@@ -80,6 +82,7 @@
         <asp:Label ID="Label11" runat="server" Font-Bold="True" Text="PERIODO:"></asp:Label>
         &nbsp;<asp:Label ID="txtPeriodo" runat="server" Text="Label"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
         <asp:Label ID="Label9" runat="server" Text="NOMBRE DEL PROYECTO:" Font-Bold="True"></asp:Label>
 &nbsp;<asp:Label ID="txtNombreProyecto" runat="server" Text="Label"></asp:Label>
         &nbsp;
@@ -100,37 +103,40 @@
           <table style="margin: 0 auto;" cellspacing="10" border="1" cellpadding="10">
               <tr>
                   <td class="auto-style9">
-                      Solicitud de servicio social
+                      Solicitud de Servicio Social
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload1" runat="server" width="243px"/>
                   </td>
                   <td class="auto-style8">
                       <asp:Button ID="Button1" runat="server" Text="Subir solicitud de servicio social" Width="361px" OnClick="Button1_Click"/>
+                      <asp:Label ID="Label12" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="solicitud" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
               <tr>
                   <td class="auto-style9">
-                      Acuse de carta de presentación
+                      Acuse de Carta de Presentación
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload2" runat="server" width="243px"/>
                   </td>
                   <td class="auto-style8">
                       <asp:Button ID="acusePresentacion" runat="server" Text="Subir acuse de carta de presentación" Width="361px" OnClick="acusePresentacion_Click"/>
+                      <asp:Label ID="Label13" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="presentacion" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
               <tr>
                   <td class="auto-style9">
-                      Carta de aceptación
+                      Carta de Aceptación
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload3" runat="server" width="243px"/>
                   </td>
                   <td class="auto-style8">
                       <asp:Button ID="cartaAceptacion" runat="server" Text="Subir carta de aceptación" Width="361px" OnClick="cartaAceptacion_Click" />
+                      <asp:Label ID="Label14" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="aceptacion" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
@@ -143,18 +149,20 @@
                   </td>
                   <td class="auto-style8">
                       <asp:Button ID="Responsiva" runat="server" Text="Subir Responsiva" Width="361px" OnClick="Responsiva_Click" />
+                      <asp:Label ID="Label15" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="responsivaxd" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
               <tr>
                   <td class="auto-style9">
-                      Carta compromiso
+                      Carta Compromiso
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload7" runat="server" width="243px" />
                   </td>
                   <td class="auto-style8">
                       <asp:Button ID="cartaCompromiso" runat="server" Text="Subir carta compromiso" Width="361px" OnClick="cartaCompromiso_Click" />
+                      <asp:Label ID="Label16" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="compromiso" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
@@ -162,7 +170,10 @@
                   <td class="auto-style9">
                       Apartado para:&nbsp;</td>
                   <td class="auto-style7">
-                      <asp:Button ID="planTrabajo" runat="server" Text="Subir plan de trabajo" OnClick="planTrabajo_Click" Width="246px" />
+                      <asp:Button ID="planTrabajo" runat="server" Text="Subir Plan de Trabajo" OnClick="planTrabajo_Click" Width="246px" />
+                      <br />
+                      <asp:Label ID="Label19" runat="server" Text="Subido el:  "></asp:Label>
+                      <asp:Label ID="trabajo" runat="server" Text="planTrabajo"></asp:Label>
                   </td>
                   <td class="auto-style8">
                       <asp:Button ID="subirReporte" runat="server" Text="Subir Reportes" OnClick="subirReporte_Click" Width="361px" />
@@ -170,13 +181,13 @@
               </tr>
               <tr>
                   <td class="auto-style9">
-                      Reporte final
-                  </td>
+                      Reporte Final </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload5" runat="server" width="243px" />
                   </td>
                   <td class="auto-style8">
                       <asp:Button ID="reporteFinal" runat="server" Text="Subir reporte final" Width="361px" OnClick="reporteFinal_Click" />
+                      <asp:Label ID="Label17" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="final" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
@@ -191,7 +202,9 @@
                       Apartado para:</td>
                   <td class="auto-style10">
                       
-                      <asp:Button ID="cartaLibre" runat="server" Text="Subir carta de liberación" Width="246px" OnClick="cartaLibre_Click" />
+                      <asp:Button ID="cartaLibre" runat="server" Text="Subir Carta de Liberación" Width="246px" OnClick="cartaLibre_Click" />
+                   &nbsp;<asp:Label ID="Label18" runat="server" Text="Subido el:  "></asp:Label>
+                      <asp:Label ID="liberacion" runat="server"></asp:Label>
                    </td>
                  <!-- <td class="auto-style8">
                       <asp:Button ID="BtnGenerarConstanciaTerminacion" runat="server" Text="Generar constancia terminación" Width="361px" OnClick="BtnGenerarConstanciaTerminacion_Click" />
@@ -204,13 +217,14 @@
           <table style="margin: 0 auto;" cellspacing="10" border="1" cellpadding="10">
               <tr>
                   <td class="auto-style9">
-                      Apartado para:
+                      Constancia terminación:
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload6" runat="server" Width="243px" />
                   </td>
                   <td class="auto-style8">
                         <asp:Button ID="consTerminacion" runat="server" Text="Subir constancia terminación" Width="361px" OnClick="consTerminacion_Click" />
+                        <asp:Label ID="Label20" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="terminacion" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
@@ -246,13 +260,11 @@
       <br />
       <br />
         <asp:GridView runat="server" ID="GridView1" Visible="False"></asp:GridView>
-        
+        <asp:GridView ID="GridView2" runat="server" Visible="False"></asp:GridView> 
 
     </section>
 
     <br />
-    <br />
-
-
+    <br /> 
     
 </asp:Content>

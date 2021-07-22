@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -19,6 +20,7 @@ namespace GestionServicioSocial
         //userJefe
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 if (Session["userJefe"] == null)
@@ -27,6 +29,7 @@ namespace GestionServicioSocial
                 }
 
             }
+            
         }
         public void busquedaIndividual()
         {
@@ -77,13 +80,81 @@ namespace GestionServicioSocial
             }
         }
 
+        public void llenarTablaCalificacionesIndividual()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select numeroControl as \"N.C\",solicitudRecidencia as \"Solicitud de residencia profesional\",cartaPresentacion as \"Carta de presentación\",cartaAceptacion as \"Carta de aceptación RP\",responsiva as \"Responsiva\",cartaLiveracio as \"Carta de liberación RP\",constanciaCumplimiento as \"Constancia de cumplimiento\" from documentosReci where numeroControl = '" + txtNumerocontrol.Text + "';", conn);
+
+                    ArrayList lista = new ArrayList();
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView2.DataSource = dt;
+                    GridView2.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
+        public void llenarTablaCalificacionesGeneral()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select numeroControl as \"N.C\",solicitudRecidencia as \"Solicitud de residencia profesional\",cartaPresentacion as \"Carta de presentación\",cartaAceptacion as \"Carta de aceptación RP\",responsiva as \"Responsiva\",cartaLiveracio as \"Carta de liberación RP\",constanciaCumplimiento as \"Constancia de cumplimiento\" from documentosReci ;", conn);
+
+                    ArrayList lista = new ArrayList();
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView2.DataSource = dt;
+                    GridView2.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
+
         protected void BTN_BUSCARREGISTRO_Click(object sender, EventArgs e)
         {
             busquedaIndividual();
+            llenarTablaCalificacionesIndividual();
         }
 
         protected void BtnVerRegistros_Click(object sender, EventArgs e)
         {
+
+            llenarTablaCalificacionesGeneral();
             busquedaGeneral();
         }
 
@@ -100,6 +171,7 @@ namespace GestionServicioSocial
 
         protected void descargarResi_Click(object sender, EventArgs e)
         {
+
             string ruta = "~/DescargarBD";
             if (Directory.Exists(MapPath(ruta)))
             {
@@ -171,6 +243,7 @@ namespace GestionServicioSocial
                     Response.TransmitFile(Server.MapPath(rutaArchivo));
                     Response.End();
                 }
+                DropDownList1.SelectedValue = "0";
             }
             else
             {
@@ -214,11 +287,18 @@ namespace GestionServicioSocial
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
+        }
+
+        protected void BtnDescargar_Click(object sender, EventArgs e)
+        {
             if (txtNumerocontrol.Text.Equals("") || txtNumerocontrol.Text == null)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ingresa un numero control valido!')", true);
             }
-            else {
+            else
+            {
                 string nc = txtNumerocontrol.Text;
                 string ruta = "~/" + nc;
                 string documento = DropDownList1.SelectedItem.Text;
@@ -232,22 +312,29 @@ namespace GestionServicioSocial
                             //BtnDescargar.Text = "Existe";
                             Response.ContentType = "application/octet-stream";
                             Response.AppendHeader("Content-Disposition", "attachment;filename=SolicitudResidencia-" + nc + ".pdf");
-                            Response.TransmitFile(Server.MapPath(rutaArchivo));
+                            Response.TransmitFile(Server.MapPath(rutaArchivo));                           
                             Response.End();
+
+
                         }
                         else
                         {
                             //BtnDescargar.Text = "No existe archivo";
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('No existe documento')", true);
                             //descarga.Text = "No existe documento";
+
                         }
                     }
+
                     else
                     {
                         //BtnDescargar.Text = "El Directorio no existe";
                         //descarga.Text = "El directorio no existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El directorio no existe')", true);
+
                     }
+
+
                 }
                 else if (documento.Equals("Carta presentación"))
                 {
@@ -385,7 +472,6 @@ namespace GestionServicioSocial
                     }
                 }
             }
-
         }
     }
 }

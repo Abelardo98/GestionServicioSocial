@@ -31,9 +31,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section style="text-align:right">
-        <asp:Button ID="BtnEditarInformacion" runat="server" OnClick="BtnEditarInformacion_Click" Text="Editar mi información" />
+        <asp:Button ID="BtnEditarInformacion" runat="server" OnClick="BtnEditarInformacion_Click" Text="Editar mi información" BackColor="#28A745" ForeColor="White" />
 &nbsp;
-        <asp:Button ID="Button1" runat="server" Text="Cerrar sesion" OnClick="Button1_Click" />
+        <asp:Button ID="Button1" runat="server" Text="Cerrar sesion" OnClick="Button1_Click" BackColor="#28A745" ForeColor="White" />
     </section>
     <header>
         
@@ -63,10 +63,13 @@
         <asp:Label ID="Label11" runat="server" Font-Bold="True" Text="PERIODO:"></asp:Label>
         &nbsp;<asp:Label ID="txtPeriodo" runat="server" Text="Label"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label9" runat="server" Text="NOMBRE DEL PROYECTO:" Font-Bold="True"></asp:Label>
-&nbsp;<asp:Label ID="txtNombreProyecto" runat="server" Text="Label"></asp:Label>
+        <br />
+    <asp:Label ID="Label9" runat="server" Text="NOMBRE DEL PROYECTO:" Font-Bold="True"></asp:Label>
+&nbsp;  <asp:Label ID="txtNombreProyecto" runat="server" Text="Label"></asp:Label>        
         &nbsp;
     </section>
+    
+
 
     <br />
     <br />
@@ -86,33 +89,34 @@
      <table style="margin: 0 auto;" cellspacing="10" border="1" cellpadding="10">
          <tr>
              <td class="auto-style9">
-                 Solicitud de residencia profesional:
+                 Solicitud de Residencia Profesional:
              </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload1" runat="server" Width="243px" />
                  
              </td>
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir Solicitud" ID="BtnSubirSolicitud"  Width="361px" OnClick="BtnSubirSolicitud_Click1" />
-                 <asp:Label ID="solicitud" runat="server" Text=""></asp:Label>
+                 <asp:Button runat="server" Text="Subir solicitud" ID="BtnSubirSolicitud"  Width="361px" OnClick="BtnSubirSolicitud_Click1" />
+                 <asp:Label ID="Label12" runat="server" Text="Subido el:"></asp:Label>
+&nbsp;<asp:Label ID="solicitud" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          <tr>
              <td class="auto-style9">
-                 Carta de presentación:
-             </td>
+                 Carta de Presentación: </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload2" runat="server" Width="243px" />
                  
              <td class="auto-style8">
                  <asp:Button runat="server" Text="Subir carta de presentación" ID="BtnSubirPrecentacion" OnClick="BtnSubirPrecentacion_Click" Width="361px" />
-                 <asp:Label ID="presentacion" runat="server" Text=""></asp:Label>
+                 <asp:Label ID="Label13" runat="server" Text="Subido el: "></asp:Label>
+                 <asp:Label ID="presentacion" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
              </td>
          </tr>
          <tr>
              <td class="auto-style9">
-                 Carta de aceptación RP:
+                 Carta de Aceptación RP:
              </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload3" runat="server" Width="243px" />
@@ -120,7 +124,8 @@
              </td>
              <td class="auto-style8">
                  <asp:Button runat="server" Text="Subir carta de aceptación de RP" ID="BTNSubirAceptacionRP" OnClick="BTNSubirAceptacionRP_Click" Width="361px" />
-                 <asp:Label ID="aceptacion" runat="server" Text=""></asp:Label>
+                 <asp:Label ID="Label14" runat="server" Text="Subido el: "></asp:Label>
+                 <asp:Label ID="aceptacion" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          <tr>
@@ -132,32 +137,34 @@
                  
              </td>
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir Responsiva" ID="BTNSubirResponsiva" OnClick="BTNSubirResponsiva_Click" Width="361px" />
-                 <asp:Label ID="responsiva" runat="server" Text=""></asp:Label>
+                 <asp:Button runat="server" Text="Subir responsiva" ID="BTNSubirResponsiva" OnClick="BTNSubirResponsiva_Click" Width="361px" />
+                 <asp:Label ID="Label15" runat="server" Text="Subido el: "></asp:Label>
+                 <asp:Label ID="responsiva" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          <tr>
              <td class="auto-style9">
-                 Carta de liberación RP:
-             </td>
+                 Carta de Liberación RP: </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload5" runat="server" Width="243px" />
                  
              <td class="auto-style8">
                  <asp:Button runat="server" Text="Subir carta liberación" ID="BtnSubirLiberacion" Width="361px" OnClick="BtnSubirLiberacion_Click" />
-                 <asp:Label ID="liberacion" runat="server" Text=""></asp:Label>
+                 <asp:Label ID="Label16" runat="server" Text="Subido el: "></asp:Label>
+                 <asp:Label ID="liberacion" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          <tr>
              <td class="auto-style9">
-                 Constancia de cumplimiento:
+                 Constancia de Cumplimiento:
              </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload6" runat="server" Width="243px" />
                 
              <td class="auto-style8">
                  <asp:Button runat="server" Text="Subir constancia de cumplimiento" ID="BtnSubirCumplimiento" Width="361px" OnClick="BtnSubirCumplimiento_Click" />
-                 <asp:Label ID="cumplimiento" runat="server" Text=""></asp:Label>
+                 <asp:Label ID="Label17" runat="server" Text="Subido el: "></asp:Label>
+                 <asp:Label ID="cumplimiento" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          
@@ -180,7 +187,7 @@
         <asp:Label ID="descarga" runat="server" Text=""></asp:Label>
       <br />
         <asp:GridView runat="server" ID="GridView1" Visible="False"></asp:GridView>
-        
+        <asp:GridView ID="GridView2" runat="server" Visible="False"></asp:GridView>
 
     </section>
 

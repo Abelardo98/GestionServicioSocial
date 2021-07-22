@@ -38,7 +38,7 @@ namespace GestionServicioSocial
                 try
                 {
 
-                    da = new SqlDataAdapter("select alu.numerocontrol as \"Numero Control\" ,nombre as \"Nombre\",apellidop as \"Apellido paterno\",apellidom as \"Apellido materno\",contraseña as \"Contraseña\",edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\", seguroFacultativo as \"Seguro facultativo\",inf.modalidad Modalidad,creditosAprovados as \"Creditos aprovados\" , localidad as \"localidad\",calle as \"calle\", codigopostal as \"Código postal\",municipio as \"Municipio\", estado as \"Estado\" , telefono as \"Telefono\", razonSocial as \"Razón social\",tipo as \"Tipo\" , nombretitular as \"Nombre Titular\", puestotitular as \"Puesto titular\",areaalumno as \"Área alumno\", nombreacesor as \"Nombre Acesor\" , puestoacesor as \"Puesto acesor\",correoAcesor  as \"Correo acesor\", nombreProyecto as \"Nombre Proyecto\",recidenciaTec as \"Recidencias tec\", fechainicio , fechatermi , observaciones  from DomicilioReci dom join infoEscolarReci inf on dom.iddomicilio = inf.idescolar join alumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol = pro.idprograma join rpyssReci rp on pro.idprograma = rp.idrpyss where inf.idescolar= '" + txtbuscar.Text + "'; ", conn);
+                    da = new SqlDataAdapter("select alu.numerocontrol as \"Numero Control\" ,nombre as \"Nombre\",apellidop as \"Apellido paterno\",apellidom as \"Apellido materno\",contraseña as \"Contraseña\",edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\", seguroFacultativo as \"Seguro facultativo\",inf.modalidad Modalidad,creditosAprovados as \"Creditos aprovados\" , localidad as \"localidad\",calle as \"calle\", codigopostal as \"Código postal\",municipio as \"Municipio\", estado as \"Estado\" , telefono as \"Telefono\", razonSocial as \"Razón social\",tipo as \"Tipo\" , nombretitular as \"Nombre Titular\", puestotitular as \"Puesto titular\",areaalumno as \"Área alumno\", nombreacesor as \"Nombre Acesor\" , puestoacesor as \"Puesto acesor\",correoAcesor  as \"Correo acesor\", nombreProyecto as \"Nombre Proyecto\",recidenciaTec as \"Recidencias tec\", copiaNombrePersona,copiaPuestoPersona  from DomicilioReci dom join infoEscolarReci inf on dom.iddomicilio = inf.idescolar join alumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol = pro.idprograma join rpyssReci rp on pro.idprograma = rp.idrpyss where inf.idescolar= '" + txtbuscar.Text + "'; ", conn);
                     dt = new DataTable();
                     da.Fill(dt);
                     GridView1.DataSource = dt;
@@ -104,7 +104,8 @@ namespace GestionServicioSocial
 
                 txtResidencia.Text = HttpUtility.HtmlDecode(row.Cells[32].Text);
 
-
+                txtCopiaNombre.Text = HttpUtility.HtmlDecode(row.Cells[33].Text);
+                txtCopiaPuesto.Text = HttpUtility.HtmlDecode(row.Cells[34].Text);
 
             }
         }
@@ -139,7 +140,8 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@correoAcesor", SqlDbType.VarChar).Value = txtCorreoAsesorExterno.Text.Trim();
                     cmd.Parameters.Add("@nombreProyecto", SqlDbType.VarChar).Value = txtNombreProyecto.Text.Trim();
                     cmd.Parameters.Add("@recidenciaTec", SqlDbType.VarChar).Value = txtResidencia.SelectedItem.ToString();
-
+                    cmd.Parameters.Add("@copiaNombrePersona", SqlDbType.VarChar).Value = txtCopiaNombre.Text.Trim();
+                    cmd.Parameters.Add("@copiaPuestoPersona", SqlDbType.VarChar).Value = txtCopiaPuesto.Text.Trim();
 
 
                     cmd.Connection = conn;
@@ -260,9 +262,16 @@ namespace GestionServicioSocial
             }
 
         }
+        public void validarArchivo() {
+            if (txtCopiaNombre.Text.Trim().Equals("")) {
+                txtCopiaNombre.Text = "Archivo";
+            }
+        
+        }
 
         protected void BtnGuardar_Click1(object sender, EventArgs e)
         {
+            validarArchivo();
             actuaizaPrograma();
             actualizarAlumno();
             actualizarInfoEscolar();
