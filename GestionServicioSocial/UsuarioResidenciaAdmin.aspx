@@ -32,7 +32,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section style="text-align:right">
-        <asp:Button ID="Button2" runat="server" Text="Regresar" href='javascript:history.go(-1)' />
+        <asp:Button ID="Button2" runat="server" Text="Regresar" href='javascript:history.go(-1)' OnClick="Button2_Click" />
     </section>
     <header>
         <h1 class="titulo1">

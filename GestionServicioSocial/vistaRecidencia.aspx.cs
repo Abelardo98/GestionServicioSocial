@@ -89,6 +89,32 @@ namespace GestionServicioSocial
             }
 
         }
+
+        public void eliminarDocumentosReci() {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "eiminarDocumentoReci";
+                    cmd.Parameters.Add("@numeroControl", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
+
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+
+        }
+
         public void eliminarRpyysReci()
         {
 
@@ -249,6 +275,7 @@ namespace GestionServicioSocial
                             eliminarAlumnoReci();
                             eliminarInfoEscolarReci();
                             eliminarDomicilioReci();
+                            eliminarDocumentosReci();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Dato Eliminado!')", true);
                             txtNumerocontrol.Text = "";
                             busquedaGeneral();

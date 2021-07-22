@@ -28,7 +28,29 @@ namespace GestionServicioSocial
             }
         }
 
+        public void eliminarDocumentosServicio() {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
 
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "eiminarDocumentoServi";
+                    cmd.Parameters.Add("@numeroControl", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
+
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
+        }
         public void eliminarRpyys()
         {
 
@@ -206,6 +228,7 @@ namespace GestionServicioSocial
                             eliminarAlumno();
                             eliminarInfoEscolar();
                             eliminarDomicilio();
+                            eliminarDocumentosServicio();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('dato eliminado')", true);
                             txtNumerocontrol.Text = "";
                             busquedaGeneral();
