@@ -134,54 +134,10 @@ namespace GestionServicioSocial
         
         }
 
-        public void insertarDocumentoServicio()
-        {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "insertarDocumentoServicio";
-                    cmd.Parameters.Add("@numeroControl", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
-                    cmd.Parameters.Add("@solicitudServicio", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@cartaPresentacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@cartaAceptacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@responsiva", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@cartaCompromiso", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@planTrabajo", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@reporte1", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@reporte2", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@reporte3", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@reporte4", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@reporte5", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@evaluacionFinal", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@reporteFinal", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@cartaLiberacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
-                    cmd.Parameters.Add("@constanciaTerminacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
-
-                    cmd.Connection = conn;
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-
-
-
-        }
-
-
-
         protected void BtnContinuar_Click(object sender, EventArgs e)
         {
             insertarPrograma();
             insertaripyss();
-            insertarDocumentoServicio();
             Server.Transfer("sesion.aspx");
         }
 

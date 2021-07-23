@@ -6,7 +6,7 @@
     <style>
         #tb {
             text-align:center;
-            padding-left:10px;
+            padding-left:80px;
             
 
         }
@@ -65,7 +65,7 @@
 
         &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="Label2" runat="server" Text="Selecciona un archivo:"></asp:Label>&nbsp;
-        <asp:DropDownList ID="DropDownList1" runat="server" class="btn btn-info" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        <asp:DropDownList ID="DropDownList1" runat="server" class="btn btn-info">
             <asp:ListItem Value="servicioSocial">Solicitud Servicio Social</asp:ListItem>
             <asp:ListItem Value="presentacion">Acuse Carta de Presentación</asp:ListItem>
             <asp:ListItem Value="cartaAceptación">Carta de Aceptación</asp:ListItem>

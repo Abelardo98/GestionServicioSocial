@@ -104,6 +104,35 @@ namespace GestionServicioSocial
                 
         }
 
+
+        public void insertarDocumentoReci()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "insertarDocumentoReci";
+                    cmd.Parameters.Add("@numeroControl", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
+                    cmd.Parameters.Add("@solicitudRecidencia", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@cartaPresentacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@cartaAceptacion", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@responsiva", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@cartaLiveracion", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@constanciaCumplimiento", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@carrera", SqlDbType.VarChar).Value = HttpUtility.HtmlDecode(TxtCarrera.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
         public void insertarDomicilio()
         {
 
@@ -236,6 +265,7 @@ namespace GestionServicioSocial
                         insertarDomicilio();
                         insertarEscolar();
                         insertarAlumno();
+                        insertarDocumentoReci();
                         Response.Redirect("Residencia1.aspx?parametro=" + txtNumeroControl.Text);
                     }
                     else {

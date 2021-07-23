@@ -130,14 +130,14 @@ namespace GestionServicioSocial
                 foreach (GridViewRow row in GridView1.Rows)
                 {
 
-                txtNc.Text = row.Cells[0].Text;
-                txtnombre.Text = row.Cells[1].Text;
-                txtAP.Text = row.Cells[2].Text;
-                txtAM.Text = row.Cells[3].Text;
-                txtCarrera.Text = row.Cells[4].Text;
-                txtSemestre.Text = row.Cells[5].Text;
-                txtPeriodo.Text = row.Cells[6].Text;
-                txtNombreProyecto.Text = row.Cells[7].Text;
+                txtNc.Text = HttpUtility.HtmlDecode(row.Cells[0].Text);
+                txtnombre.Text = HttpUtility.HtmlDecode(row.Cells[1].Text);
+                txtAP.Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
+                txtAM.Text = HttpUtility.HtmlDecode(row.Cells[3].Text);
+                txtCarrera.Text = HttpUtility.HtmlDecode(row.Cells[4].Text);
+                txtSemestre.Text = HttpUtility.HtmlDecode(row.Cells[5].Text);
+                txtPeriodo.Text = HttpUtility.HtmlDecode(row.Cells[6].Text);
+                txtNombreProyecto.Text = HttpUtility.HtmlDecode(row.Cells[7].Text);
 
 
                 }
@@ -239,6 +239,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@responsiva", SqlDbType.VarChar).Value = "Archivo aun no subido";
                     cmd.Parameters.Add("@cartaLiveracion", SqlDbType.VarChar).Value = "Archivo aun no subido";
                     cmd.Parameters.Add("@constanciaCumplimiento", SqlDbType.VarChar).Value = "Archivo aun no subido";
+                    cmd.Parameters.Add("@carrera", SqlDbType.VarChar).Value = HttpUtility.HtmlDecode(txtCarrera.Text);
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();

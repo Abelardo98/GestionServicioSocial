@@ -64,7 +64,7 @@
 
         &nbsp;
         &nbsp;<asp:Label ID="Label2" runat="server" Text="Selecciona un archivo:"></asp:Label>
-&nbsp;<asp:DropDownList ID="DropDownList1" class="btn btn-info" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"  >
+&nbsp;<asp:DropDownList ID="DropDownList1" class="btn btn-info" runat="server" >
              <asp:ListItem>Solicitud Residencia</asp:ListItem>
                         <asp:ListItem>Carta presentación</asp:ListItem>
                         <asp:ListItem>Carta aceptación</asp:ListItem>
