@@ -2227,7 +2227,6 @@ C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\
 C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x86\msvcr120.dll
 C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
-C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\bin\GestionServicioSocial.dll.config
 C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\bin\GestionServicioSocial.dll
 C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\bin\GestionServicioSocial.pdb
 C:\Users\Administrador\source\repos\GestionServicioSocial\GestionServicioSocial\bin\roslyn\csc.exe
