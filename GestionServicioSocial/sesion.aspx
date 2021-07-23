@@ -161,7 +161,7 @@
             <div class="container">
                 <label for="uname"><b>Usuario&nbsp;&nbsp;(número de control) </b></label>&nbsp;&nbsp;&nbsp;
 
-                <asp:TextBox ID="txtusername" runat="server" placeholder="Ingresa tu número de control" Width="748px" ></asp:TextBox>
+                <asp:TextBox ID="txtusername" runat="server" placeholder="Ingresa tu número de control" Width="748px" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 <br />
                 <label for="psw"><b>Contraseña</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtpasword" runat="server" placeholder="Ingresa tu contraseña" TextMode="Password" Width="749px"></asp:TextBox>
                 <br />
