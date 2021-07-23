@@ -119,7 +119,7 @@
         <div style="padding-left:30px; width: 1453px;">
 
 
-            <div style="overflow: scroll; width: 1448px;">
+            <div style="overflow: scroll; width: 1448px; height:500px;" >
 
                 &nbsp;
 

@@ -2709,3 +2709,4 @@ C:\Users\GENERICO\Downloads\cambios\GestionServicioSocial\obj\Debug\GestionServi
 C:\Users\GENERICO\Downloads\cambios\GestionServicioSocial\obj\Debug\GestionServicioSocial.csproj.CopyComplete
 C:\Users\GENERICO\Downloads\cambios\GestionServicioSocial\obj\Debug\GestionServicioSocial.dll
 C:\Users\GENERICO\Downloads\cambios\GestionServicioSocial\obj\Debug\GestionServicioSocial.pdb
+C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csprojAssemblyReference.cache
