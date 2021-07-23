@@ -109,7 +109,7 @@
             <table class="auto-style12">
                 <tr>
                     <td class="auto-style17">
-                        <asp:Label ID="Label1" runat="server" Text="Nombre:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="Nómbre:" Width="150px"></asp:Label>
                         <asp:TextBox ID="txtnombre" runat="server" Width="300px" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
@@ -308,6 +308,7 @@
     <!--Hasta aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii-->
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Label runat="server" Text="Realiza el Servicio Social en el Instituto Tecnológico Superior de Zacapoaxtla:"></asp:Label>
+           &nbsp;
            <asp:DropDownList ID="txtServicio" runat="server">
                 <asp:ListItem>NO</asp:ListItem>
                 <asp:ListItem>SI</asp:ListItem>
@@ -348,7 +349,7 @@
         <table class="auto-style35">
             <tr>
                 <td >
-                    <asp:Label ID="Label24" runat="server" Text="Área donde estára el alumno:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label24" runat="server" Text="Área donde estará el alumno:" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtAreaAlumno" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
@@ -384,7 +385,7 @@
             <tr>
                 <td>
 
-                    <asp:Label ID="Label27" runat="server" Text="Nombre de programa:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label27" runat="server" Text="Nombre del programa:" Width="400px"></asp:Label>
 
                     <asp:TextBox ID="txtNombrePrograma" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>

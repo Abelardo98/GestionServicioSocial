@@ -72,7 +72,7 @@
         &nbsp;&nbsp;<asp:Button ID="BtnGenerarReporte" runat="server" class="btn btn-info" Text="Generar Reportes" OnClick="BtnGenerarReporte_Click" Width="156px" />
 
 
-        &nbsp;&nbsp;<asp:Button ID="Button1" runat="server" class="btn btn-info" OnClick="Button1_Click" Text="Imformación detallada" />
+        &nbsp;&nbsp;<asp:Button ID="Button1" runat="server" class="btn btn-info" OnClick="Button1_Click" Text="Información detallada" />
 
     &nbsp;&nbsp;<asp:Button ID="BtnGenerarConstanciaTerminacion" runat="server" class="btn btn-info"  Text="Generar constancia terminación" Width="273px" OnClick="BtnGenerarConstanciaTerminacion_Click" />
         &nbsp;

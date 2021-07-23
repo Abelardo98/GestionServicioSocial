@@ -192,13 +192,13 @@
 
         </article>
         <article class="titulo">
-            <header class="titulo"><h2>Datos de la empresa,organimos ó institucion</h2></header>
+            <header class="titulo"><h2>Datos de la empresa, organismo o institución</h2></header>
 
         </article>
         <br />
         <article>
             <section style="text-align:center">
-                 <asp:Label ID="Label10" runat="server" Text="Nombre de la empresa, organismo ó institución:" Width="386px"></asp:Label>
+                 <asp:Label ID="Label10" runat="server" Text="Nombre de la empresa, organismo o institución:" Width="386px"></asp:Label>
                         <asp:TextBox ID="txtInstitucion" runat="server" Width="618px"></asp:TextBox>
             </section>
                        
@@ -215,7 +215,7 @@
                         <asp:TextBox ID="txtRepresentante" runat="server" Width="404px"></asp:TextBox>
                     </td>
                     <td class="auto-style7">
-                        <asp:Label ID="Label12" runat="server" Text="Puesto ó cargo:" Width="200px"></asp:Label>
+                        <asp:Label ID="Label12" runat="server" Text="Puesto o cargo:" Width="200px"></asp:Label>
                         <asp:TextBox ID="txtPuestoOCargo" runat="server" Width="404px"></asp:TextBox>
                     </td>
                 </tr>
@@ -233,7 +233,7 @@
 
                 <tr>
                     <td class="auto-style13">
-                        <asp:Label ID="Label20" runat="server" Text="Telefono:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label20" runat="server" Text="Teléfono:" Width="150px"></asp:Label>
 
                         <asp:TextBox ID="txtTelefonoEmpresa" runat="server" Width="404px"></asp:TextBox>
                     </td>
@@ -278,7 +278,7 @@
                     </td>
                     <td class="auto-style7">
 
-                       <asp:Label ID="txtViajeNoche2" runat="server" Text="ViajePorlaNoche" Width="200px" Visible="False"></asp:Label>
+                       <asp:Label ID="txtViajeNoche2" runat="server" Text="Viaje por la noche" Width="200px" Visible="False"></asp:Label>
                         <asp:DropDownList ID="txtViajeNoche" runat="server" Height="19px" Width="404px" Visible="False">
                             <asp:ListItem>SI</asp:ListItem>
                             <asp:ListItem>NO</asp:ListItem>

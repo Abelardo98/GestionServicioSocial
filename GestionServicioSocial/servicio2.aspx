@@ -97,7 +97,7 @@
             <table class="auto-style12">
                 <tr>
                     <td class="auto-style17">
-                        <asp:Label ID="Label1" runat="server" Text="Nombre:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="Nómbre:" Width="150px"></asp:Label>
                         <asp:TextBox ID="txtnombre" runat="server" Width="300px" required ReadOnly="True"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
@@ -179,7 +179,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style13">
-                        <asp:Label ID="Label23" runat="server" Text="Telefono:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label23" runat="server" Text="Teléfono:" Width="150px"></asp:Label>
             
                         <asp:TextBox ID="txttelefono" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" required Width="300px"></asp:TextBox>
                     </td>

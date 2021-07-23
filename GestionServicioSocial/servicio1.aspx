@@ -57,6 +57,7 @@
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Label ID="Label10" runat="server" Text="Realiza el Servicio Social en el Instituto Tecnológico Superior de Zacapoaxtla:"></asp:Label>
+           &nbsp;
            <asp:DropDownList ID="txtServicio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="txtServicio_SelectedIndexChanged">
                 <asp:ListItem>NO</asp:ListItem>
                 <asp:ListItem>SI</asp:ListItem>
@@ -100,7 +101,7 @@
         <table class="auto-style16">
             <tr>
                 <td >
-                    <asp:Label ID="Label4" runat="server" Text="Área donde estára el alumno:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text="Área donde estará el alumno:" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtAreaAlumno" runat="server" Width="880px" value=" " AutoPostBack="True" OnTextChanged="txtAreaAlumno_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>

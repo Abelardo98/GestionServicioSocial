@@ -105,7 +105,7 @@
             <table class="auto-style12">
                 <tr>
                     <td class="auto-style17">
-                        <asp:Label ID="Label1" runat="server" Text="Nombre:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="Nómbre:" Width="150px"></asp:Label>
                         <asp:TextBox ID="txtnombre" runat="server" Width="300px" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
@@ -159,7 +159,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style17">
-                        <asp:Label ID="Label22" runat="server" Text="Correo Electronico:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label22" runat="server" Text="Correo Electrónico:" Width="150px"></asp:Label>
                         <asp:TextBox ID="txtcorreo" runat="server" Width="300px"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
@@ -190,7 +190,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style13">
-                        <asp:Label ID="Label23" runat="server" Text="Telefono:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label23" runat="server" Text="Teléfono:" Width="150px"></asp:Label>
             
                         <asp:TextBox ID="txttelefono" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" Width="300px"></asp:TextBox>
                     </td>

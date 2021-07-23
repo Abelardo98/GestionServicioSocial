@@ -166,7 +166,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style17">
-                        <asp:Label ID="Label22" runat="server" Text="Correo Electronico:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label22" runat="server" Text="Correo Electrónico:" Width="150px"></asp:Label>
                         <asp:TextBox ID="txtcorreo" runat="server" Width="300px"></asp:TextBox>
                     </td>
                     <td class="auto-style18">

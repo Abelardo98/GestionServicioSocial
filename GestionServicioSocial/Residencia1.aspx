@@ -125,7 +125,7 @@
                
             </table>
         <section style="text-align:center">
-            <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="Black" Font-Bold="True">En caso de conocer los siguientes datos ingresarlos sino dejarlos en blanco</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="Black" Font-Bold="True">En caso de conocer los siguientes datos, ingresarlos, si no, dejarlos en blanco</asp:LinkButton>
         </section>
         <table class="auto-style18">
             <tr>
@@ -167,7 +167,7 @@
             </tr>
         </table>
         <section style="text-align:center">
-         <asp:LinkButton ID="LinkButton2" runat="server" ForeColor="Black" Font-Bold="True">En caso de conocer los siguientes datos ingresarlos sino dejarlos en blanco</asp:LinkButton>
+         <asp:LinkButton ID="LinkButton2" runat="server" ForeColor="Black" Font-Bold="True">En caso de conocer los siguientes datos, ingresarlos. Si no, dejarlos en blanco</asp:LinkButton>
         </section>
 
 
