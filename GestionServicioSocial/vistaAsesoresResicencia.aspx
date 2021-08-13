@@ -36,11 +36,11 @@
     
     <header class="auto-style2">
         
-        <asp:LinkButton ID="BtnServicio" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnServicio_Click" >Servicio social</asp:LinkButton>
+        <asp:LinkButton ID="BtnServicio" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnServicio_Click" >Servicio Social</asp:LinkButton>
 
         &nbsp;
 
-        <asp:LinkButton ID="BtnResidencia" runat="server" Font-Bold="True" Font-Size="Smaller">Residencia profesional</asp:LinkButton>
+        <asp:LinkButton ID="BtnResidencia" runat="server" Font-Bold="True" Font-Size="Smaller">Residencia Profesional</asp:LinkButton>
 
         &nbsp;
 
@@ -56,7 +56,7 @@
     <section class="auto-style1">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-  <asp:Label ID="Label1" runat="server" Text="Numero control: "></asp:Label>
+  <asp:Label ID="Label1" runat="server" Text="Número Control: "></asp:Label>
         &nbsp;
         <asp:TextBox ID="txtNumerocontrol" runat="server"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -103,7 +103,7 @@
 
             &nbsp;
 
-            <asp:Button ID="descargarResi" runat="server" Text="Exportar datos" class="btn btn-info" OnClick="descargarResi_Click"/>
+            <asp:Button ID="descargarResi" runat="server" Text="Exportar Datos" class="btn btn-info" OnClick="descargarResi_Click"/>
 
 
         </div>

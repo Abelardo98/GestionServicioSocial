@@ -57,7 +57,7 @@
     <section class="auto-style1">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-  <asp:Label ID="Label1" runat="server" Text="Numero control: "></asp:Label>
+  <asp:Label ID="Label1" runat="server" Text="Número Control: "></asp:Label>
         &nbsp;
         <asp:TextBox ID="txtNumerocontrol" runat="server"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -112,7 +112,7 @@
 
             <asp:Button ID="BtnVerRegistros" runat="server" class="btn btn-info" Text="Ver Registros" OnClick="BtnVerRegistros_Click" />
             &nbsp;
-            <asp:Button ID="descargarRegistros" runat="server" class="btn btn-info" Text="Exportar registros" OnClick="descargarRegistros_Click" />
+            <asp:Button ID="descargarRegistros" runat="server" class="btn btn-info" Text="Exportar Registros" OnClick="descargarRegistros_Click" />
             
 
 

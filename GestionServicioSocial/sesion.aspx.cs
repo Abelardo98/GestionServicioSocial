@@ -56,7 +56,7 @@ namespace GestionServicioSocial
                     conn.Open();
 
                     //SqlCommand consulta = new SqlCommand("select * from usuarios where username = '" + txtusername.Text + "';; ", conn);
-                    SqlCommand consulta = new SqlCommand("select * from usuarios where tipoUsuario='profesor' and username='" + txtusername.Text + "'; ", conn);
+                    SqlCommand consulta = new SqlCommand("select numeroControl,nombre from docentes where numeroControl='" + txtusername.Text + "'; ", conn);
 
                     ArrayList lista = new ArrayList();
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
@@ -395,6 +395,44 @@ namespace GestionServicioSocial
                 
             }
            // Response.Redirect("Residencia2.aspx?parametro=" + numeroControlReg.Text);
+        }
+
+        protected void BtnVisitas_Click(object sender, EventArgs e)
+        {
+            if (numeroControlReg.Text.Equals(""))
+            {
+                alertaControl.Text = "Ingresa tu numero de control";
+            }
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+                {
+                    try
+                    {
+                        conn.Open();
+                        string cadena = "select numeroControl from docentes where numeroControl='" + numeroControlReg.Text + "';";
+                        SqlCommand comando = new SqlCommand(cadena, conn);
+                        SqlDataReader registro = comando.ExecuteReader();
+                        if (registro.Read())
+                        {
+
+                            Session["userProfe"] = numeroControlReg.Text;
+                            Server.Transfer("SalidaDeEstudios.aspx");
+                            //Response.Redirect("servicio2.aspx?parametro=" + numeroControlReg.Text);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ese numero de control no existe!')", true);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //mensaje.Text = e.Message;
+                    }
+                }
+
+            }
         }
     }
 }

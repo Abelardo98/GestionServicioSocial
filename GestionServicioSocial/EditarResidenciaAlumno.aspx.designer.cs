@@ -555,13 +555,13 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.TextBox txtAreaAlumno;
 
         /// <summary>
-        /// Control Label36.
+        /// Control Label27.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label36;
+        protected global::System.Web.UI.WebControls.Label Label27;
 
         /// <summary>
         /// Control txtCopiaNombre.
@@ -573,13 +573,13 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.TextBox txtCopiaNombre;
 
         /// <summary>
-        /// Control Label35.
+        /// Control Label28.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label35;
+        protected global::System.Web.UI.WebControls.Label Label28;
 
         /// <summary>
         /// Control txtCopiaPuesto.
@@ -591,13 +591,13 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.TextBox txtCopiaPuesto;
 
         /// <summary>
-        /// Control Label27.
+        /// Control Label32.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label27;
+        protected global::System.Web.UI.WebControls.Label Label32;
 
         /// <summary>
         /// Control txtNombreAsesorExterno.
@@ -609,13 +609,13 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.TextBox txtNombreAsesorExterno;
 
         /// <summary>
-        /// Control Label28.
+        /// Control Label33.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label28;
+        protected global::System.Web.UI.WebControls.Label Label33;
 
         /// <summary>
         /// Control txtPuestoAsesorExterno.
@@ -627,13 +627,13 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.TextBox txtPuestoAsesorExterno;
 
         /// <summary>
-        /// Control Label32.
+        /// Control Label35.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label32;
+        protected global::System.Web.UI.WebControls.Label Label35;
 
         /// <summary>
         /// Control txtCorreoAsesorExterno.
@@ -645,13 +645,13 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.TextBox txtCorreoAsesorExterno;
 
         /// <summary>
-        /// Control Label33.
+        /// Control Label36.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label33;
+        protected global::System.Web.UI.WebControls.Label Label36;
 
         /// <summary>
         /// Control txtNombreProyecto.

@@ -132,6 +132,8 @@
                 </div>
 
             <div id="btns">
+                <asp:Button ID="BtnVisitas" runat="server" class="btn btn-success" Text="Visitas Industriales" OnClick="BtnVisitas_Click"/>
+                &nbsp;&nbsp;
                 <asp:Button ID="btnServicio" runat="server" class="btn btn-success" Text="Servicio Social" onClick="btnServicio_Click"/>
                 &nbsp;&nbsp;
                 <asp:Button ID="btnResidencia" runat="server" class="btn btn-success" Text="Residencia Profesional" onClick="btnResidencia_Click" Width="334px"/>
@@ -170,7 +172,6 @@
                 <asp:DropDownList ID="txtTipo" runat="server">
                     <asp:ListItem>ADMINISTRADORA</asp:ListItem>
                     <asp:ListItem>JEFE CARRERA</asp:ListItem>
-                    <asp:ListItem>DOCENTE</asp:ListItem>
                     <asp:ListItem>SERVICIO</asp:ListItem>
                     <asp:ListItem>RESIDENCIA</asp:ListItem>
                 </asp:DropDownList>

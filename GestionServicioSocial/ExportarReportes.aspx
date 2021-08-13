@@ -20,14 +20,14 @@
         <button>
             <a href="ReporteSolicitud.aspx" target="_blank">Exportar Solicitud de servicio social</a>
         </button>-->
-            <asp:Button ID="BtnCartaSolicitud" runat="server" Text="Exportar Solicitud de servicio social" OnClick="BtnCartaSolicitud_Click" Width="325px" />
+            <asp:Button ID="BtnCartaSolicitud" runat="server" Text="Exportar Solicitud De Servicio Social" OnClick="BtnCartaSolicitud_Click" Width="325px" />
             &nbsp;&nbsp;
-            <asp:Button ID="BtnCartaPrecentacion" runat="server" Text="Exportar Carta de presentación" OnClick="BtnCartaPrecentacion_Click" />
+            <asp:Button ID="BtnCartaPrecentacion" runat="server" Text="Exportar Carta De Presentación" OnClick="BtnCartaPrecentacion_Click" />
             
         
 
 
-    &nbsp;<asp:Button ID="BtnConstanciaTerminacion" runat="server" OnClick="BtnConstanciaTerminacion_Click" Text="Generar constancia terminación" />
+    &nbsp;&nbsp; <asp:Button ID="BtnConstanciaTerminacion" runat="server" OnClick="BtnConstanciaTerminacion_Click" Text="Generar Constancia De Terminación" Width="382px" />
             
         
 

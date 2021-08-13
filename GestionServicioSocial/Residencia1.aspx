@@ -154,14 +154,14 @@
             </tr>
             <tr>
                 <td class="auto-style16">
-                    <asp:Label ID="Label5" runat="server" Text="Nombre del asesor externo" Width="300px"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente (Quien será tu asesor externo):" Width="300px"></asp:Label>
 
                     <asp:TextBox ID="txtNombreAsesorExterno" runat="server" Width="1000px" value=" " AutoPostBack="True" OnTextChanged="txtNombreAsesorExterno_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style19">
-                    <asp:Label ID="Label6" runat="server" Text="Puesto del asesor externo:" Width="300px"></asp:Label>
+                    <asp:Label ID="Label6" runat="server" Text="Puesto (Quien será tu asesor externo):" Width="300px"></asp:Label>
                     <asp:TextBox ID="txtPuestoAsesorExterno" runat="server" Width="1000px" value=" " AutoPostBack="True" OnTextChanged="txtPuestoAsesorExterno_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>

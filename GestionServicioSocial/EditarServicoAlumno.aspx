@@ -92,8 +92,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <header class="titulo">
-        <h1 class="titulos">Información Personal</h1>
+    <header class="titulo">
+        <h1 class="titulos">IInformación Personal</h1>
     </header>
     <br />
     <asp:TextBox ID="txtbuscar" runat="server" Width="185px"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp; <asp:Button ID="BTN_Buscar" runat="server" Text="Buscar" OnClick="BTN_Buscar_Click1" />
@@ -163,7 +163,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style17">
-                        <asp:Label ID="Label22" runat="server" Text="Correo Electronico:" Width="150px"></asp:Label>
+                        <asp:Label ID="Label22" runat="server" Text="Correo Electrónico:" Width="150px"></asp:Label>
                         <asp:TextBox ID="txtcorreo" runat="server" Width="300px"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
@@ -196,7 +196,7 @@
                     <td class="auto-style13">
                         <asp:Label ID="Label23" runat="server" Text="Telefono:" Width="150px"></asp:Label>
             
-                        <asp:TextBox ID="txttelefono" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txttelefono" type="number" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" Width="300px"></asp:TextBox>
                     </td>
                     <td class="auto-style16">
 
@@ -212,7 +212,7 @@
         <br />
 
         <header class="titulos">
-            <h1>Información Escolar</h1>
+            <h1>Información Escolar/h1>
         </header>
 
         <br />
@@ -355,7 +355,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label25" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label25" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente (Quien será tu supervisor):" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtNombrePersonaServicio" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
@@ -366,7 +366,7 @@
              <tr>
                     
                     <td>
-                        <asp:Label ID="Label26" runat="server" Text="Puesto:" Width="400px"></asp:Label>
+                        <asp:Label ID="Label26" runat="server" Text="Puesto de (Quien será tu supervisor):" Width="400px"></asp:Label>
             
                         <asp:TextBox ID="txtPuesto" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
@@ -393,7 +393,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label28" runat="server" Text="Programa de actividades:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label28" runat="server" Text="Programa actividades:" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtProgramaActividades" runat="server" Width="880px" value="ACTIVIDADES PLASMADAS EN EL PLAN DE TRABAJO" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>

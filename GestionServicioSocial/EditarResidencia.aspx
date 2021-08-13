@@ -41,7 +41,16 @@
             width: 50px;
             background-color:aqua;
         }
-
+        .auto-style2 {
+            width: 1398px;
+        }
+        .auto-style3 {
+            width: 768px;
+            height: 43px;
+        }
+        .auto-style4 {
+            height: 43px;
+        }
         .auto-style6 {
             height: 34px;
         }
@@ -192,7 +201,7 @@
                     <td class="auto-style13">
                         <asp:Label ID="Label23" runat="server" Text="Teléfono:" Width="150px"></asp:Label>
             
-                        <asp:TextBox ID="txttelefono" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txttelefono" runat="server" type="number" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" Width="300px"></asp:TextBox>
                     </td>
                     <td class="auto-style16">
 
@@ -270,7 +279,7 @@
                     <td class="auto-style18">
                         <asp:Label ID="Label30" runat="server" Text="Número de Seguro Facultativo IMSS:" Width="150px"></asp:Label>
 
-                        <asp:TextBox ID="txtNumeroFacultativo" runat="server" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txtNumeroFacultativo" runat="server" type="number" Width="300px"></asp:TextBox>
                     </td>
                      <td class="auto-style19">
                          <asp:Label ID="Label31" runat="server" Text="Créditos Aprobados: " Width="150px"></asp:Label>
@@ -314,83 +323,98 @@
 
     <section id="contenido">
         
-            <table class="auto-style12">
+            <table class="auto-style2">
                 <tr>
-                    <td class="auto-style3">
-                        <asp:Label ID="Label16" runat="server" Text="Nombre del lugar donde vas a realizar residencias profesionales: " Width="200px"></asp:Label>            
-                        <asp:TextBox ID="txtRazonSocial" runat="server" Width="540px" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <td>
+                        <asp:Label ID="Label16" runat="server" Text="Nombre del lugar donde vas a realizar residencias profesionales: " Width="300px"></asp:Label>            
+                        <asp:TextBox ID="txtRazonSocial" runat="server" Width="1078px" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
-                    <td class="auto-style4">
-                         <asp:Label ID="Label18" runat="server" Text="Tipo" Width="200px"></asp:Label>
-                         <asp:DropDownList ID="txtTipo" runat="server" Width="405px">
-                             <asp:ListItem>Público </asp:ListItem>
+                    
+                </tr>
+                <tr>
+                    <td>
+                         <asp:Label ID="Label18" runat="server" Text="Tipo" Width="300px"></asp:Label>
+                         <asp:DropDownList ID="txtTipo" runat="server" Width="1078px">
+                             <asp:ListItem>Público</asp:ListItem>
                              <asp:ListItem>Privado</asp:ListItem>
                              <asp:ListItem>Social</asp:ListItem>
                          </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style5">
-                        <asp:Label ID="Label19" runat="server" Text="Nombre del titular:" Width="200px"></asp:Label>
-                        <asp:TextBox ID="txtTitularDependencia" runat="server" Width="540px" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <td>
+                        <asp:Label ID="Label19" runat="server" Text="Nombre del titular:" Width="300px"></asp:Label>
+                        <asp:TextBox ID="txtTitularDependencia" runat="server" Width="1078px" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
-                    <td class="auto-style6">
-                         <asp:Label ID="Label24" runat="server" Text="Puesto del titular" Width="200px"></asp:Label>
+                    
+                </tr>
+                <tr>
+                    <td>
+                         <asp:Label ID="Label24" runat="server" Text="Puesto del titular" Width="300px"></asp:Label>
             
-                         <asp:TextBox ID="txtPuestoTitular" runat="server" Width="405px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                         <asp:TextBox ID="txtPuestoTitular" required runat="server" Width="1078px" onkeyup="javascript:this.value=this.value.toUpperCase();" Wrap="False"></asp:TextBox>
+                    </td>
+                </tr>
+            
+               
+            </table>
+        
+        <table class="auto-style2">
+            <tr>
+                <td class="auto-style15">
+                    <asp:Label ID="Label25" runat="server" Text="Área en donde estará ubicado el residente:" Width="300px"></asp:Label>
+
+                    <asp:TextBox ID="txtAreaAlumno" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                </td>
+
+            </tr>
+                        <tr>
+                <td class="auto-style15">
+                    <asp:Label ID="Label27" runat="server" Text="Con copia para (Nombre de la persona):" Width="300px"></asp:Label>
+
+                    <asp:TextBox ID="txtCopiaNombre" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                </td>
+
+            </tr>
+                        <tr>
+                <td class="auto-style15">
+                    <asp:Label ID="Label28" runat="server" Text="Puesto de la persona:" Width="300px"></asp:Label>
+
+                    <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                </td>
+
+            </tr>
+            <tr>
+                <td >
+                    <asp:Label ID="Label32" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente (Quien será tu asesor externo):" Width="300px"></asp:Label>
+
+                    <asp:TextBox ID="txtNombreAsesorExterno" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label33" runat="server" Text="Puesto (Quien será tu asesor externo):" Width="300px"></asp:Label>
+                    <asp:TextBox ID="txtPuestoAsesorExterno" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+
+        <table class="auto-style2">
+              <tr>
+                    
+                    <td>
+                        <asp:Label ID="Label35" runat="server" Text="Correo electrónico del asesor externo:" Width="300px"></asp:Label>              
+                        <asp:TextBox ID="txtCorreoAsesorExterno" runat="server" Width="1078px"></asp:TextBox>
+                    </td>
+                  
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label36" runat="server" Text="Nombre del proyecto:" Width="300px"></asp:Label>
+                        <asp:TextBox ID="txtNombreProyecto" runat="server" Width="1078px" onkeyup="javascript:this.value=this.value.toUpperCase();" value=" "></asp:TextBox>
                     </td>
                 </tr>
                
-            </table>
-
-        <table class="auto-style12">
-            <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="Label25" runat="server" Text="Área donde estaraá el alumno:" Width="200px"></asp:Label>
-
-                    <asp:TextBox ID="txtAreaAlumno" runat="server" Width="540px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
-                </td>
-                <td class="auto-style8">
-                    <asp:Label ID="Label36" runat="server" Text="Con copia para (Nombre de la persona):" Width="200px"></asp:Label>
-
-                    <asp:TextBox ID="txtCopiaNombre" runat="server" Width="405px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
-                </td>
-                
-            </tr>
-            <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="Label35" runat="server" Text="Puesto de la persona:" Width="200px"></asp:Label>
-
-                    <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="540px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
-                </td>
-                
-                <td class="auto-style8">
-                    <asp:Label ID="Label27" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente:" Width="200px"></asp:Label>
-
-                    <asp:TextBox ID="txtNombreAsesorExterno" runat="server" Width="405px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
-                </td>
-            </tr>
-
-        </table>
-                  
-        <table class="auto-style12">
-              <tr>
-                    <td class="auto-style1">
-                        <asp:Label ID="Label28" runat="server" Text="Puesto:" Width="200px"></asp:Label>
-                         <asp:TextBox ID="txtPuestoAsesorExterno" runat="server" Width="540px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:Label ID="Label32" runat="server" Text="Correo electrónico:" Width="200px"></asp:Label>              
-                        <asp:TextBox ID="txtCorreoAsesorExterno" runat="server" Width="405px"></asp:TextBox>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td class="auto-style9">
-                        <asp:Label ID="Label33" runat="server" Text="Nombre del proyecto:" Width="200px"></asp:Label>
-                        <asp:TextBox ID="txtNombreProyecto" runat="server" Width="540px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
-                    </td>
-                </tr>
         </table>
         <br />
         <br />

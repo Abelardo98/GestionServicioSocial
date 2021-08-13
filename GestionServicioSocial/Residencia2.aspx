@@ -183,7 +183,7 @@
                     <td class="auto-style13">
                         <asp:Label ID="Label23" runat="server" Text="Teléfono:" Width="150px"></asp:Label>
             
-                        <asp:TextBox ID="txttelefono" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" required Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txttelefono" type="number" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" required Width="300px"></asp:TextBox>
                     </td>
                     <td class="auto-style16">
 
@@ -253,7 +253,7 @@
                     <td class="auto-style18">
                         <asp:Label ID="Label3" runat="server" Text="Número de Seguro Facultativo IMSS:" Width="150px"></asp:Label>
 
-                        <asp:TextBox ID="txtNumeroFacultativo" runat="server" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txtNumeroFacultativo" type="number" runat="server" Width="300px"></asp:TextBox>
                     </td>
                      <td class="auto-style19">
                          <asp:Label ID="Label26" runat="server" Text="Créditos Aprobados: " Width="150px"></asp:Label>

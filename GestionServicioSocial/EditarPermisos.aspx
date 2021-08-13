@@ -54,6 +54,7 @@
         &nbsp;<asp:TextBox ID="txtidRegistro" runat="server" Width="199px"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+        <asp:Label ID="txtNC2" runat="server" Text="Label" Visible="False"></asp:Label>
     </section>
     <br />
     <br />
@@ -294,6 +295,7 @@
 
             <section style="text-align:center">
                 <asp:Button runat="server" Text="Guardar cambios" ID="BtnGuardarCambios" OnClick="BtnGuardarCambios_Click" />
+                <asp:Button ID="BtnCancelar" runat="server" OnClick="BtnCancelar_Click" Text="Cancelar" />
             </section>
 
         </article>

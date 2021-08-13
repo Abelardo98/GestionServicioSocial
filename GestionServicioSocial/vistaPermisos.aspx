@@ -13,7 +13,7 @@
         }
 
         .auto-style1 {
-            width: 1270px;
+            width: 1471px;
         }
 
         .auto-style2 {
@@ -31,17 +31,17 @@
     <br />
     <br />
     <header class="auto-style3">
-       <asp:LinkButton ID="BtnSeervicio" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnSeervicio_Click">Servicio social</asp:LinkButton>
+       <asp:LinkButton ID="BtnSeervicio" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnSeervicio_Click">Servicio Social</asp:LinkButton>
 
         &nbsp;
 
-        <asp:LinkButton ID="BtnRecidencia" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnRecidencia_Click">Residencia profesional</asp:LinkButton>
+        <asp:LinkButton ID="BtnRecidencia" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnRecidencia_Click">Residencia Profesional</asp:LinkButton>
 
         &nbsp;
 
-        <asp:LinkButton ID="BtnPermisos" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnPermisos_Click">Visitas industriales</asp:LinkButton>
+        <asp:LinkButton ID="BtnPermisos" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnPermisos_Click">Visitas Industriales</asp:LinkButton>
         &nbsp;
-        <asp:LinkButton ID="LinkButton2" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="LinkButton2_Click1">Carta provisional</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton2" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="LinkButton2_Click1">Carta Provisional</asp:LinkButton>
         &nbsp;
         
         <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="LinkButton1_Click">Cerrar Sesión</asp:LinkButton>
@@ -53,20 +53,20 @@
     <br />
 
     <section class="auto-style1">
-        &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label1" runat="server" Text="id registro:"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label1" runat="server" Text="Contador:"></asp:Label>
         &nbsp;
         <asp:TextBox ID="txtNumerocontrol" runat="server"></asp:TextBox>
         &nbsp;&nbsp;
         <asp:Button ID="BTNeditar" runat="server" Text="Editar" class="btn btn-info" Height="40px" OnClick="BTNeditar_Click" />
         
         &nbsp;&nbsp;
-        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal2">Eliminar</button>
+        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal2" style="width: 82px">Eliminar</button>
 
-        &nbsp;&nbsp;<asp:Button ID="BtnGenerarReporte" runat="server" class="btn btn-info" Text="Generar solicitud de visita de estudios" OnClick="BtnGenerarReporte_Click" Width="347px" />
+        &nbsp;&nbsp;<asp:Button ID="BtnGenerarReporte" runat="server" class="btn btn-info" Text="Generar Solicitud De Visita De Estudios" OnClick="BtnGenerarReporte_Click" Width="347px" />
 
 
-        &nbsp;&nbsp;<asp:Button ID="BTNCaraPresentacion" runat="server" class="btn btn-info" OnClick="BTNCaraPresentacion_Click" Text="Generar oficio de solicitud" />
-        &nbsp;    <button id="btn" class="btn btn-info" type="button" data-toggle="modal" style="position:relative; top: 1px; left: 13px;" data-target="#exampleModal">Cargar base de datos</button>
+        &nbsp;&nbsp;<asp:Button ID="BTNCaraPresentacion" runat="server" class="btn btn-info" OnClick="BTNCaraPresentacion_Click" Text="Generar Oficio De Solicitud" Width="274px" />
+        &nbsp;    <button id="btn" class="btn btn-info" type="button" data-toggle="modal" style="position:relative; top: 1px; left: 11px; width: 228px;" data-target="#exampleModal">Cargar Base De Datos</button>
  
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

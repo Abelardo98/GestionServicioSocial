@@ -38,7 +38,7 @@ namespace GestionServicioSocial
                 try
                 {
 
-                    da = new SqlDataAdapter("select visitaPractica,visitaIndustrial,practica,docenteResponsable,numCelularDocente,CorreoElectronicoDocente,materia,semestre,grupo,alumnosProgramados,especialidad,carrera,objetivo,practicaDescripcion,nombreInstitucion,representante,puestoOcargo,direccion,municipioEstado,telefonoOrganizacion,fax,email,paginaWeb,fechaVisita,horaPropuesta,viajeNoche,recomendaciones from  permisosDatosAcademicos pd join permisosDatosEmpresa pe on pd.idPermisoAcademico=pe.idPermiso where pd.CONTADOR= '" + txtidRegistro.Text + "'; ", conn);
+                    da = new SqlDataAdapter("select visitaPractica,visitaIndustrial,practica,docenteResponsable,numCelularDocente,CorreoElectronicoDocente,materia,semestre,grupo,alumnosProgramados,especialidad,carrera,objetivo,practicaDescripcion,nombreInstitucion,representante,puestoOcargo,direccion,municipioEstado,telefonoOrganizacion,fax,email,paginaWeb,fechaVisita,horaPropuesta,viajeNoche,recomendaciones,pd.idPermisoAcademico from  permisosDatosAcademicos pd join permisosDatosEmpresa pe on pd.idPermisoAcademico=pe.idPermiso where pd.CONTADOR= '" + txtidRegistro.Text + "'; ", conn);
                     dt = new DataTable();
                     da.Fill(dt);
                     GridView1.DataSource = dt;
@@ -95,6 +95,7 @@ namespace GestionServicioSocial
                 txtFechaPropuesta.Text = HttpUtility.HtmlDecode(row.Cells[23].Text);
                 txtHoraPropuesta.Text = HttpUtility.HtmlDecode(row.Cells[24].Text);
                 txtRecomedacionesOrganizacion.Text = HttpUtility.HtmlDecode(row.Cells[26].Text);
+                txtNC2.Text = HttpUtility.HtmlDecode(row.Cells[27].Text);
 
             }
         }
@@ -109,7 +110,8 @@ namespace GestionServicioSocial
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "actualizarAcademicos";
-                    cmd.Parameters.Add("@idPermisoAcademico", SqlDbType.VarChar).Value = txtidRegistro.Text.Trim();
+                    cmd.Parameters.Add("@idPermisoAcademico", SqlDbType.VarChar).Value = txtNC2.Text.Trim();
+                    cmd.Parameters.Add("@visitaPractica", SqlDbType.VarChar).Value = txtVisitaPractica.SelectedItem.ToString();
                     cmd.Parameters.Add("@visitaIndustrial", SqlDbType.VarChar).Value = txtVisitaIndustrial.SelectedItem.ToString();
                     cmd.Parameters.Add("@practica", SqlDbType.VarChar).Value = txtPractica.SelectedItem.ToString();
                     cmd.Parameters.Add("@docenteResponsable", SqlDbType.VarChar).Value = txtDocenteResponsable.Text.Trim();
@@ -175,7 +177,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
+                    txtRepresentante.Text=ex.Message;
                 }
 
 
@@ -195,7 +197,7 @@ namespace GestionServicioSocial
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "actualizarEmpresa";
-                    cmd.Parameters.Add("@idPermiso", SqlDbType.VarChar).Value = txtidRegistro.Text.Trim();
+                    cmd.Parameters.Add("@idPermiso", SqlDbType.VarChar).Value = txtNC2.Text.Trim();
                     cmd.Parameters.Add("@nombreInstitucion", SqlDbType.VarChar).Value = txtInstitucion.Text.Trim();
                     cmd.Parameters.Add("@representante", SqlDbType.VarChar).Value = txtRepresentante.Text.Trim();
                     cmd.Parameters.Add("@puestoOcargo", SqlDbType.VarChar).Value = txtPuestoOCargo.Text.Trim();
@@ -216,7 +218,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
+                    txtDireccion.Text = ex.Message;
                 }
 
 
@@ -264,6 +266,11 @@ namespace GestionServicioSocial
             txtVisitaIndustrial.Text = "";
             txtEncasoPractica.Visible = true;
             Label9.Visible = true;
+        }
+
+        protected void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("vistaPermisos.aspx");
         }
     }
 }

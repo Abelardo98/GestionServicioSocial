@@ -36,17 +36,17 @@
     <br />
 
     <header class="auto-style2">
-        <asp:LinkButton ID="BtnServicio" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnServicio_Click">Servicio social</asp:LinkButton>
+        <asp:LinkButton ID="BtnServicio" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnServicio_Click">Servicio Social</asp:LinkButton>
 
         &nbsp;
 
-        <asp:LinkButton ID="BtnResidencia" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnResidencia_Click" >Residencia profesional</asp:LinkButton>
+        <asp:LinkButton ID="BtnResidencia" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnResidencia_Click" >Residencia Profesional</asp:LinkButton>
 
         &nbsp;
 
-        <asp:LinkButton ID="BtnPermisos" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnPermisos_Click">Visitas industriales</asp:LinkButton>
+        <asp:LinkButton ID="BtnPermisos" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="BtnPermisos_Click">Visitas Industriales</asp:LinkButton>
         &nbsp;
-        <asp:LinkButton ID="LinkButton2" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="LinkButton2_Click">Carta provisional</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton2" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="LinkButton2_Click">Carta Provisional</asp:LinkButton>
         &nbsp;
         
         <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="LinkButton1_Click1">Cerrar Sesión</asp:LinkButton>
@@ -62,7 +62,7 @@
     <section class="auto-style1">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-  <asp:Label ID="Label1" runat="server" Text="Numero control: "></asp:Label>
+  <asp:Label ID="Label1" runat="server" Text="Número Control: "></asp:Label>
         &nbsp;
         <asp:TextBox ID="txtNumerocontrol" runat="server"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="BTNeditar" runat="server" Text="Editar" class="btn btn-info" Height="40px" OnClick="BTNeditar_Click" />
@@ -74,7 +74,7 @@
 
 
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="BtnDocumentosAlumno" runat="server" class="btn btn-info" OnClick="Button1_Click" Text="Información detallada" Width="227px" />
+        <asp:Button ID="BtnDocumentosAlumno" runat="server" class="btn btn-info" OnClick="Button1_Click" Text="Información Detallada" Width="227px" />
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -110,7 +110,7 @@
             &nbsp;&nbsp;&nbsp;
             <asp:Button ID="BTN_BUSCARREGISTRO" class="btn btn-info" runat="server" Text="Buscar Registro" OnClick="BTN_BUSCARREGISTRO_Click" />
             &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="descargarResi" runat="server" Text="Exportar datos" class="btn btn-info" OnClick="descargarResi_Click"/>
+            <asp:Button ID="descargarResi" runat="server" Text="Exportar Datos" class="btn btn-info" OnClick="descargarResi_Click"/>
 
         </div>
 

@@ -79,7 +79,7 @@
            <header id="headerxd"><h2>Genera tu solicictud y carta de presentación</h2></header>
        </div>
        <div id="botonesxd">
-           <asp:Button ID="BtnSolicitud" runat="server" Text="Generar solicitud" OnClick="BtnSolicitud_Click" /><asp:Button ID="BtnPrecentacion" runat="server" Text="Generar carta de presentacion" OnClick="BtnPrecentacion_Click" />
+           <asp:Button ID="BtnSolicitud" runat="server" Text="Generar Solicitud De Residencia Profesional" OnClick="BtnSolicitud_Click" Width="370px" />&nbsp; <asp:Button ID="BtnPrecentacion" runat="server" Text="Generar Carta De Presentación" OnClick="BtnPrecentacion_Click" />
 
        </div>
    </section>
@@ -90,26 +90,26 @@
      <table style="margin: 0 auto;" cellspacing="10" border="1" cellpadding="10">
          <tr>
              <td class="auto-style9">
-                 Solicitud de Residencia Profesional:
+                 Solicitud De Residencia Profesional:
              </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload1" runat="server" Width="243px" />
                  
              </td>
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir solicitud" ID="BtnSubirSolicitud"  Width="361px" OnClick="BtnSubirSolicitud_Click1" />
+                 <asp:Button runat="server" Text="Subir Solicitud" ID="BtnSubirSolicitud"  Width="361px" OnClick="BtnSubirSolicitud_Click1" />
                  <asp:Label ID="Label12" runat="server" Text="Subido el:"></asp:Label>
 &nbsp;<asp:Label ID="solicitud" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          <tr>
              <td class="auto-style9">
-                 Carta de Presentación: </td>
+                 Carta De Presentación: </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload2" runat="server" Width="243px" />
                  
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir carta de presentación" ID="BtnSubirPrecentacion" OnClick="BtnSubirPrecentacion_Click" Width="361px" />
+                 <asp:Button runat="server" Text="Subir Carta De Presentación" ID="BtnSubirPrecentacion" OnClick="BtnSubirPrecentacion_Click" Width="361px" />
                  <asp:Label ID="Label13" runat="server" Text="Subido el: "></asp:Label>
                  <asp:Label ID="presentacion" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
@@ -117,14 +117,14 @@
          </tr>
          <tr>
              <td class="auto-style9">
-                 Carta de Aceptación RP:
+                 Carta De Aceptación RP:
              </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload3" runat="server" Width="243px" />
                  
              </td>
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir carta de aceptación de RP" ID="BTNSubirAceptacionRP" OnClick="BTNSubirAceptacionRP_Click" Width="361px" />
+                 <asp:Button runat="server" Text="Subir Carta De Aceptación De RP" ID="BTNSubirAceptacionRP" OnClick="BTNSubirAceptacionRP_Click" Width="361px" />
                  <asp:Label ID="Label14" runat="server" Text="Subido el: "></asp:Label>
                  <asp:Label ID="aceptacion" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
@@ -138,32 +138,32 @@
                  
              </td>
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir responsiva" ID="BTNSubirResponsiva" OnClick="BTNSubirResponsiva_Click" Width="361px" />
+                 <asp:Button runat="server" Text="Subir Responsiva" ID="BTNSubirResponsiva" OnClick="BTNSubirResponsiva_Click" Width="361px" />
                  <asp:Label ID="Label15" runat="server" Text="Subido el: "></asp:Label>
                  <asp:Label ID="responsiva" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          <tr>
              <td class="auto-style9">
-                 Carta de Liberación RP: </td>
+                 Carta De Liberación RP: </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload5" runat="server" Width="243px" />
                  
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir carta liberación" ID="BtnSubirLiberacion" Width="361px" OnClick="BtnSubirLiberacion_Click" />
+                 <asp:Button runat="server" Text="Subir Carta Liberación" ID="BtnSubirLiberacion" Width="361px" OnClick="BtnSubirLiberacion_Click" />
                  <asp:Label ID="Label16" runat="server" Text="Subido el: "></asp:Label>
                  <asp:Label ID="liberacion" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
          </tr>
          <tr>
              <td class="auto-style9">
-                 Constancia de Cumplimiento:
+                 Constancia De Cumplimiento:
              </td>
              <td class="auto-style7">
                  <asp:FileUpload ID="FileUpload6" runat="server" Width="243px" />
                 
              <td class="auto-style8">
-                 <asp:Button runat="server" Text="Subir constancia de cumplimiento" ID="BtnSubirCumplimiento" Width="361px" OnClick="BtnSubirCumplimiento_Click" />
+                 <asp:Button runat="server" Text="Subir Constancia De Cumplimiento" ID="BtnSubirCumplimiento" Width="361px" OnClick="BtnSubirCumplimiento_Click" />
                  <asp:Label ID="Label17" runat="server" Text="Subido el: "></asp:Label>
                  <asp:Label ID="cumplimiento" runat="server" Text="Archivo aun no subido"></asp:Label>
              </td>
@@ -171,7 +171,8 @@
          
      </table>
     </div><br />
-        
+        <asp:Label ID="Label2" runat="server" Text="Selecciona un documento: "></asp:Label>
+        &nbsp;
         <asp:DropDownList ID="DropDownList1" runat="server" >
              <asp:ListItem>Solicitud Residencia</asp:ListItem>
                         <asp:ListItem>Carta presentación</asp:ListItem>

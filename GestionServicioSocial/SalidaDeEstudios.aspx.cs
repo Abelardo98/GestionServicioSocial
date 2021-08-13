@@ -17,14 +17,63 @@ namespace GestionServicioSocial
         {
             if (!IsPostBack) 
             {
-                if (Session["userProfe"] == null) 
+                if (Session["userProfe"] == null)
                 {
                     Response.Redirect("index.aspx");
                 }
+                else {
+                    txtNC.Text = Session["userProfe"].ToString();
+                }
+
             }
+
+            llenarTabla();
+            llenarDatosAlumno();
         }
 
-        
+        public void llenarTabla()
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+
+                try
+                {
+
+                    DataTable dt = new DataTable();
+                    DataSet ds = new DataSet();
+                    conn.Open();
+                    SqlCommand consulta = new SqlCommand("select nombre from docentes where numeroControl = '" + txtNC.Text + "';", conn);
+
+                    ArrayList lista = new ArrayList();
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+
+
+                }
+                catch (Exception ex)
+                {
+                }
+
+            }
+
+        }
+        public void llenarDatosAlumno()
+        {
+
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+
+                txtDocenteResponsable.Text = HttpUtility.HtmlDecode(row.Cells[0].Text);
+            }  
+
+        }
 
         public void insertarPermisoAcademico() {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
@@ -35,7 +84,7 @@ namespace GestionServicioSocial
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarpermisosDatosAcademicos";
-                    cmd.Parameters.Add("@idPermisoAcademico", SqlDbType.VarChar).Value = txtyCantidadAlumnos.Text.Trim()+txtNumeroCelDocente.Text.Trim();
+                    cmd.Parameters.Add("@idPermisoAcademico", SqlDbType.VarChar).Value = txtNC.Text.Trim()+txtyCantidadAlumnos.Text.Trim() + txtSemestre.Text.Trim();
                     cmd.Parameters.Add("@visitaPractica", SqlDbType.VarChar).Value = txtVisitaPractica.SelectedItem.ToString();
                     cmd.Parameters.Add("@visitaIndustrial", SqlDbType.VarChar).Value = txtVisitaIndustrial.SelectedItem.ToString();
                     cmd.Parameters.Add("@practica", SqlDbType.VarChar).Value = txtPractica.SelectedItem.ToString();
@@ -127,7 +176,7 @@ namespace GestionServicioSocial
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarpermisosDatosEmpresa";
-                    cmd.Parameters.Add("@idPermiso", SqlDbType.VarChar).Value = txtyCantidadAlumnos.Text.Trim() + txtNumeroCelDocente.Text.Trim();
+                    cmd.Parameters.Add("@idPermiso", SqlDbType.VarChar).Value = txtNC.Text.Trim() + txtyCantidadAlumnos.Text.Trim() + txtSemestre.Text.Trim();
                     cmd.Parameters.Add("@nombreInstitucion", SqlDbType.VarChar).Value = txtInstitucion.Text.Trim();
                     cmd.Parameters.Add("@representante", SqlDbType.VarChar).Value = txtRepresentante.Text.Trim();
                     cmd.Parameters.Add("@puestoOcargo", SqlDbType.VarChar).Value = txtPuestoOCargo.Text.Trim();
@@ -141,7 +190,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@horaPropuesta", SqlDbType.VarChar).Value = txtHoraPropuesta.Text.Trim();
                     cmd.Parameters.Add("@viajeNoche", SqlDbType.VarChar).Value = txtViajeNoche.SelectedItem.ToString();
                     cmd.Parameters.Add("@recomendaciones", SqlDbType.VarChar).Value = txtRecomedacionesOrganizacion.Text.Trim();
-                    cmd.Parameters.Add("@idPermisoAcademico", SqlDbType.VarChar).Value = txtyCantidadAlumnos.Text.Trim() + txtNumeroCelDocente.Text.Trim();
+                    cmd.Parameters.Add("@idPermisoAcademico", SqlDbType.VarChar).Value = txtNC.Text.Trim() + txtyCantidadAlumnos.Text.Trim() + txtSemestre.Text.Trim(); ;
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -163,7 +212,7 @@ namespace GestionServicioSocial
 
             insertarPermisoAcademico();
             insertarPermisosEmpresa();
-            Response.Redirect("ReportePermisos2.aspx?parametro=" + txtyCantidadAlumnos.Text.Trim() + txtNumeroCelDocente.Text.Trim());
+            Response.Redirect("ReportePermisos2.aspx?parametro=" + txtNC.Text.Trim() + txtyCantidadAlumnos.Text.Trim() + txtSemestre.Text.Trim());
 
         }
 

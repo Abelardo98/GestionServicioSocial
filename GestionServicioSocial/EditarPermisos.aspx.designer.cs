@@ -42,6 +42,15 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.Button BtnBuscar;
 
         /// <summary>
+        /// Control txtNC2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtNC2;
+
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
@@ -499,6 +508,15 @@ namespace GestionServicioSocial
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnGuardarCambios;
+
+        /// <summary>
+        /// Control BtnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCancelar;
 
         /// <summary>
         /// Control GridView1.

@@ -95,7 +95,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <header class="titulo">
+    <header class="titulo">
         <h1 class="titulos">Información Personal</h1>
     </header>
     <br />
@@ -199,7 +199,7 @@
                     <td class="auto-style13">
                         <asp:Label ID="Label23" runat="server" Text="Telefono:" Width="150px"></asp:Label>
             
-                        <asp:TextBox ID="txttelefono" runat="server" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txttelefono" runat="server" type="number" pattern="[0-9]+" title="Solo ingresa Números" placeholder="233 121 99 48" MaxLength="10" Width="300px"></asp:TextBox>
                     </td>
                     <td class="auto-style16">
 
@@ -357,7 +357,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label25" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label25" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente (Quien será tu supervisor):" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtNombrePersonaServicio" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
@@ -368,7 +368,7 @@
              <tr>
                     
                     <td>
-                        <asp:Label ID="Label26" runat="server" Text="Puesto:" Width="400px"></asp:Label>
+                        <asp:Label ID="Label26" runat="server" Text="Puesto (Quien será tu supervisor):" Width="400px"></asp:Label>
             
                         <asp:TextBox ID="txtPuesto" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>

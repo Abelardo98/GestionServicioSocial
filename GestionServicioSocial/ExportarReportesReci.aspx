@@ -20,9 +20,9 @@
         <button>
             <a href="ReporteSolicitud.aspx" target="_blank">Exportar Solicitud de servicio social</a>
         </button>-->
-            <asp:Button ID="BtnCartaSolicitud" runat="server" Text="Generar solicitud de residencia profesional" OnClick="BtnCartaSolicitud_Click" Width="368px"  />
+            <asp:Button ID="BtnCartaSolicitud" runat="server" Text="Generar Solicitud De Residencia Profesional" OnClick="BtnCartaSolicitud_Click" Width="368px"  />
             &nbsp;
-            <asp:Button ID="BtnCartaPrecentacion" runat="server" Text="Generar carta de presentación" OnClick="BtnCartaPrecentacion_Click" Width="296px" />
+            <asp:Button ID="BtnCartaPrecentacion" runat="server" Text="Generar Carta De Presentación" OnClick="BtnCartaPrecentacion_Click" Width="296px" />
             &nbsp;
 
         

@@ -288,6 +288,16 @@
         <div id="carga">
             <h2>Cargar reportes</h2>
         </div>
+        <article style="text-align:center">
+            <h4 style="color: #FF0000">
+                Documentos obligatorios para poder obtener una calificación = reporte 1, reporte 2, reporte 3 y evaluación final.
+            </h4>
+            <h4 style="color: #FF0000">
+            Nota: los reportes 4 y 5 solo serán necesarios en caso de exceder el tiempo establecido para culminar el servicio social.
+
+            </h4>
+        </article>
+ 
         <div style="text-align: center;">
         <table style="margin: 0 auto;" cellspacing="10" border="1" cellpadding="10">
             <tr>

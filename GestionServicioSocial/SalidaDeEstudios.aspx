@@ -282,14 +282,15 @@
 
             <section style="text-align:center">
                 <asp:Button runat="server" Text="Generar Permiso" ID="BtnGenerarPermiso" OnClick="BtnGenerarPermiso_Click" />
+                <asp:Label ID="txtNC" runat="server" Visible="False"></asp:Label>
             </section>
 
         </article>
         <br />
         <br />
         <br />
-
-
+        
+        <asp:GridView ID="GridView1" runat="server" Visible="False"></asp:GridView>
 
     </section>
 </asp:Content>
