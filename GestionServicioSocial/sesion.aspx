@@ -136,6 +136,8 @@
                 &nbsp;&nbsp;
                 <asp:Button ID="btnServicio" runat="server" class="btn btn-success" Text="Servicio Social" onClick="btnServicio_Click"/>
                 &nbsp;&nbsp;
+                <asp:Button ID="BtnProvicional" runat="server" class="btn btn-success" Text="Carta Provisional (Residencia Profesional) " Width="375px" OnClick="BtnProvicional_Click"/>
+                 &nbsp;&nbsp;
                 <asp:Button ID="btnResidencia" runat="server" class="btn btn-success" Text="Residencia Profesional" onClick="btnResidencia_Click" Width="334px"/>
             </div>
 

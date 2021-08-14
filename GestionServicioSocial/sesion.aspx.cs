@@ -434,5 +434,10 @@ namespace GestionServicioSocial
 
             }
         }
+
+        protected void BtnProvicional_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("http://cartaprovisionalitsz.access.ly");
+        }
     }
 }

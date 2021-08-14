@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="servicioModelStoreContainer" CdmEntityContainer="servicioEntities">
+    <EntitySetMapping Name="documentos">
+      <EntityTypeMapping TypeName="servicioModel.documentos">
+        <MappingFragment StoreEntitySet="documentos">
+          <ScalarProperty Name="int" ColumnName="int" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="nombreReal" ColumnName="nombreReal" />
+          <ScalarProperty Name="doc" ColumnName="doc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
