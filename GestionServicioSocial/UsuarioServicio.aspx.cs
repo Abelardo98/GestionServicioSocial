@@ -739,9 +739,9 @@ namespace GestionServicioSocial
                     if (row.Cells[1].Text.Equals("SI"))
                     {
 
-                        String NC = txtNc.Text;                       
-                        Response.Write("<script type='text/javascript'>window.open('ReportePresentacionInterno2.aspx');</script>");
-
+                        /*String NC = txtNc.Text;                       
+                        Response.Write("<script type='text/javascript'>window.open('ReportePresentacionInterno2.aspx');</script>");*/
+                        txtNoti.Text = "si";
 
                     }
                     else if (row.Cells[1].Text.Equals("NO"))
@@ -770,7 +770,10 @@ namespace GestionServicioSocial
         {
             llenarDatosR();
             validarReporte();
-
+            if (txtNoti.Text.Equals("si"))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertme()", true);
+            }
         }
         protected void generarSolicitud_Click(object sender, EventArgs e)
         {

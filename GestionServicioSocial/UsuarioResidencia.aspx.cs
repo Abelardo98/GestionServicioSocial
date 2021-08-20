@@ -29,8 +29,8 @@ namespace GestionServicioSocial
                 }
 
             }
-            llenarTablaCalificaciones();
-            llenarDatosCalificaciones();
+            //llenarTablaCalificaciones();
+            //llenarDatosCalificaciones();
 
             if (!IsPostBack) 
             {
@@ -973,10 +973,10 @@ namespace GestionServicioSocial
 
                     if (row.Cells[1].Text.Equals("SI"))
                     {
-
-                        String NC = txtNc.Text;
-                        Response.Write("<script type='text/javascript'>window.open('ReportePrecentacionResidenciaInterno2.aspx?');</script>");
-
+                        // ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertme()", true);
+                        //String NC = txtNc.Text;
+                        // Response.Write("<script type='text/javascript'>window.open('ReportePrecentacionResidenciaInterno2.aspx?');</script>");
+                        txtNoti.Text = "si";
 
                     }
                     else if (row.Cells[1].Text.Equals("NO"))
@@ -1038,8 +1038,12 @@ namespace GestionServicioSocial
 
         protected void BtnPrecentacion_Click(object sender, EventArgs e)
         {
+            //ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertme()", true);
             llenarDatosR();
             validarReporte();
+            if (txtNoti.Text.Equals("si")) {
+                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertme()", true);
+            }
         }
 
         

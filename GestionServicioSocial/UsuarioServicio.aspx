@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="UsuarioServicio.aspx.cs" Inherits="GestionServicioSocial.UsuarioServicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+    <script src="swalert.js" type="text/javascript"></script>
+    <script>
+        function alertme() {
+            Swal.fire(
+                '¡IMPORTANTE! ',
+                'SI REALIZARAS El SERVICIO SOCIAL EN EL INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA, SERÁS CONTACTADO EN LOS PRÓXIMOS DÍAS PARA QUE SE TE HAGA ENTREGA DE TU CARTA DE PRESENTACIÓN Y ACEPTACIÓN ',
+                'success'
+            )
+        }
+    </script>
     <style>
         .titulo1 {
             text-align:center;
@@ -261,9 +270,9 @@
       <br />
         <asp:GridView runat="server" ID="GridView1" Visible="False"></asp:GridView>
         <asp:GridView ID="GridView2" runat="server" Visible="False"></asp:GridView> 
-
+        
     </section>
-
+    <asp:Label ID="txtNoti" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
     <br /> 
     
