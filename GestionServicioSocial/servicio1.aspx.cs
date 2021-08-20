@@ -62,6 +62,8 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@correoAsesorExterno", SqlDbType.VarChar).Value = "";
                     cmd.Parameters.Add("@fechaInicioServ", SqlDbType.VarChar).Value = "";
                     cmd.Parameters.Add("@fechaTerminoServ", SqlDbType.VarChar).Value = "";
+                    cmd.Parameters.Add("@copiaNombrePersona", SqlDbType.VarChar).Value = txtCopiaNombre.Text.Trim();
+                    cmd.Parameters.Add("@copiaPuestoPersona", SqlDbType.VarChar).Value = txtCopiaPuesto.Text.Trim();
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -147,6 +149,14 @@ namespace GestionServicioSocial
             {
                 LinkButton2.Visible = true;
                 LinkButton1.Visible = false;
+
+                txtDependenciaOficial.Enabled = false;
+                txtTitularDependencia.Enabled = false;
+                txtPuestoTitular.Enabled = false;
+
+                txtCopiaNombre.Enabled = false;
+                txtCopiaPuesto.Enabled = false;
+
                 txtDependenciaOficial.Text = "INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA";
                 txtTitularDependencia.Text = "GUSTAVO URBANO JUÁREZ";
                 txtPuestoTitular.Text = "DIRECTOR GENERAL";
@@ -158,6 +168,14 @@ namespace GestionServicioSocial
                 BtnContinuar.Enabled = true;
                 LinkButton2.Visible = false;
                 LinkButton1.Visible = true;
+
+                txtDependenciaOficial.Enabled = true;
+                txtTitularDependencia.Enabled = true;
+                txtPuestoTitular.Enabled = true;
+
+                txtCopiaNombre.Enabled = true;
+                txtCopiaPuesto.Enabled = true;
+
                 txtDependenciaOficial.Text = "";
                 txtTitularDependencia.Text = "";
                 txtPuestoTitular.Text = "";

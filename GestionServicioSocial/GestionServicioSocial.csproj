@@ -222,6 +222,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="liberacion.aspx" />
+    <Content Include="swalert.js" />
     <Content Include="UsuarioResidencia.aspx" />
     <Content Include="UsuarioResidenciaAdmin.aspx" />
     <Content Include="UsuarioServicio.aspx" />

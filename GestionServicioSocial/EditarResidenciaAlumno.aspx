@@ -366,7 +366,7 @@
                 <td class="auto-style15">
                     <asp:Label ID="Label25" runat="server" Text="Área en donde estará ubicado el residente:" Width="300px"></asp:Label>
 
-                    <asp:TextBox ID="txtAreaAlumno" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <asp:TextBox ID="txtAreaAlumno" runat="server" Width="1078px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
 
             </tr>
@@ -374,7 +374,7 @@
                 <td class="auto-style15">
                     <asp:Label ID="Label27" runat="server" Text="Con copia para (Nombre de la persona):" Width="300px"></asp:Label>
 
-                    <asp:TextBox ID="txtCopiaNombre" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <asp:TextBox ID="txtCopiaNombre" runat="server" Width="1078px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
 
             </tr>
@@ -382,7 +382,7 @@
                 <td class="auto-style15">
                     <asp:Label ID="Label28" runat="server" Text="Puesto de la persona:" Width="300px"></asp:Label>
 
-                    <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="1078px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
 
             </tr>
@@ -390,13 +390,13 @@
                 <td >
                     <asp:Label ID="Label32" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente (Quien será tu asesor externo):" Width="300px"></asp:Label>
 
-                    <asp:TextBox ID="txtNombreAsesorExterno" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <asp:TextBox ID="txtNombreAsesorExterno" runat="server" Width="1078px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label33" runat="server" Text="Puesto (Quien será tu asesor externo):" Width="300px"></asp:Label>
-                    <asp:TextBox ID="txtPuestoAsesorExterno" runat="server" Width="1078px" value=" " AutoPostBack="True" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <asp:TextBox ID="txtPuestoAsesorExterno" runat="server" Width="1078px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
         </table>

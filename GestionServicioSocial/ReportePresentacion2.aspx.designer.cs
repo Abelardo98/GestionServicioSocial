@@ -42,12 +42,12 @@ namespace GestionServicioSocial
         protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource2;
 
         /// <summary>
-        /// Control CrystalReportSource1.
+        /// Control GridView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

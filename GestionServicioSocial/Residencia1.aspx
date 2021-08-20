@@ -1,5 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Residencia1.aspx.cs" Inherits="GestionServicioSocial.Recidencia1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="swalert.js" type="text/javascript"></script>
+    
+    <script>
+        function alertme() {
+            Swal.fire(
+                'Good job!',
+                'You clicked the button!',
+                'success'
+            )
+        }
+    </script>
     <style type="text/css">
         #Text1 {
             width: 293px;
@@ -37,18 +48,6 @@
         }
         .auto-style4 {
             height: 43px;
-        }
-        .auto-style10 {
-            width: 1384px;
-            height: 50px;
-        }
-        .auto-style13 {
-            text-align: center;
-            width: 1382px;
-            height: 27px;
-        }
-        .auto-style14 {
-            margin-bottom: 0px;
         }
         .auto-style15 {
             height: 58px;
@@ -136,7 +135,7 @@
                 </td>
 
             </tr>
-                        <tr>
+            <tr>
                 <td class="auto-style15">
                     <asp:Label ID="Label9" runat="server" Text="Con copia para (Nombre de la persona):" Width="300px"></asp:Label>
 

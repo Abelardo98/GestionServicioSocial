@@ -15,13 +15,9 @@
                 <report filename="informePrecentacion2.rpt">
                 </report>
             </CR:CrystalReportSource>
-            <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
-                <Report FileName="CrystalReport1.rpt">
-                </Report>
-            </CR:CrystalReportSource>
-            <a href="ReportePresentacion2.aspx">ReportePresentacion2.aspx</a>
+            
         </div>
-
+    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
 
 
 

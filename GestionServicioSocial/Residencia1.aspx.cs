@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace GestionServicioSocial
 {
@@ -46,16 +47,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@nombreProyecto", SqlDbType.VarChar).Value = txtNombreProyecto.Text.Trim();
                     cmd.Parameters.Add("@recidenciaTec", SqlDbType.VarChar).Value = txtResidencia.SelectedItem.ToString();
                     cmd.Parameters.Add("@numerocontrol", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
-
-                    if (txtCopiaNombre.Text.Equals(" ")) {
-                        txtCopiaNombre.Text = "Archivo";
-                        cmd.Parameters.Add("@copiaNombrePersona", SqlDbType.VarChar).Value = txtCopiaNombre.Text.Trim();
-                    }
-                    else {
-                        cmd.Parameters.Add("@copiaNombrePersona", SqlDbType.VarChar).Value = txtCopiaNombre.Text.Trim();
-                    }
-
-                    
+                    cmd.Parameters.Add("@copiaNombrePersona", SqlDbType.VarChar).Value = txtCopiaNombre.Text.Trim();
                     cmd.Parameters.Add("@copiaPuestoPersona", SqlDbType.VarChar).Value = txtCopiaPuesto.Text.Trim();
                     cmd.Connection = conn;
                     conn.Open();
@@ -106,10 +98,13 @@ namespace GestionServicioSocial
         }
         protected void BtnContinuar_Click(object sender, EventArgs e)
         {
+            //ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertme()", true);
+
             insertarPrograma();
             insertaripyss();
-            
+          // ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('¡IMPORTANTE! SI REALIZARAS LA RESIDENCIA PROFESIONAL EN EL INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA, SERÁS CONTACTADO EN LOS PRÓXIMOS DÍAS PARA QUE SE TE HAGA ENTREGA DE TU CARTA DE PRESENTACIÓN Y ACEPTACIÓN ')", true);
             Server.Transfer("sesion.aspx");
+
         }
 
         protected void txtResidencia_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,6 +116,18 @@ namespace GestionServicioSocial
                 LinkButton1.Visible = false;
                 
                 txtTipo.Enabled = true;
+
+                txtRazonSocial.Enabled = false;
+                txtTitularDependencia.Enabled = false;
+                txtPuestoTitular.Enabled = false;
+
+                txtCopiaNombre.Enabled = false;
+                txtCopiaPuesto.Enabled = false;
+                Label9.Enabled = false;
+                Label12.Enabled = false;
+
+               
+
                 BtnContinuar.Enabled = false;
                 txtRazonSocial.Text = "INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA";
                 txtTitularDependencia.Text = "GUSTAVO URBANO JUÁREZ";
@@ -135,6 +142,16 @@ namespace GestionServicioSocial
                 
                 LinkButton1.Visible = true;
                 txtTipo.Enabled = true;
+
+                txtRazonSocial.Enabled = true;
+                txtTitularDependencia.Enabled = true;
+                txtPuestoTitular.Enabled = true;
+
+                txtCopiaNombre.Enabled = true;
+                txtCopiaPuesto.Enabled = true;
+                Label9.Enabled = true;
+                Label12.Enabled = true;
+
                 txtRazonSocial.Text = "";
                 txtTitularDependencia.Text = "";
                 txtPuestoTitular.Text = "";               

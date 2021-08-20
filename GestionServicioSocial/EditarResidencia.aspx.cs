@@ -18,9 +18,7 @@ namespace GestionServicioSocial
         {
             if (Request.Params["parametro"] != null)
             {
-
                 txtbuscar.Text = Request.Params["parametro"];
-
             }
             if (!Page.IsPostBack)
             {
