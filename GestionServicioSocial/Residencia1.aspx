@@ -139,7 +139,7 @@
                 <td class="auto-style15">
                     <asp:Label ID="Label9" runat="server" Text="Con copia para (Nombre de la persona):" Width="300px"></asp:Label>
 
-                    <asp:TextBox ID="txtCopiaNombre" runat="server" Width="1000px" value=" " AutoPostBack="True" OnTextChanged="txtAreaAlumno_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <asp:TextBox ID="txtCopiaNombre" runat="server" Width="1000px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
 
             </tr>
@@ -147,7 +147,7 @@
                 <td class="auto-style15">
                     <asp:Label ID="Label12" runat="server" Text="Puesto de la persona:" Width="300px"></asp:Label>
 
-                    <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="1000px" value=" " AutoPostBack="True" OnTextChanged="txtAreaAlumno_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="1000px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
 
             </tr>

@@ -1,50 +1,33 @@
-16ZP0010;210;Diego Rafael;Ronquillo;Cantor;F;IINF
-16ZP0011;210;Abelardo;Molina ;Guerrero;F;IINF
-16ZP0012;210;Angelica;Miranda;Molina;F;IINF
-16ZP0013;210;Leticia;Juarez;Lopez;F;IINF
-16ZP0014;210;Luis;Romero;Sanchez;F;IINF
-16ZP0015;210;Esmeralda;Tacuapan;Tacotalpan;F;IINF
-16ZP0016;210;Luisa;Jimenez;Pozos;F;IM
-16ZP0017;210;Karen;Ibarra;Lopez;F;IM
-16ZP0018;210;Diego;Lopez;Juarez;F;IM
-16ZP0019;210;Aldahi;Leon;Zuckerberf;F;IM
-16ZP0020;210;Joselyn;Flores;Segura;F;IM
-16ZP0021;210;Erik;Aleman;Ramirez;F;IM
-16ZP0022;210;Enrique;Peña ;Nieto;F;IM
-16ZP0023;210;Manuel;Lopez ;Obrador;F;IA
-16ZP0024;210;Carlos ;Salinas ;de Gortari;F;IA
-16ZP0025;210;Efren ;Teodoro;Marquez;F;IA
-16ZP0026;210;Cristiano;Ronaldo;Lugo;F;IA
-16ZP0027;210;Javier;Hernandez;Lopez;F;IA
-16ZP0028;210;Young;Sarria;Homegrown;F;II
-16ZP0029;210;Camilo ;Septimo;Hexafe;F;II
-16ZP0030;210;Ramiro;de la Gloria;Lopez;F;II
-16ZP0031;210;Gerardo;Ortiz;Pinedo;F;II
-16ZP0032;210;Radames;Gonzo;Lopez;F;II
-16ZP0033;210;Alberto;Espejo;Lillo;F;II
-16ZP0034;210;Arely;Juarez;Juarez;F;IF
-16ZP0035;210;Guadalupe ;Ronquillo;Cantor;F;IF
-16ZP0036;210;Horalia;Cantor;Atahu;F;IF
-16ZP0037;210;Pascual;Ronquillo;Manza;F;IF
-16ZP0038;210;Gustavo;Ascencion;Romero;F;IF
-16ZP0039;210;Laura;Ruiz;Juarez;F;IF
-16ZP0040;210;Dulce;Reyes;Juarez;F;IF
-16ZP0041;210;Kick;Buttowsky;Fedrad;F;IF
-16ZP0042;210;Devon;Leon;Garrido;F;LB
-16ZP0043;210;Ian;Jimenez;Juarez;F;LB
-16ZP0044;210;Africa;Saafari;Kilo;F;LB
-16ZP0045;210;Romina;Romero;Sanros;F;LB
-16ZP0046;210;Santos;Espiritu;Ascencio;F;LB
-16ZP0047;210;Ramses;Elemo;Polinesio;F;LB
-16ZP0048;210;Edmar; Betancourt;Robles;F;LB
-16ZP0049;210;Javier ;Nochebuena;Aparicio;F;LG
-16ZP0050;210;Fany;Osorno;Tellez;F;LG
-16ZP0051;210;Francisco;Ramos;Obrero;F;LG
-16ZP0052;210;Lola;Trailera;Perro;F;LG
-16ZP0053;210;Flororiberto;Jimenez;Robles;F;LG
-16ZP0054;210;Pillofon;Telcel;Movistar;F;LG
-16ZP0055;210;Xiaomi;Redmi;Suzuki;F;LG
-16ZP0056;210;Brandon;Lee;Xilita;F;LG
-16ZP0057;210;Jackie;Chan;Lelo;F;LG
-16ZP0058;210;Rambo;Juarez;Caralimpia;F;LG
-16ZP0059;210;Patricio;Estrella;Robledo;F;LG
+16ZPA870;233;Alejandro;Baez;Nochebuena;H;II
+17ZP0090;231;Alejandro;V zquez;G¢mez;H;II
+17ZP0384;245;ANAYELI;VELAZQUEZ;ENCARNACION;M;LG
+16ZP0800;236;Araceli;Ramirez;Ortu¤o;M;IM
+17ZP0272;250;BERNARDO;CORNELIO;POZADAS;H;IM
+17ZP0059;245;Carolina;Ju rez;µlvarez;M;IINF
+17ZP0317;245;Cristina;Luna;Ateno;M;IA
+17ZP0299;250;Diana Irene;De luna;Hern ndez;M;IA
+17ZP0181;235;Diego;Casta¤eda;P‚rez;H;IM
+16ZPA040;250;Ebodio;Francisco;V zquez;H;IINF
+17ZP0174;250;Eduardo;Montiel;Hern ndez;H;IM
+17ZP0804;245;Elizabeth;Bravo;Lima;M;IA
+17ZP0348;250;Erika Irene;Martinez;Martinez;M;IA
+17ZP0281;240;Esmeralda Ameyalli;Rufino;Lima;M;IM
+17ZP0048;250;Felipe;Victoriano;Flores;H;II
+17ZP0114;250;Fernanda;Gonz lez;Santos;M;II
+17ZPA801;208;GUSTAVO ARMANDO;LORETO;CASTRO;H;IINF
+17ZP0203;250;Herlinda Berenice;V zquez;Carre¢n;M;IA
+17ZP0809;250;Jaime;Morales;Reducindo;H;II
+17ZP0102;250;JARELI;ENCARNACIàN;MARTÖNEZ;M;II
+17ZP0260;250;Jeymi Jacqueline;Gonz lez;Molina;M;IM
+17ZP0104;250;Jorge Alberto;Hern ndez;Bello;H;II
+17ZP0111;250;Josu‚;Campos;Bautista;H;II
+17ZP0297;250;Leopoldo;Arenas;S nchez;H;II
+17ZP0124;250;Lisseth;Rodr¡guez;Flora;M;II
+17ZP0083;225;Luis Gustavo;Bernal;Macip;H;II
+17ZPA810;240;Manuel;P‚rez;Castillo;H;IINF
+17ZP0343;245;Mar¡a Del Rocio;L¢pez;Guzm n;M;IA
+17ZP0054;246;Mario;Martinez;Hernandez;H;II
+17ZP0119;250;Monserrat;Horta;Salvador;M;II
+16ZP0184;246;PEDRO;Romero;Garc¡a;H;II
+17ZP0379;239;Porfirio;Garcia;Espinosa;H;LG
+17ZP0489;250;Sandy Carolina;Contreras;Ju rez;M;LG

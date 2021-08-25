@@ -32,7 +32,7 @@
         <br />
         <br />
         <article style="text-align:center">
-            <asp:Label ID="Label1" runat="server" Text="Ingresa el correo de tu asesor externo (Obligatorio):   " Width="319px"></asp:Label>&nbsp;&nbsp;
+            <asp:Label ID="Label1" runat="server" Text="Ingresa el correo de tu supervisor (Obligatorio):   " Width="319px"></asp:Label>&nbsp;&nbsp;
             <asp:TextBox ID="Correo" runat="server" Width="460px"></asp:TextBox>
         </article>
 

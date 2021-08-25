@@ -357,6 +357,18 @@
             </tr>
             <tr>
                 <td>
+                    <asp:Label ID="Label4" runat="server" Text="Con copia para (Nombre de la persona):" Width="400px"></asp:Label>
+                    <asp:TextBox ID="txtCopiaNombre" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label37" runat="server" Text="Puesto de la persona:" Width="400px"></asp:Label>
+                    <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <asp:Label ID="Label25" runat="server" Text="Nombre de la persona con la que prestaras el servicio directamente (Quien será tu supervisor):" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtNombrePersonaServicio" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>

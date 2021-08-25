@@ -101,8 +101,8 @@
             <header id="cabezaxd"><h2>Genera tu solicitud de servicio social y carta de presentación</h2></header>
         </div>
         <div id="btns">
-            <asp:Button ID="generarSolicitud" runat="server" Text="Generar Solicitud De Servicio Social" OnClick="generarSolicitud_Click" />&nbsp;
-            <asp:Button ID="generarCarta" runat="server" Text="Generar Carta De Presentación" OnClick="generarCarta_Click" />
+            <asp:Button ID="generarSolicitud" runat="server" Text="Generar Solicitud de Servicio Social" OnClick="generarSolicitud_Click" />&nbsp;
+            <asp:Button ID="generarCarta" runat="server" Text="Generar Carta de Presentación" OnClick="generarCarta_Click" />
         </div>
     </section>
     <section class="titulo1">
@@ -112,39 +112,39 @@
           <table style="margin: 0 auto;" cellspacing="10" border="1" cellpadding="10">
               <tr>
                   <td class="auto-style9">
-                      Solicitud De Servicio Social
+                      Solicitud de Servicio Social
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload1" runat="server" width="243px"/>
                   </td>
                   <td class="auto-style8">
-                      <asp:Button ID="Button1" runat="server" Text="Subir Solicitud De Servicio Social" Width="361px" OnClick="Button1_Click"/>
+                      <asp:Button ID="Button1" runat="server" Text="Subir Solicitud de Servicio Social" Width="361px" OnClick="Button1_Click"/>
                       <asp:Label ID="Label12" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="solicitud" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
               <tr>
                   <td class="auto-style9">
-                      Acuse De Carta de Presentación
+                      Acuse de Carta de Presentación
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload2" runat="server" width="243px"/>
                   </td>
                   <td class="auto-style8">
-                      <asp:Button ID="acusePresentacion" runat="server" Text="Subir Acuse De Carta De Presentación" Width="361px" OnClick="acusePresentacion_Click"/>
+                      <asp:Button ID="acusePresentacion" runat="server" Text="Subir Acuse de Carta de Presentación" Width="361px" OnClick="acusePresentacion_Click"/>
                       <asp:Label ID="Label13" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="presentacion" runat="server" Text=""></asp:Label>
                   </td>
               </tr>
               <tr>
                   <td class="auto-style9">
-                      Carta De Aceptación
+                      Carta de Aceptación
                   </td>
                   <td class="auto-style7">
                       <asp:FileUpload ID="FileUpload3" runat="server" width="243px"/>
                   </td>
                   <td class="auto-style8">
-                      <asp:Button ID="cartaAceptacion" runat="server" Text="Subir Carta De Aceptación" Width="361px" OnClick="cartaAceptacion_Click" />
+                      <asp:Button ID="cartaAceptacion" runat="server" Text="Subir Carta de Aceptación" Width="361px" OnClick="cartaAceptacion_Click" />
                       <asp:Label ID="Label14" runat="server" Text="Subido el: "></asp:Label>
                       <asp:Label ID="aceptacion" runat="server" Text=""></asp:Label>
                   </td>
@@ -179,7 +179,7 @@
                   <td class="auto-style9">
                       Apartado para:&nbsp;</td>
                   <td class="auto-style7">
-                      <asp:Button ID="planTrabajo" runat="server" Text="Subir Plan De Trabajo" OnClick="planTrabajo_Click" Width="246px" />
+                      <asp:Button ID="planTrabajo" runat="server" Text="Subir Plan de Trabajo" OnClick="planTrabajo_Click" Width="246px" />
                       <br />
                       <asp:Label ID="Label19" runat="server" Text="Subido el:  "></asp:Label>
                       <asp:Label ID="trabajo" runat="server" Text="planTrabajo"></asp:Label>
@@ -211,7 +211,7 @@
                       Apartado para:</td>
                   <td class="auto-style10">
                       
-                      <asp:Button ID="cartaLibre" runat="server" Text="Subir Carta De Liberación" Width="246px" OnClick="cartaLibre_Click" />
+                      <asp:Button ID="cartaLibre" runat="server" Text="Subir Carta de Liberación" Width="246px" OnClick="cartaLibre_Click" />
                    &nbsp;<asp:Label ID="Label18" runat="server" Text="Subido el:  "></asp:Label>
                       <asp:Label ID="liberacion" runat="server"></asp:Label>
                    </td>

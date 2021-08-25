@@ -27,6 +27,7 @@ namespace GestionServicioSocial
                     txtNc.Text = Session["userServicio"].ToString();
                 }
             }
+
             llenarTablaCalificaciones();
         }
         public void llenarTablaCalificaciones()
@@ -454,7 +455,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
+                    txtEV5.Text = ex.Message;
                 }
             }
         }
@@ -480,7 +481,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
+                    txtEV5.Text = ex.Message;
                 }
             }
         }
@@ -506,7 +507,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
+                    txtEV5.Text = ex.Message;
                 }
             }
         }
@@ -532,7 +533,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
+                    txtEV5.Text = ex.Message;
                 }
             }
         }
@@ -558,7 +559,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
+                    txtEV5.Text = ex.Message;
                 }
             }
         }
@@ -584,164 +585,177 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
+                    txtEV5.Text = ex.Message;
                 }
             }
         }
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            string NoControl = txtNc.Text;
-            //string NoControl = "16ZP0010";
-            string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
-            if (FileUpload1.HasFile)
-            {
-                if (txtReporte.SelectedItem.Text.Equals("Reporte 1"))
+            try{
+                string NoControl = txtNc.Text;
+                //string NoControl = "16ZP0010";
+                string ruta = "~/" + NoControl;
+                //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
+                //Label1.Text = ruta;
+                if (FileUpload1.HasFile)
                 {
-                    if (Directory.Exists(MapPath(ruta)))
+                    if (txtReporte.SelectedItem.Text.Equals("Reporte 1"))
                     {
-                        if (File.Exists(MapPath(ruta + "/" + "Reporte1-" + NoControl + ".pdf")))
+                        if (Directory.Exists(MapPath(ruta)))
                         {
-                            //BtnSubirSolicitud.Text = "Existe archivo ya existe";
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
-                        }
-                        else
-                        {
+                            if (File.Exists(MapPath(ruta + "/" + "Reporte1-" + NoControl + ".pdf")))
+                            {
+                                //BtnSubirSolicitud.Text = "Existe archivo ya existe";
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
+                            }
+                            else
+                            {
 
 
-                            //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                            FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte1-" + NoControl + ".pdf"));
-                            isertarCalificaciones();
-                            actulizarReporte1();
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
-                            //BtnSubirSolicitud.Text = "Subido con éxito";
+                                //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
+                                FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte1-" + NoControl + ".pdf"));
+                                isertarCalificaciones();
+                                actulizarReporte1();
+                                llenarTablaCalificaciones();
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                                //BtnSubirSolicitud.Text = "Subido con éxito";
+                            }
                         }
+
                     }
-                    
+                    else if (txtReporte.SelectedItem.Text.Equals("Reporte 2"))
+                    {
+                        if (Directory.Exists(MapPath(ruta)))
+                        {
+                            if (File.Exists(MapPath(ruta + "/" + "Reporte2-" + NoControl + ".pdf")))
+                            {
+                                //BtnSubirSolicitud.Text = "Existe archivo ya existe";
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
+                            }
+                            else
+                            {
+
+
+                                //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
+                                FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte2-" + NoControl + ".pdf"));
+                                isertarCalificaciones();
+                                actulizarReporte2();
+                                llenarTablaCalificaciones();
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                                //BtnSubirSolicitud.Text = "Subido con éxito";
+                            }
+                        }
+
+                    }
+                    else if (txtReporte.SelectedItem.Text.Equals("Reporte 3"))
+                    {
+                        if (Directory.Exists(MapPath(ruta)))
+                        {
+                            if (File.Exists(MapPath(ruta + "/" + "Reporte3-" + NoControl + ".pdf")))
+                            {
+                                //BtnSubirSolicitud.Text = "Existe archivo ya existe";
+
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
+                            }
+                            else
+                            {
+
+
+                                //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
+                                FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte3-" + NoControl + ".pdf"));
+                                isertarCalificaciones();
+                                actulizarReporte3();
+                                llenarTablaCalificaciones();
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                                //BtnSubirSolicitud.Text = "Subido con éxito";
+                            }
+                        }
+
+                    }
+                    else if (txtReporte.SelectedItem.Text.Equals("Reporte 4"))
+                    {
+                        if (Directory.Exists(MapPath(ruta)))
+                        {
+                            if (File.Exists(MapPath(ruta + "/" + "Reporte4-" + NoControl + ".pdf")))
+                            {
+                                //BtnSubirSolicitud.Text = "Existe archivo ya existe";
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
+                            }
+                            else
+                            {
+
+
+                                //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
+                                FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte4-" + NoControl + ".pdf"));
+                                isertarCalificaciones();
+                                actulizarReporte4();
+                                llenarTablaCalificaciones();
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                                //BtnSubirSolicitud.Text = "Subido con éxito";
+                            }
+                        }
+
+                    }
+                    else if (txtReporte.SelectedItem.Text.Equals("Reporte 5"))
+                    {
+                        if (Directory.Exists(MapPath(ruta)))
+                        {
+                            if (File.Exists(MapPath(ruta + "/" + "Reporte5-" + NoControl + ".pdf")))
+                            {
+                                //BtnSubirSolicitud.Text = "Existe archivo ya existe";
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
+                            }
+                            else
+                            {
+
+
+                                //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
+                                FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte5-" + NoControl + ".pdf"));
+                                isertarCalificaciones();
+                                actulizarReporte5();
+                                llenarTablaCalificaciones();
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                                //BtnSubirSolicitud.Text = "Subido con éxito";
+                            }
+                        }
+
+                    }
+                    else if (txtReporte.SelectedItem.Text.Equals("Evaluación Final"))
+                    {
+                        if (Directory.Exists(MapPath(ruta)))
+                        {
+                            if (File.Exists(MapPath(ruta + "/" + "EvaluaciónFinal-" + NoControl + ".pdf")))
+                            {
+                                //BtnSubirSolicitud.Text = "Existe archivo ya existe";
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
+                            }
+                            else
+                            {
+
+
+                                //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
+                                FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "EvaluaciónFinal-" + NoControl + ".pdf"));
+                                isertarCalificaciones();
+                                actulizarEvaluacionFinal();
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                                //BtnSubirSolicitud.Text = "Subido con éxito";
+                            }
+                        }
+
+                    }
                 }
-                else if (txtReporte.SelectedItem.Text.Equals("Reporte 2"))
+                else
                 {
-                    if (Directory.Exists(MapPath(ruta)))
-                    {
-                        if (File.Exists(MapPath(ruta + "/" + "Reporte2-" + NoControl + ".pdf")))
-                        {
-                            //BtnSubirSolicitud.Text = "Existe archivo ya existe";
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
-                        }
-                        else
-                        {
-
-
-                            //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                            FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte2-" + NoControl + ".pdf"));
-                            isertarCalificaciones();
-                            actulizarReporte2();
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
-                            //BtnSubirSolicitud.Text = "Subido con éxito";
-                        }
-                    }
-                    
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
+                    //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 }
-                else if (txtReporte.SelectedItem.Text.Equals("Reporte 3"))
-                {
-                    if (Directory.Exists(MapPath(ruta)))
-                    {
-                        if (File.Exists(MapPath(ruta + "/" + "Reporte3-" + NoControl + ".pdf")))
-                        {
-                            //BtnSubirSolicitud.Text = "Existe archivo ya existe";
-                           
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
-                        }
-                        else
-                        {
 
 
-                            //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                            FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte3-" + NoControl + ".pdf"));
-                            isertarCalificaciones();
-                            actulizarReporte3();
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
-                            //BtnSubirSolicitud.Text = "Subido con éxito";
-                        }
-                    }
-                    
-                }
-                else if (txtReporte.SelectedItem.Text.Equals("Reporte 4"))
-                {
-                    if (Directory.Exists(MapPath(ruta)))
-                    {
-                        if (File.Exists(MapPath(ruta + "/" + "Reporte4-" + NoControl + ".pdf")))
-                        {
-                            //BtnSubirSolicitud.Text = "Existe archivo ya existe";
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
-                        }
-                        else
-                        {
 
-
-                            //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                            FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte4-" + NoControl + ".pdf"));
-                            isertarCalificaciones();
-                            actulizarReporte4();
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
-                            //BtnSubirSolicitud.Text = "Subido con éxito";
-                        }
-                    }
-                   
-                }
-                else if (txtReporte.SelectedItem.Text.Equals("Reporte 5"))
-                {
-                    if (Directory.Exists(MapPath(ruta)))
-                    {
-                        if (File.Exists(MapPath(ruta + "/" + "Reporte5-" + NoControl + ".pdf")))
-                        {
-                            //BtnSubirSolicitud.Text = "Existe archivo ya existe";
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
-                        }
-                        else
-                        {
-
-
-                            //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                            FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte5-" + NoControl + ".pdf"));
-                            isertarCalificaciones();
-                            actulizarReporte5();
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
-                            //BtnSubirSolicitud.Text = "Subido con éxito";
-                        }
-                    }
-                    
-                }
-                else if (txtReporte.SelectedItem.Text.Equals("Evaluación Final"))
-                {
-                    if (Directory.Exists(MapPath(ruta)))
-                    {
-                        if (File.Exists(MapPath(ruta + "/" + "EvaluaciónFinal-" + NoControl + ".pdf")))
-                        {
-                            //BtnSubirSolicitud.Text = "Existe archivo ya existe";
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
-                        }
-                        else
-                        {
-
-
-                            //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
-                            FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "EvaluaciónFinal-" + NoControl + ".pdf"));
-                            isertarCalificaciones();
-                            actulizarEvaluacionFinal();
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
-                            //BtnSubirSolicitud.Text = "Subido con éxito";
-                        }
-                    }
-
-                }
+            } catch (Exception ex) {
+                txtEV6.Text = ex.Message;
             }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
-            }
+            
         }
 
         protected void Button2_Click(object sender, EventArgs e)
