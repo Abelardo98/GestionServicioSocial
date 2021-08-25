@@ -67,10 +67,13 @@ namespace GestionServicioSocial
 
         public void insertaripyss()
         {
+
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
+                    
+
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarrpyssReci";
@@ -80,6 +83,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@fechaTermi", SqlDbType.VarChar).Value = " ";
                     cmd.Parameters.Add("@observaciones", SqlDbType.VarChar).Value = " ";
                     cmd.Parameters.Add("@idprograma", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
+                    cmd.Parameters.Add("@fechaRegistro", SqlDbType.VarChar).Value = DateTime.Now.ToString();
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
