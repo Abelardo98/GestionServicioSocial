@@ -271,7 +271,7 @@ namespace GestionServicioSocial
 
         protected void BtnGuardar_Click1(object sender, EventArgs e)
         {
-            validarArchivo();
+            
             actuaizaPrograma();
             actualizarAlumno();
             actualizarInfoEscolar();
