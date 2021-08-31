@@ -110,13 +110,13 @@
             
             <tr>
                 <td class="auto-style21">
-                    <asp:Label ID="Label12" runat="server" Text="Con copia para (Nombre de la persona):" Width="400px"></asp:Label>
+                    <asp:Label ID="Label12" runat="server" Text="Si requieres que tu documento sea dirigido con atención a una persona en especifico, puedes colocarlo, en caso contrario dejar en blanco:" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtCopiaNombre" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label13" runat="server" Text="Puesto de la persona:" Width="400px"></asp:Label>
+                    <asp:Label ID="Label13" runat="server" Text="Puesto de la persona a quien va dirigido el documento:" Width="400px"></asp:Label>
                     <asp:TextBox ID="txtCopiaPuesto" runat="server" Width="880px" value=" " onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                 </td>
             </tr>

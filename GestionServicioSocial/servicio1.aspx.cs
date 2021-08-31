@@ -81,6 +81,7 @@ namespace GestionServicioSocial
             {
                 try
                 {
+                   
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarrpyss";
@@ -92,6 +93,8 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@motivo", SqlDbType.VarChar).Value = " ";
                     cmd.Parameters.Add("@observaciones", SqlDbType.VarChar).Value = " ";
                     cmd.Parameters.Add("@idprograma", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
+                    // cmd.Parameters.Add("@fechaRegistro", SqlDbType.VarChar).Value = dateTime.ToString("dd/MM/yyyy");
+                    cmd.Parameters.Add("@fechaRegistro", SqlDbType.VarChar).Value = DateTime.Now.ToString();
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
