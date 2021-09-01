@@ -289,7 +289,7 @@ namespace GestionServicioSocial
         public Boolean validarRecidencia()
         {
 
-            int creditosValidos = 182;
+            int creditosValidos = 179;
             string creditosAlumno;
 
             if (GridView2.Rows.Count == 0)
