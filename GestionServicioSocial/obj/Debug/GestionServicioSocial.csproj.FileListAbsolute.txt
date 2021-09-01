@@ -2542,12 +2542,14 @@ C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionSer
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csprojAssemblyReference.cache
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\RdlCompile.cache
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\RdlCompile.compiled
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csproj.CoreCompileInputs.cache
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csproj.CopyComplete
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.dll
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.pdb
+<<<<<<< HEAD
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csprojAssemblyReference.cache
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x64\msvcr120.dll
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
@@ -2710,3 +2712,5 @@ C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.dll
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.pdb
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csproj.AssemblyReference.cache
+=======
+>>>>>>> c583583c0bf5bdf58fb2f9ad9e53c04be63a931b
