@@ -2550,7 +2550,6 @@ C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionSer
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.dll
 C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.pdb
 <<<<<<< HEAD
-C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csprojAssemblyReference.cache
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x64\msvcr120.dll
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\bin\SqlServerTypes\x86\msvcr120.dll
