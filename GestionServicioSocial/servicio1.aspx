@@ -163,7 +163,7 @@
             <tr>
                 <td>
                     <asp:Label ID="Label7" runat="server" Text="Programa de actividades:" Width="400px"></asp:Label>
-                    <asp:TextBox ID="txtProgramaActividades" runat="server" Width="880px" value="ACTIVIDADES PLASMADAS EN EL PLAN DE TRABAJO" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="txtProgramaActividades" runat="server" Width="880px" value="ACTIVIDADES PLASMADAS EN EL PLAN DE TRABAJO" ReadOnly="True">ACTIVIDADES PLASMADAS EN EL PLAN DE TRABAJO</asp:TextBox>
                 </td>
             </tr>
             <tr>

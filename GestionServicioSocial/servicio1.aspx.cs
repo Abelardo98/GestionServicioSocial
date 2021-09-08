@@ -46,7 +46,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@nombreAcesor", SqlDbType.VarChar).Value = txtNombrePersonaServicio.Text.Trim();
                     cmd.Parameters.Add("@puestoAcesor", SqlDbType.VarChar).Value = txtPuesto.Text.Trim();
                     cmd.Parameters.Add("@nombrePrograma", SqlDbType.VarChar).Value = txtNombrePrograma.Text.Trim();
-                    cmd.Parameters.Add("@programaActividad", SqlDbType.VarChar).Value = txtProgramaActividades.Text.Trim();
+                    cmd.Parameters.Add("@programaActividad", SqlDbType.VarChar).Value = "ACTIVIDADES PLASMADAS EN EL PLAN DE TRABAJO";
 
                     if (txttipoprograma.SelectedItem.ToString().Equals("OTRO"))
                     {
@@ -133,7 +133,7 @@ namespace GestionServicioSocial
 
             }
             else {
-                txtProgramaActividades.Text = "Entro al else";
+                
             }
             
         
