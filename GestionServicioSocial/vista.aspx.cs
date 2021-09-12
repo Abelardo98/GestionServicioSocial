@@ -460,6 +460,43 @@ namespace GestionServicioSocial
 
             }
         }
+        public void elimininarArchivoBd() {
+            string nc = "CargaArchivos";
+            string ruta = "~/" + nc;
+            //Label1.Text = "Entro";
+            string rutaArchivo = ruta + "/" + "cargaDatos" + ".csv";
+            if (Directory.Exists(MapPath(ruta)))
+            {
+                if (File.Exists(MapPath(rutaArchivo)))
+                {
+                    //Label1.Text = "Existe";
+                    File.Delete(MapPath(rutaArchivo));
+                    if (File.Exists(MapPath(rutaArchivo)))
+                    {
+                        //descarminar.Text = "Archivo aun existe";
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Archivo aun existente')", true);
+                    }
+                    else
+                    {
+                        //descarminar.Text = "Archivo Eliminado";
+                        //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Archivo eliminado')", true);
+                    }
+                }
+                else
+                {
+                    //descarminar.Text = "El archivo no existe";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El archivo no existe')", true);
+                }
+            }
+            else
+            {
+
+                //descarminar.Text = "El directorio no existe";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El directorio no existe')", true);
+            }
+
+        }
+
 
         protected void cargarBase_Click(object sender, EventArgs e)
         {
@@ -475,8 +512,13 @@ namespace GestionServicioSocial
                     if (File.Exists(MapPath(ruta + "/" + "cargaDatos.csv")))
                     {
                         //BtnSubirSolicitud.Text = "Existe archivo ya existe";
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
+                        //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
                         //ruta1 = Server.MapPath(ruta + "/" + "cargaDatos.csv");
+                        elimininarArchivoBd();
+                        FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "cargaDatos.csv"));
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
+                        ruta1 = Server.MapPath(ruta + "/" + "cargaDatos.csv");
+                        cargarDatos(ruta1);
 
                     }
                     else
@@ -661,6 +703,33 @@ namespace GestionServicioSocial
         protected void BtnCartaP_Click(object sender, EventArgs e)
         {
             Response.Redirect("http://cartaprovisionalitsz.access.ly/vista.aspx");
+        }
+
+        protected void BtnLimpiarBD_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                using (SqlCommand command = conn.CreateCommand())
+                {
+                    try
+                    {
+                        
+                        string cadenax = "delete from validarResidencia;";
+                        SqlCommand cmd = new SqlCommand(cadenax, conn);
+                        cmd.Connection = conn;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Base de datos limpia')", true);
+
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        txtNumerocontrol.Text = ex.Message;
+                    }
+                }
+
+            }
         }
     }
 }

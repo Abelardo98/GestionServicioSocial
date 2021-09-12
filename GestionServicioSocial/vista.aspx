@@ -74,8 +74,8 @@
 
         &nbsp;&nbsp;<asp:Button ID="Button1" runat="server" class="btn btn-info" OnClick="Button1_Click" Text="Información Detallada" />
 
-    &nbsp;&nbsp;<asp:Button ID="BtnGenerarConstanciaTerminacion" runat="server" class="btn btn-info"  Text="Generar Constancia Terminación" Width="273px" OnClick="BtnGenerarConstanciaTerminacion_Click" />
-        &nbsp;
+    &nbsp;&nbsp;<asp:Button ID="BtnLimpiarBD" class="btn btn-info" runat="server" Text="Limpiar BD" OnClick="BtnLimpiarBD_Click" />
+        &nbsp;&nbsp;
     <button id="btn" class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal">Cargar Base De Datos</button>
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
