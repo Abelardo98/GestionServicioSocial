@@ -737,6 +737,7 @@ namespace GestionServicioSocial
                                 FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "EvaluaciónFinal-" + NoControl + ".pdf"));
                                 isertarCalificaciones();
                                 actulizarEvaluacionFinal();
+                                llenarTablaCalificaciones();
                                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                                 //BtnSubirSolicitud.Text = "Subido con éxito";
                             }
