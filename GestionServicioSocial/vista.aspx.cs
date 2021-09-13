@@ -502,6 +502,7 @@ namespace GestionServicioSocial
         {
             string ruta1 = "";
             string ruta = "~/" + "CargaArchivos";
+            //string ruta2 = "C:/Carga/cargaDatos.csv";
 
             //Label1.Text = ruta;
             if (FileUpload1.HasFile)
