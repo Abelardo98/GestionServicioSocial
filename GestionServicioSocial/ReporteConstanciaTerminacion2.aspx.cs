@@ -22,15 +22,10 @@ namespace GestionServicioSocial
                 }
                 else
                 {
-                    /*Session["userServicio"] = txtusername.Text;
-                    valor = Convert.ToString(Request.QueryString["nc"]);
-                    txtNumeroControl.Text = valor;*/
                     txtNumeroControl.Text = Session["userServicio"].ToString();
-                }
-                
+                }               
             }
             llenarReporte();
-
         }
 
         public void llenarReporte() 
@@ -40,8 +35,11 @@ namespace GestionServicioSocial
                 try
                 {
                     conn.Open();
-                    string cadena = "SELECT contador,alu.numerocontrol,nombre,apellidoP,apellidoM,carrera,nombreDependencia,municipio,estado,tipoPrograma,fechaInicioServ,fechaTerminoServ,LEFT(final, 3) as 'final',nivelDesempenio from Domicilio dom join infoEscolar inf on dom.iddomicilio =inf.idescolar join Alumno alu on inf.idescolar = alu.numerocontrol join Programa pro on alu.numerocontrol=pro.idPrograma join calificaciones cali on alu.numerocontrol=cali.idCalificaciones where alu.numerocontrol='" + txtNumeroControl.Text + "';";
-                    //string cadena = "SELECT contador, alu.numerocontrol, UPPER (nombre) as nombre , UPPER (apellidoP) as apellidoP, UPPER (apellidoM) as apellidoM,carrera, upper (nombreDependencia) as nombreDependencia, upper (municipio) as municipio, upper (estado) as estado, upper (tipoPrograma) as tipoPrograma, upper (fechaInicioServ) as fechaInicioServ, upper (fechaTerminoServ) as fechaTerminoServ,LEFT(final, 3) as 'final', upper (nivelDesempenio) as nivelDesempenio from Domicilio dom join infoEscolar inf on dom.iddomicilio =inf.idescolar join Alumno alu on inf.idescolar = alu.numerocontrol join Programa pro on alu.numerocontrol=pro.idPrograma join calificaciones cali on alu.numerocontrol=cali.idCalificaciones where alu.numerocontrol='" + valor + "';";
+                    string cadena = "SELECT contador,alu.numerocontrol,nombre,apellidoP,apellidoM,carrera,nombreDependencia,municipio,estado" +
+                        ",tipoPrograma,fechaInicioServ,fechaTerminoServ,LEFT(final, 3) as 'final',nivelDesempenio from Domicilio dom join " +
+                        "infoEscolar inf on dom.iddomicilio =inf.idescolar join Alumno alu on inf.idescolar = alu.numerocontrol join Programa " +
+                        "pro on alu.numerocontrol=pro.idPrograma join calificaciones cali on alu.numerocontrol=cali.idCalificaciones where" +
+                        " alu.numerocontrol='" + txtNumeroControl.Text + "';";
                     SqlCommand comando = new SqlCommand(cadena, conn);
                     SqlDataReader registro = comando.ExecuteReader();
                     if (registro.Read())

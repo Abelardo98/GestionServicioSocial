@@ -114,7 +114,6 @@ namespace GestionServicioSocial
 
         public void actuaizaPrograma()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
@@ -142,12 +141,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
-
-
-
             }
 
         }
@@ -158,7 +152,6 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "actualizarAlumnoReci";
@@ -171,7 +164,6 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@genero", SqlDbType.VarChar).Value = txtgenero.SelectedItem.ToString();
                     cmd.Parameters.Add("@estadoCivil", SqlDbType.VarChar).Value = txtEstadoCivil.SelectedItem.ToString();
                     cmd.Parameters.Add("@correoElectronico", SqlDbType.VarChar).Value = txtcorreo.Text.Trim();
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -192,7 +184,6 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "actualizarinfoescolarReci";
@@ -204,7 +195,6 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@seguroFacultativo", SqlDbType.VarChar).Value = txtNumeroFacultativo.Text.Trim();
                     cmd.Parameters.Add("@modalidad", SqlDbType.VarChar).Value = txtModalidad.SelectedValue.ToString();
                     cmd.Parameters.Add("@creditosAprovados", SqlDbType.Int).Value =Int32.Parse(txtCreditos.Text.Trim());
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -214,19 +204,16 @@ namespace GestionServicioSocial
                 {
                     txtLocalidad.Text = ex.Message.ToString();
                 }
-
             }
 
         }
 
         public void actualizarDomicilio()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "actualizardomicilioReci";
@@ -246,12 +233,7 @@ namespace GestionServicioSocial
                 {
                     txtMunicipio.Text = ex.Message.ToString();
                 }
-
-
-
-
             }
-
         }
 
         protected void BtnGuardar_Click1(object sender, EventArgs e)

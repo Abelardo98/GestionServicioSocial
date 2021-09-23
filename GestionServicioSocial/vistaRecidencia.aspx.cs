@@ -92,12 +92,10 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "eiminarDocumentoReci";
                     cmd.Parameters.Add("@numeroControl", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -105,26 +103,20 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
-
         }
 
         public void eliminarRpyysReci()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "eliminarrpyssReci";
                     cmd.Parameters.Add("@idrpyss", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -132,11 +124,8 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
-
         }
         public void eliminarProgramaReci()
         {
@@ -144,12 +133,10 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "eliminarProgramaReci";
                     cmd.Parameters.Add("@idPrograma", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -157,11 +144,8 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
-
         }
         public void eliminarAlumnoReci()
         {
@@ -169,12 +153,10 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "eliminarAlumnoReci";
                     cmd.Parameters.Add("@numerocontrol", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -182,9 +164,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
         }
         public void eliminarInfoEscolarReci()
@@ -193,12 +173,10 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "eliminarEscolarReci";
                     cmd.Parameters.Add("@idescolar", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -206,11 +184,8 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
-
         }
         public void eliminarDomicilioReci()
         {
@@ -218,12 +193,10 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "eliminarDomicilioReci";
                     cmd.Parameters.Add("@iddomicilio", SqlDbType.VarChar).Value = txtNumerocontrol.Text.Trim();
-
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -231,9 +204,7 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
         }
 
@@ -269,10 +240,10 @@ namespace GestionServicioSocial
                         {
                             eliminarRpyysReci();
                             eliminarProgramaReci();
+                            eliminarDocumentosReci();
                             eliminarAlumnoReci();
                             eliminarInfoEscolarReci();
-                            eliminarDomicilioReci();
-                            eliminarDocumentosReci();
+                            eliminarDomicilioReci();                           
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Dato Eliminado!')", true);
                             txtNumerocontrol.Text = "";
                             busquedaGeneral();
@@ -281,7 +252,6 @@ namespace GestionServicioSocial
                         {
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ese numero de control ya no existe!')", true);
                         }
-
                     }
                     catch (Exception ex)
                     {
@@ -352,7 +322,6 @@ namespace GestionServicioSocial
                         {
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ese numero de control ya no existe!')", true);
                         }
-
                     }
                     catch (Exception ex)
                     {

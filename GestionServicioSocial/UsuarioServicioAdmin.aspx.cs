@@ -123,7 +123,6 @@ namespace GestionServicioSocial
 
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
@@ -135,25 +134,18 @@ namespace GestionServicioSocial
                         "PromedioAF,E41 as \"    Calificación uno\",E42 as \"    Calificación dos\",E43 as \"    Calificación tres\",E44 as \"    Calificación cuatro\",E45 as \"    Calificación cinco\",E46 as \"    Calificación seis\",E47 as \"    Calificación site\",PromedioE4 as \"    Promedio Evaluación 4\",A41 as \"      Calificación uno\",A42 as \"      Calificación dos\",A43 as \"      Calificación tres\",A44 as \"      Calificación cuatro\",A45 as \"      Calificación cinco\",A46 as \"      Calificación seis\",A47 as \"      Calificación site\"," +
                         "PromedioA4 as \"Promedio Autoevaluación 4\",E51 as \"     Calificación uno\",E52 as \"     Calificación dos\",E53 as \"     Calificación tres\",E54 as \"     Calificación cuatro\",E55 as \"     Calificación cionco\",E56 as \"     Calificación seis\",E57 as \"     Calificación siete\",PromedioE5 as \"Promedio Evaluación 5\",A51 as \"           Calificación uno\",A52 as \"           Calificación dos\",A53 as \"           Calificación tres\",A54 as \"           Calificación cuatro\",A55 as \"           Calificación cinco\",A56 as \"          Calificación seis\",A57 as \"           Calificación siete\"," +
                         "PromedioA5 as \"Promedio Autoevaluación 5\" from calificaciones where idCalificaciones = '" + txtNc.Text + "';", conn);
-
                     ArrayList lista = new ArrayList();
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView2.DataSource = dt;
                     GridView2.DataBind();
-
-
                 }
                 catch (Exception ex)
                 {
                 }
-
             }
-
         }
         public void tablaCalificaciones() {
 
@@ -191,50 +183,33 @@ namespace GestionServicioSocial
 
         public void calcularCalificaciones()
         {
-            //hola
             foreach (GridViewRow row in GridView1.Rows)
             {
-                double promdioE1, promdioE2, promdioE3, promdioE4, promdioE5;
-                double promedioA1, promedioA2, promedioA3, promedioA4, promedioA5;
+                double promdioE1, promdioE2, promdioE3;
+                double promedioA1, promedioA2, promedioA3;
                 double promedioEF, promedioAf;
                 double final, calificacion;
-                double finalEV, finalAU, nivelDesemPeño;
-                
-
+                double finalEV, finalAU;               
                 promdioE1 = double.Parse(row.Cells[0].Text, culture);
                 promdioE2 = double.Parse(row.Cells[1].Text, culture);
                 promdioE3 = double.Parse(row.Cells[2].Text, culture);
-                // promdioE4 = double.Parse(row.Cells[3].Text, culture);
-                // promdioE5 = double.Parse(row.Cells[4].Text, culture);
                 promedioEF = double.Parse(row.Cells[5].Text, culture);
-                //
                 promedioA1 = double.Parse(row.Cells[6].Text, culture);
                 promedioA2 = double.Parse(row.Cells[7].Text, culture);
                 promedioA3 = double.Parse(row.Cells[8].Text, culture);
-                //promedioA4 = double.Parse(row.Cells[9].Text, culture);
-                //promedioA5 = double.Parse(row.Cells[10].Text, culture);
                 promedioAf = double.Parse(row.Cells[11].Text, culture);
-
-                
-
                 finalEV = ((promdioE1+ promdioE2+ promdioE3+ promedioEF)/4)*0.9;
-
                 finalAU = ((promedioA1 + promedioA2 + promedioA3 + promedioAf) / 4) * 0.1;
                 final = finalEV + finalAU;
                 calificacion = 70 + ((final - 1) * 10);
-
                 txtEV.Text = finalEV.ToString();
                 txtAuto.Text = finalAU.ToString();
                 txtFinal.Text = final.ToString();
                 txtCalificacion.Text = calificacion.ToString();
                 if (final <= 0.99)
                 {
-
-
-                }
-                else if (final <= 0.99)
-                {
                     txtNivelDesem.Text = "INSUFICIENTE";
+
                 }
                 else if (final > 0.99 && final <= 1.49)
                 {
@@ -252,59 +227,38 @@ namespace GestionServicioSocial
                 {
                     txtNivelDesem.Text = "EXCELENTE";
                 }
-
-
-
             }
-
         }
         public void calcularCalificaciones4Reportes() {
-
             foreach (GridViewRow row in GridView1.Rows)
             {
-                double promdioE1, promdioE2, promdioE3, promdioE4, promdioE5;
-                double promedioA1, promedioA2, promedioA3, promedioA4, promedioA5;
+                double promdioE1, promdioE2, promdioE3, promdioE4;
+                double promedioA1, promedioA2, promedioA3, promedioA4;
                 double promedioEF, promedioAf;
                 double final, calificacion;
-                double finalEV, finalAU, nivelDesemPeño;
-
-
+                double finalEV, finalAU;
                 promdioE1 = double.Parse(row.Cells[0].Text, culture);
                 promdioE2 = double.Parse(row.Cells[1].Text, culture);
                 promdioE3 = double.Parse(row.Cells[2].Text, culture);
                 promdioE4 = double.Parse(row.Cells[3].Text, culture);
-                // promdioE5 = double.Parse(row.Cells[4].Text, culture);
-                promedioEF = double.Parse(row.Cells[5].Text, culture);
-                //
+                promedioEF = double.Parse(row.Cells[5].Text, culture);              
                 promedioA1 = double.Parse(row.Cells[6].Text, culture);
                 promedioA2 = double.Parse(row.Cells[7].Text, culture);
                 promedioA3 = double.Parse(row.Cells[8].Text, culture);
                 promedioA4 = double.Parse(row.Cells[9].Text, culture);
-                //promedioA5 = double.Parse(row.Cells[10].Text, culture);
                 promedioAf = double.Parse(row.Cells[11].Text, culture);
-
-
-
                 finalEV = ((promdioE1 + promdioE2 + promdioE3 + promdioE4 + promedioEF) / 5) * 0.9;
-
                 finalAU = ((promedioA1 + promedioA2 + promedioA3 + promedioA4 + promedioAf) / 5) * 0.1;
                 final = finalEV + finalAU;
                 calificacion = 70 + ((final - 1) * 10);
-
                 txtEV.Text = finalEV.ToString();
                 txtAuto.Text = finalAU.ToString();
                 txtFinal.Text = final.ToString();
                 txtCalificacion.Text = calificacion.ToString();
-
                 if (final <= 0.99)
                 {
-
-
-                }
-                else if (final <= 0.99)
-                {
                     txtNivelDesem.Text = "INSUFICIENTE";
-                }
+                }       
                 else if (final > 0.99 && final <= 1.49)
                 {
                     txtNivelDesem.Text = "SUFICIENTE";
@@ -321,62 +275,40 @@ namespace GestionServicioSocial
                 {
                     txtNivelDesem.Text = "EXCELENTE";
                 }
-
-
-
             }
-
-
-
         }
         public void calcularCalificaciones5Reportes()
         {
-
             foreach (GridViewRow row in GridView1.Rows)
             {
                 double promdioE1, promdioE2, promdioE3, promdioE4, promdioE5;
                 double promedioA1, promedioA2, promedioA3, promedioA4, promedioA5;
                 double promedioEF, promedioAf;
-                double final, calificacion;
-                double finalEV, finalAU, nivelDesemPeño;
-
-
+                double final, calificacion,finalEV, finalAU;               
                 promdioE1 = double.Parse(row.Cells[0].Text, culture);
                 promdioE2 = double.Parse(row.Cells[1].Text, culture);
                 promdioE3 = double.Parse(row.Cells[2].Text, culture);
                 promdioE4 = double.Parse(row.Cells[3].Text, culture);
                 promdioE5 = double.Parse(row.Cells[4].Text, culture);
                 promedioEF = double.Parse(row.Cells[5].Text, culture);
-                //
                 promedioA1 = double.Parse(row.Cells[6].Text, culture);
                 promedioA2 = double.Parse(row.Cells[7].Text, culture);
                 promedioA3 = double.Parse(row.Cells[8].Text, culture);
                 promedioA4 = double.Parse(row.Cells[9].Text, culture);
                 promedioA5 = double.Parse(row.Cells[10].Text, culture);
                 promedioAf = double.Parse(row.Cells[11].Text, culture);
-
-
-
                 finalEV = ((promdioE1 + promdioE2 + promdioE3 + promdioE4 + promdioE5 + promedioEF) / 5) * 0.9;
-
                 finalAU = ((promedioA1 + promedioA2 + promedioA3 + promedioA4+ promedioA5 + promedioAf) / 5) * 0.1;
                 final = finalEV + finalAU;
                 calificacion = 70 + ((final - 1) * 10);
-
                 txtEV.Text = finalEV.ToString();
                 txtAuto.Text = finalAU.ToString();
                 txtFinal.Text = final.ToString();
                 txtCalificacion.Text = calificacion.ToString();
-
                 if (final <= 0.99)
                 {
-
-
-                }
-                else if (final <= 0.99)
-                {
                     txtNivelDesem.Text = "INSUFICIENTE";
-                }
+                }               
                 else if (final > 0.99 && final <= 1.49)
                 {
                     txtNivelDesem.Text = "SUFICIENTE";
@@ -393,24 +325,17 @@ namespace GestionServicioSocial
                 {
                     txtNivelDesem.Text = "EXCELENTE";
                 }
-
-
-
             }
-
-
-
         }
         public void gurdarCalificaciones()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
-                {
-                    //string no = "16ZP0034";
+                {                    
                     SqlCommand cmd = new SqlCommand();
-                    //cmd.CommandText = "update Programa set fechaInicioServ=@inicio, fechaTerminoServ=@termino,nombrePrograma=@nombrePrograma where idPrograma=@nCon";
-                    cmd.CommandText = "update calificaciones set finalEV=@finalEV,finalAU=@finalAU,final=@final,calificacion=@calificacion,nivelDesempenio=@nivelDesempenio where idCalificaciones=@idCalificaciones";
+                    cmd.CommandText = "update calificaciones set finalEV=@finalEV,finalAU=@finalAU,final=@final," +
+                        "calificacion=@calificacion,nivelDesempenio=@nivelDesempenio where idCalificaciones=@idCalificaciones";
                     cmd.Parameters.AddWithValue("@finalEV", txtEV.Text);
                     cmd.Parameters.AddWithValue("@finalAU", txtAuto.Text);
                     cmd.Parameters.AddWithValue("@final", txtFinal.Text);
@@ -421,24 +346,19 @@ namespace GestionServicioSocial
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
-
                 }
                 catch (Exception ex)
                 {
                     //Label3.Text = ex.Message;
                 }
-
             }
-
-
-
         }
+
         protected void Btn_CalcularCalificaciones_Click(object sender, EventArgs e)
         {
             tablaCalificaciones();
             foreach (GridViewRow row in GridView1.Rows)
             {
-                //txtEV.Text=row.Cells[3].Text;
               if (txtNreportes.Text.ToString().Equals("3")) {
                     calcularCalificaciones();
                     gurdarCalificaciones();

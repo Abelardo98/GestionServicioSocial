@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
 namespace GestionServicioSocial
 {
     public partial class ReportePrecentacionInterno2 : System.Web.UI.Page
@@ -26,7 +20,6 @@ namespace GestionServicioSocial
             }
             llenarReporte();
         }
-
         public void llenarReporte() 
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
@@ -34,7 +27,10 @@ namespace GestionServicioSocial
                 try
                 {
                     conn.Open();
-                    string cadena = "SELECT alu.numerocontrol,nombre, contador,apellidoP,apellidoM,carrera,nombreTitular,puestoTitular,nombreDependencia,nombreAcesor,puestoAcesor from infoEscolar inf join Alumno alu on inf.idescolar = alu.numerocontrol join Programa pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='" + txtNumeroControl.Text + "';";
+                    string cadena = "SELECT alu.numerocontrol,nombre, contador,apellidoP,apellidoM,carrera,nombreTitular," +
+                        "puestoTitular,nombreDependencia,nombreAcesor,puestoAcesor from infoEscolar inf join Alumno alu on " +
+                        "inf.idescolar = alu.numerocontrol join Programa pro on alu.numerocontrol=pro.idPrograma where " +
+                        "alu.numerocontrol='" + txtNumeroControl.Text + "';";
                     SqlCommand comando = new SqlCommand(cadena, conn);
                     SqlDataReader registro = comando.ExecuteReader();
                     if (registro.Read())

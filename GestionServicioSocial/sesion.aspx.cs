@@ -20,54 +20,114 @@ namespace GestionServicioSocial
 
         protected void BTN_LOGIN_Click(object sender, EventArgs e)
         {
-            if (txtTipo.SelectedItem.Text.Equals("ADMINISTRADORA")) {
-                loginAdmin();
-            }
-            else if (txtTipo.SelectedItem.Text.Equals("JEFE CARRERA"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-                loginjefeCarrera();
-            }
-            else if (txtTipo.SelectedItem.Text.Equals("DOCENTE")) {
-                loginProfesor();
-            }
-            else if (txtTipo.SelectedItem.Text.Equals("SERVICIO")) {
-                loginServicio();
-            } else if (txtTipo.SelectedItem.Text.Equals("RESIDENCIA")) {
-                loginRecidencia();
-            } else {
-
-            }
-            //JEFE CARRERA
+                DataTable dt = new DataTable();
+                DataSet ds = new DataSet();
+                conn.Open();
+                if (txtTipo.SelectedItem.Text.Equals("ADMINISTRADORA"))
+                {
+                    SqlCommand consulta = new SqlCommand("select username,contrasenia from usuarios where tipoUsuario='" + txtusername.Text + "'; ", conn);
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                    if (validarContraseniaUsuario() == true)
+                    {
+                        Session["userAdmin"] = txtusername.Text;
+                        Server.Transfer("vista.aspx");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                    }
+                }
+                else if (txtTipo.SelectedItem.Text.Equals("JEFE CARRERA"))
+                {
+                    SqlCommand consulta = new SqlCommand("select username,contrasenia from usuarios where username='" + txtusername.Text + "'; ", conn);
+                    ArrayList lista = new ArrayList();
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                    if (validarContraseniaUsuario() == true)
+                    {
+                        Session["userJefe"] = txtusername.Text;
+                        Server.Transfer("vistaAsesoresResicencia.aspx");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                    }
+                }
+                else if (txtTipo.SelectedItem.Text.Equals("SERVICIO"))
+                {
+                    SqlCommand consulta = new SqlCommand("select numerocontrol,contraseña from Alumno where numerocontrol = '" + txtusername.Text + "'; ", conn);
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                    if (validarContraseniaUsuario() == true)
+                    {
+                        Session["userServicio"] = txtusername.Text;
+                        Response.Redirect("UsuarioServicio.aspx");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                    }
+                }
+                else if (txtTipo.SelectedItem.Text.Equals("RESIDENCIA"))
+                {
+                    SqlCommand consulta = new SqlCommand("select numerocontrol,contraseña from AlumnoReci where numerocontrol = '" + txtusername.Text + "'; ", conn);
+                    ArrayList lista = new ArrayList();
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);
+                    con.Fill(ds);
+                    dt = ds.Tables[0];
+                    dt.AcceptChanges();
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                    if (validarContraseniaUsuario() == true)
+                    {
+                        Session["userResidencia"] = txtusername.Text;
+                        Response.Redirect("UsuarioResidencia.aspx");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                    }
+                }
+            }       
         }
         
 
 
         public void loginProfesor()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
-
-                    //SqlCommand consulta = new SqlCommand("select * from usuarios where username = '" + txtusername.Text + "';; ", conn);
-                    SqlCommand consulta = new SqlCommand("select numeroControl,nombre from docentes where numeroControl='" + txtusername.Text + "'; ", conn);
-
-                    ArrayList lista = new ArrayList();
-                    SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-                    
+                    SqlCommand consulta = new SqlCommand("select numeroControl,nombre from docentes where numeroControl='" + txtusername.Text + "'; ", conn);                 
+                    SqlDataAdapter con = new SqlDataAdapter(consulta);                   
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
                     if (validarContrasenia() == true)
                     {
                         Session["userProfe"] = txtusername.Text;
@@ -75,92 +135,74 @@ namespace GestionServicioSocial
                     }
                     else 
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
                     }
                 }
                 catch (Exception ex)
                 {
                     txtpasword.Text = ex.Message;
                 }
-
             }
-
         }
 
         public void loginAdmin() {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
-                    //SqlCommand consulta = new SqlCommand("select * from usuarios where username = '" + txtusername.Text + "';; ", conn);
-                    SqlCommand consulta = new SqlCommand("select * from usuarios where tipoUsuario='" + txtusername.Text + "'; ", conn);
-
-                    ArrayList lista = new ArrayList();
+                    SqlCommand consulta = new SqlCommand("select username,contrasenia from usuarios where tipoUsuario='" + txtusername.Text + "'; ", conn);                  
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
-                    if (validarContrasenia() == true)
+                    if (validarContraseniaUsuario() == true)
                     {
                         Session["userAdmin"] = txtusername.Text;
                         Server.Transfer("vista.aspx");
                     }
                     else 
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
                     }
                 }
                 catch (Exception ex)
                 {
                 }
-
             }
-
         }
         public void loginjefeCarrera()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
-                    conn.Open();
-                    //SqlCommand consulta = new SqlCommand("select * from usuarios where username = '" + txtusername.Text + "';; ", conn);
-                    SqlCommand consulta = new SqlCommand("select * from usuarios where username='" + txtusername.Text + "'; ", conn);
-
+                    conn.Open();                   
+                    SqlCommand consulta = new SqlCommand("select username,contrasenia from usuarios where username='" + txtusername.Text + "'; ", conn);
                     ArrayList lista = new ArrayList();
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
-                    if (validarContrasenia() == true)
+                    if (validarContraseniaUsuario() == true)
                     {
                         Session["userJefe"] = txtusername.Text;
                         Server.Transfer("vistaAsesoresResicencia.aspx");
                     }
                     else
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
                     }
                 }
                 catch (Exception ex)
@@ -175,25 +217,18 @@ namespace GestionServicioSocial
         public void loginServicio() {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
-                    SqlCommand consulta = new SqlCommand("select numerocontrol,contraseña from Alumno where numerocontrol = '" + txtusername.Text + "'; ", conn);
-
-                    ArrayList lista = new ArrayList();
+                    SqlCommand consulta = new SqlCommand("select numerocontrol,contraseña from Alumno where numerocontrol = '" + txtusername.Text + "'; ", conn);                   
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
                     if (validarContraseniaUsuario() == true)
                     {
                         Session["userServicio"]=txtusername.Text;
@@ -201,13 +236,13 @@ namespace GestionServicioSocial
                     }
                     else 
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
                     }
                 }
                 catch (Exception ex)
                 {
                 }
-
             }
         }
 
@@ -218,22 +253,17 @@ namespace GestionServicioSocial
 
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
                     SqlCommand consulta = new SqlCommand("select numerocontrol,contraseña from AlumnoReci where numerocontrol = '" + txtusername.Text + "'; ", conn);
-
                     ArrayList lista = new ArrayList();
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
                     if (validarContraseniaUsuario() == true)
                     {
                         Session["userResidencia"] = txtusername.Text;
@@ -241,7 +271,8 @@ namespace GestionServicioSocial
                     }
                     else 
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage",
+                            "alert('Usuario, contraseña incorrectos / ¿Seleccionaste el tipo indicado?')", true);
                     }
                 }
                 catch (Exception ex)
@@ -261,22 +292,14 @@ namespace GestionServicioSocial
             {
                 foreach (GridViewRow row in GridView1.Rows)
                 {
-
                     if (row.Cells[2].Text.Equals(txtpasword.Text))
                     {
-
                         return true;
-
-
                     }
                     else
                     {
-
                         return false;
-
-
                     }
-
                 }
             }
             return false;
@@ -286,14 +309,12 @@ namespace GestionServicioSocial
         {
             if (GridView1.Rows.Count == 0)
             {
-
                 return false;
             }
             else
             {
                 foreach (GridViewRow row in GridView1.Rows)
                 {
-
                     if (row.Cells[1].Text.Equals(txtpasword.Text))
                     {
 
@@ -301,12 +322,8 @@ namespace GestionServicioSocial
                     }
                     else
                     {
-
                         return false;
-
-
                     }
-
                 }
             }
             return false;
@@ -352,7 +369,7 @@ namespace GestionServicioSocial
                     }
                     catch (Exception ex)
                     {
-                        //mensaje.Text = e.Message;
+                        txtusername.Text = ex.Message;
                     }
                 }
                 

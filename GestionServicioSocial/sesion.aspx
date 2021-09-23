@@ -184,7 +184,7 @@
 
 
             <div style="text-align:center;">
-                <asp:Button ID="BTN_LOGIN" class="btn btn-success" runat="server" Text="Iniciar sesión" Width="400px" OnClick="BTN_LOGIN_Click" />
+                <asp:Button ID="BTN_LOGIN" class="btn btn-success" runat="server" Text="Iniciar sesión" Width="400px" OnClick="BTN_LOGIN_Click" style="height: 33px" />
             </div>
 
             <br />
@@ -198,6 +198,7 @@
                 <asp:GridView ID="GridView1" runat="server" Visible="False">
                 </asp:GridView>
             </div>
+
         </form>
     
 
