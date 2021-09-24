@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace GestionServicioSocial
 {
@@ -26,7 +21,6 @@ namespace GestionServicioSocial
             }
             llenarReporte();
         }
-
         public void llenarReporte()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
@@ -34,7 +28,10 @@ namespace GestionServicioSocial
                 try
                 {
                     conn.Open();
-                    string cadena = "SELECT alu.numerocontrol,nombre,apellidoP,apellidoM,carrera, seguroFacultativo, nombreAcesor, puestoAcesor,nombreTitular,puestoTitular,razonSocial,nombreAcesor,puestoAcesor,contador from infoEscolarReci inf join AlumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='" + txtNumeroControl.Text + "';";
+                    string cadena = "SELECT alu.numerocontrol,nombre,apellidoP,apellidoM,carrera, seguroFacultativo, nombreAcesor, " +
+                        "puestoAcesor,nombreTitular,puestoTitular,razonSocial,nombreAcesor,puestoAcesor,contador from infoEscolarReci" +
+                        " inf join AlumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol=pro.idPrograma" +
+                        " where alu.numerocontrol='" + txtNumeroControl.Text + "';";
                     SqlCommand comando = new SqlCommand(cadena, conn);
                     SqlDataReader registro = comando.ExecuteReader();
                     if (registro.Read())
@@ -54,8 +51,6 @@ namespace GestionServicioSocial
                         reporte.SetParameterValue("@puestoAsesor", registro["puestoAcesor"]);
                         reporte.SetParameterValue("@nombreAsesor", registro["nombreAcesor"]);
                         reporte.SetParameterValue("@fecha", dateTime.ToString("dd/MMMM/yyyy"));
-                        
-                        //mensaje.Text = registro["nombre"].ToString();
                         CrystalReportViewer1.ReportSource = reporte;
                     }
                 }

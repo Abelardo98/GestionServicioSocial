@@ -49,58 +49,43 @@ namespace GestionServicioSocial
 
         public void llenarDatos()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
                     SqlCommand consulta = new SqlCommand("select idPrograma,recidenciaTec from ProgramaReci where idPrograma = '" + txtNumeroControl.Text + "'; ", conn);
-
-
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
-
                 }
                 catch (Exception ex)
                 {
                 }
-
             }
-
         }
 
         public void validarReporte()
         {
             if (GridView1.Rows.Count == 0)
             {
-
-
+                String NC = txtNumeroControl.Text;
+                Session["userResidencia"] = NC;
             }
             else
             {
                 foreach (GridViewRow row in GridView1.Rows)
                 {
-
                     if (row.Cells[1].Text.Equals("SI"))
                     {
-
                         String NC = txtNumeroControl.Text;
                         Session["userResidencia"] = NC;
                         Response.Write("<script type='text/javascript'>window.open('ReportePrecentacionResidenciaInterno2.aspx?parametro=" + NC + "');</script>");
-
-
                     }
                     else if (row.Cells[1].Text.Equals("NO"))
                     {
@@ -110,15 +95,9 @@ namespace GestionServicioSocial
                     }
                     else
                     {
-
-
-
-
                     }
-
                 }
             }
-
         }
 
         protected void BtnCostanciaTerminacion_Click(object sender, EventArgs e)
