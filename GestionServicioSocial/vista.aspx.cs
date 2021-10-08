@@ -292,7 +292,6 @@ namespace GestionServicioSocial
 
         public void busquedaIndividual()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
@@ -302,18 +301,11 @@ namespace GestionServicioSocial
                     da.Fill(dt);
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
-
-
-
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
-
         }
 
         protected void BTN_BUSCARREGISTRO_Click(object sender, EventArgs e)

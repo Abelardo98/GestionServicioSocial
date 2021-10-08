@@ -129,18 +129,15 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
         }
         public void insertarDomicilio()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarDomicilioReci";
@@ -160,14 +157,7 @@ namespace GestionServicioSocial
                 {
                     txtMunicipio.Text = ex.Message.ToString();
                 }
-
-
-
-
             }
-
-
-
         }
         public void insertarEscolar()
         {
@@ -175,7 +165,6 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarEscolarReci";
@@ -197,19 +186,14 @@ namespace GestionServicioSocial
                 {
                     txtLocalidad.Text = ex.Message.ToString();
                 }
-
             }
-
-
-
         }
         public void insertarAlumno()
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+           using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarAlumnoReci";
@@ -232,11 +216,7 @@ namespace GestionServicioSocial
                 {
                     txtnombre.Text = ex.Message.ToString();
                 }
-
             }
-
-
-
         }
         public void llenardatos() {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))

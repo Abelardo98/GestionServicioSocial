@@ -27,7 +27,6 @@ namespace GestionServicioSocial
 
         public void insertarPrograma()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
@@ -58,22 +57,15 @@ namespace GestionServicioSocial
                 {
 
                 }
-
-
-
-
             }
         }
 
         public void insertaripyss()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-                    
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarrpyssReci";
@@ -91,14 +83,8 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
-
-
-
             }
-
         }
         protected void BtnContinuar_Click(object sender, EventArgs e)
         {
@@ -113,57 +99,41 @@ namespace GestionServicioSocial
 
         protected void txtResidencia_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (txtResidencia.SelectedItem.ToString().Equals("SI")) {
-                
+            if (txtResidencia.SelectedItem.ToString().Equals("SI")) {                
                 LinkButton2.Visible = true;
                 LinkButton1.Visible = false;
-                
                 txtTipo.Enabled = true;
-
                 txtRazonSocial.Enabled = false;
                 txtTitularDependencia.Enabled = false;
                 txtPuestoTitular.Enabled = false;
-
                 txtCopiaNombre.Enabled = false;
                 txtCopiaPuesto.Enabled = false;
                 Label9.Enabled = false;
                 Label12.Enabled = false;
-
-               
-
                 BtnContinuar.Enabled = false;
                 txtRazonSocial.Text = "INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA";
                 txtTitularDependencia.Text = "GUSTAVO URBANO JUÁREZ";
                 txtPuestoTitular.Text = "DIRECTOR GENERAL";
                 txtTipo.SelectedValue= "Público";
                 txtTipo.Enabled = false;
-
             }
-            else {
-                
+            else {              
                 LinkButton2.Visible = false;
-                
                 LinkButton1.Visible = true;
                 txtTipo.Enabled = true;
-
                 txtRazonSocial.Enabled = true;
                 txtTitularDependencia.Enabled = true;
                 txtPuestoTitular.Enabled = true;
-
                 txtCopiaNombre.Enabled = true;
                 txtCopiaPuesto.Enabled = true;
                 Label9.Enabled = true;
                 Label12.Enabled = true;
-
                 txtRazonSocial.Text = "";
                 txtTitularDependencia.Text = "";
                 txtPuestoTitular.Text = "";               
                 txtAreaAlumno.Text = "";
                 txtNombreAsesorExterno.Text = "";
             }
-            
-
         }
 
         public void validarCamposServicioTec()

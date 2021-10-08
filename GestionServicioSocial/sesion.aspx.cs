@@ -402,16 +402,13 @@ namespace GestionServicioSocial
                         {
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ese numero de control no existe!')", true);
                         }
-
                     }
                     catch (Exception ex)
                     {
-                        //mensaje.Text = e.Message;
                     }
                 }
                 
             }
-           // Response.Redirect("Residencia2.aspx?parametro=" + numeroControlReg.Text);
         }
 
         protected void BtnVisitas_Click(object sender, EventArgs e)

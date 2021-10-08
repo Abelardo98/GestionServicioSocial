@@ -76,11 +76,6 @@
             }
         }
 
-        #form {
-            /*padding-left: 400px;
-            padding-right: 400px;*/
-        }
-
         #login {
            text-align: center;
         }

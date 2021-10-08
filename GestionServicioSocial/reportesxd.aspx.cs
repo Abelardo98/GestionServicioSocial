@@ -34,32 +34,23 @@ namespace GestionServicioSocial
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
-                    SqlCommand consulta = new SqlCommand("select reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\" from documentosServicio where numeroControl = '" + txtNc.Text + "';", conn);
-
-                    
+                    SqlCommand consulta = new SqlCommand("select reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\"," +
+                        "reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\" from documentosServicio where numeroControl = '" + txtNc.Text + "';", conn);
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView2.DataSource = dt;
                     GridView2.DataBind();
-
-
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
         }
 
@@ -116,17 +107,16 @@ namespace GestionServicioSocial
             }
 
         }
+
         public void iserterCalificacionesR1() {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-                    
-
                     insertarAlumno();
                     SqlCommand cmd = new SqlCommand();
-                    // cmd.CommandText = "update Programa set correoAsesorExterno=@correo where idPrograma=@nCon";
-                    cmd.CommandText = "update calificaciones set E11=@E11,E12=@E12,E13=@E13,E14=@E14,E15=@E15,E16=@E16,E17=@E17,A11=@A11,A12=@A12,A13=@A13,A14=@A14,A15=@A15,A16=@A16,A17=@A17,PromedioE1=@PE1, PromedioA1= @PA1 where idCalificaciones=@NC";
+                    cmd.CommandText = "update calificaciones set E11=@E11,E12=@E12,E13=@E13,E14=@E14,E15=@E15,E16=@E16,E17=@E17,A11=@A11,A12=@A12,A13=@A13," +
+                        "A14=@A14,A15=@A15,A16=@A16,A17=@A17,PromedioE1=@PE1, PromedioA1= @PA1 where idCalificaciones=@NC";
                     //
                     cmd.Parameters.AddWithValue("@NC", txtNc.Text);
                     //
@@ -153,7 +143,6 @@ namespace GestionServicioSocial
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
-
                 }
                 catch (Exception ex)
                 {
@@ -406,10 +395,6 @@ namespace GestionServicioSocial
             
         }
 
-
-
-
-
         public void isertarCalificaciones() {
             if (txtReporte.SelectedValue.ToString().Equals("Reporte 1")) {
                 iserterCalificacionesR1();
@@ -435,23 +420,18 @@ namespace GestionServicioSocial
         }
         public void actulizarReporte1()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText = "update documentosServicio set reporte1=@reporte1 where numeroControl=@numeroControl";
-
                     cmd.Parameters.AddWithValue("@reporte1", dateTime.ToString("dd/MM/yyyy"));
                     cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
-
-
                 }
                 catch (Exception ex)
                 {
@@ -593,10 +573,7 @@ namespace GestionServicioSocial
         {
             try{
                 string NoControl = txtNc.Text;
-                //string NoControl = "16ZP0010";
                 string ruta = "~/" + NoControl;
-                //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-                //Label1.Text = ruta;
                 if (FileUpload1.HasFile)
                 {
                     if (txtReporte.SelectedItem.Text.Equals("Reporte 1"))
@@ -605,23 +582,17 @@ namespace GestionServicioSocial
                         {
                             if (File.Exists(MapPath(ruta + "/" + "Reporte1-" + NoControl + ".pdf")))
                             {
-                                //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
                             }
                             else
                             {
-
-
-                                //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                                 FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "Reporte1-" + NoControl + ".pdf"));
                                 isertarCalificaciones();
                                 actulizarReporte1();
                                 llenarTablaCalificaciones();
                                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
-                                //BtnSubirSolicitud.Text = "Subido con éxito";
                             }
                         }
-
                     }
                     else if (txtReporte.SelectedItem.Text.Equals("Reporte 2"))
                     {
@@ -748,15 +719,10 @@ namespace GestionServicioSocial
                 else
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                    //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 }
-
-
-
             } catch (Exception ex) {
                 txtEV6.Text = ex.Message;
-            }
-            
+            }   
         }
 
         protected void Button2_Click(object sender, EventArgs e)

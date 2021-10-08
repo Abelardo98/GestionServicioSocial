@@ -148,53 +148,37 @@ namespace GestionServicioSocial
         public void subirSolicitud() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
             if (FileUpload1.HasFile)
             {
                 if (Directory.Exists(MapPath(ruta)))
                 {
-
                     if (File.Exists(MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl + ".pdf")))
                     {
-                        //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
-                        //solicitud.Text = "Este archivo ya existe!";
                     }
                     else
                     {
-
-
-                        //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                         FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl + ".pdf"));
                         actulizarSolicitudResi();
                         llenarTablaCalificaciones();
                         llenarDatosCalificaciones();
-                        //BtnSubirSolicitud.Text = "Subido con éxito";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                        //solicitud.Text = "Subido con éxito";
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
-                    //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                     FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "SolicitudResidencia-" + NoControl + ".pdf"));
-                    //BtnSubirSolicitud.Text = "Subida con éxito";
                     actulizarSolicitudResi();
                     llenarTablaCalificaciones();
                     llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                    //solicitud.Text = "Subido con éxito";
                 }
             }
             else
             {
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //solicitud.Text = "Selecciona un archivo primero";
             }
-
         }
         protected void BtnSubirSolicitud_Click1(object sender, EventArgs e)
         {           
@@ -257,23 +241,18 @@ namespace GestionServicioSocial
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
-                {
-   
+                {   
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText = "update documentosReci set solicitudRecidencia=@solicitudRecidencia where numeroControl=@numeroControl";
-
                     cmd.Parameters.AddWithValue("@solicitudRecidencia", dateTime.ToString("dd/MM/yyyy"));
                     cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    
-
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
                 }
             }
         }
@@ -405,52 +384,38 @@ namespace GestionServicioSocial
 
 
         public void subirAceptacionRP() {
-
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
             if (FileUpload3.HasFile)
             {
                 if (Directory.Exists(MapPath(ruta)))
                 {
-
                     if (File.Exists(MapPath(ruta + "/" + "CartaAceptación-" + NoControl + ".pdf")))
                     {
-                        //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
-                        //aceptacion.Text = "Este archivo ya existe";
                     }
                     else
                     {
-
-
                         FileUpload3.SaveAs(Server.MapPath(ruta + "/" + "CartaAceptación-" + NoControl + ".pdf"));
-                        //BtnSubirSolicitud.Text = "Subido con éxito";
                         actulizararCartaAceptacion();
                         llenarTablaCalificaciones();
                         llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con exito')", true);
-                        //aceptacion.Text = "Subido con éxito";
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload3.SaveAs(Server.MapPath(ruta + "/" + "CartaAceptación-" + NoControl + ".pdf"));
-                    //BtnSubirSolicitud.Text = "Subida con éxito";
                     actulizararCartaAceptacion();
                     llenarTablaCalificaciones();
                     llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con exito')", true);
-                    //aceptacion.Text = "Subido con éxito";
                 }
             }
             else
             {
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //aceptacion.Text = "Selecciona un archivo primero";
             }
 
         }
@@ -485,49 +450,36 @@ namespace GestionServicioSocial
         public void subirResponsiva() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
             if (FileUpload4.HasFile)
             {
                 if (Directory.Exists(MapPath(ruta)))
                 {
-
                     if (File.Exists(MapPath(ruta + "/" + "Responsiva-" + NoControl + ".pdf")))
                     {
-                        //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
-                        //responsiva.Text = "Este archivo ya existe";
                     }
                     else
                     {
-
-
                         FileUpload4.SaveAs(Server.MapPath(ruta + "/" + "Responsiva-" + NoControl + ".pdf"));
-                        //BtnSubirSolicitud.Text = "Subido con éxito";
                         actulizarResponsiva();
                         llenarTablaCalificaciones();
                         llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                        //responsiva.Text = "Subida con éxito";
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload4.SaveAs(Server.MapPath(ruta + "/" + "Responsiva-" + NoControl + ".pdf"));
-                    //BtnSubirSolicitud.Text = "Subida con éxito";
                     actulizarResponsiva();
                     llenarTablaCalificaciones();
                     llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                    //responsiva.Text = "Subida con éxito";
                 }
             }
             else
             {
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //responsiva.Text = "Selecciona un archivo primero";
             }
 
         }
@@ -562,49 +514,36 @@ namespace GestionServicioSocial
         public void subirLiberacion() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
             if (FileUpload5.HasFile)
             {
                 if (Directory.Exists(MapPath(ruta)))
                 {
-
                     if (File.Exists(MapPath(ruta + "/" + "CartaLiberación-" + NoControl + ".pdf")))
                     {
-                        //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
-                        //liberacion.Text = "Este archivo ya existe";
                     }
                     else
                     {
-
-
                         FileUpload5.SaveAs(Server.MapPath(ruta + "/" + "CartaLiberación-" + NoControl + ".pdf"));
-                        //BtnSubirSolicitud.Text = "Subido con éxito";
                         actulizarCartaLiveracion();
                         llenarTablaCalificaciones();
                         llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                        //liberacion.Text = "Subida con éxito";
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload5.SaveAs(Server.MapPath(ruta + "/" + "CartaLiberación-" + NoControl + ".pdf"));
-                    //BtnSubirSolicitud.Text = "Subida con éxito";
                     actulizarCartaLiveracion();
                     llenarTablaCalificaciones();
                     llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                    //liberacion.Text = "Subida con éxito";
                 }
             }
             else
             {
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //liberacion.Text = "Selecciona un archivo primero";
             }
         }
         protected void BtnSubirLiberacion_Click(object sender, EventArgs e)
@@ -638,49 +577,36 @@ namespace GestionServicioSocial
         public void subirCumplimiento() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
             if (FileUpload6.HasFile)
             {
                 if (Directory.Exists(MapPath(ruta)))
                 {
-
                     if (File.Exists(MapPath(ruta + "/" + "ConstanciaCumplimiento-" + NoControl + ".pdf")))
                     {
-                        //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
-                        //cumplimiento.Text = "Este archivo ya existe!";
                     }
                     else
                     {
-
-
                         FileUpload6.SaveAs(Server.MapPath(ruta + "/" + "ConstanciaCumplimiento-" + NoControl + ".pdf"));
-                        //BtnSubirSolicitud.Text = "Subido con éxito";
                         actulizarConstanciaCumplimiento();
                         llenarTablaCalificaciones();
                         llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                        //cumplimiento.Text = "Subida con éxito";
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload6.SaveAs(Server.MapPath(ruta + "/" + "ConstanciaCumplimiento-" + NoControl + ".pdf"));
-                    //BtnSubirSolicitud.Text = "Subida con éxito";
                     actulizarConstanciaCumplimiento();
                     llenarTablaCalificaciones();
                     llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                    //cumplimiento.Text = "Subida con éxito";
                 }
             }
             else
             {
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //cumplimiento.Text = "Selecciona un archivo primero";
             }
         }
         protected void BtnSubirCumplimiento_Click(object sender, EventArgs e)
@@ -723,7 +649,6 @@ namespace GestionServicioSocial
                 {
                     if (File.Exists(MapPath(rutaArchivo)))
                     {
-                        //BtnDescargar.Text = "Existe";
                         Response.ContentType = "application/octet-stream";
                         Response.AppendHeader("Content-Disposition", "attachment;filename=SolicitudResidencia-"+nc+ ".pdf");
                         Response.TransmitFile(Server.MapPath(rutaArchivo));
@@ -731,15 +656,11 @@ namespace GestionServicioSocial
                     }
                     else
                     {
-                        //BtnDescargar.Text = "No existe archivo";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('No existe documento')", true);
-                        //descarga.Text = "No existe documento";
                     }
                 }
                 else
                 {
-                    //BtnDescargar.Text = "El Directorio no existe";
-                    //descarga.Text = "El directorio no existe";
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El directorio no existe')", true);
                 }
             }
@@ -858,7 +779,6 @@ namespace GestionServicioSocial
                 {
                     if (File.Exists(MapPath(rutaArchivo)))
                     {
-                        //BtnDescargar.Text = "Existe";
                         Response.ContentType = "application/octet-stream";
                         Response.AppendHeader("Content-Disposition", "attachment;filename=ConstanciaCumplimiento-" + nc + ".pdf");
                         Response.TransmitFile(Server.MapPath(rutaArchivo));
@@ -866,16 +786,12 @@ namespace GestionServicioSocial
                     }
                     else
                     {
-                        //BtnDescargar.Text = "No existe archivo";
-                        //descarga.Text = "No existe archivo";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('No existe archivo')", true);
                     }
                 }
                 else
                 {
-                    //descarga.Text = "El directorio no existe";
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Directorio no existe')", true);
-                    //BtnDescargar.Text = "El Directorio no existe";
                 }
             }
         }
@@ -883,49 +799,36 @@ namespace GestionServicioSocial
         public void subirCartaPrecentacion() {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
             if (FileUpload2.HasFile)
             {
                 if (Directory.Exists(MapPath(ruta)))
                 {
-
                     if (File.Exists(MapPath(ruta + "/" + "CartaPresentación-" + NoControl + ".pdf")))
                     {
-                        //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archivo ya existe')", true);
-                        //presentacion.Text = "Este archivo ya existe";
                     }
                     else
                     {
-
-
                         FileUpload2.SaveAs(Server.MapPath(ruta + "/" + "CartaPresentación-" + NoControl + ".pdf"));
-                        //BtnSubirSolicitud.Text = "Subido con éxito";
                         actulizarCartaPresentacion();
                         llenarTablaCalificaciones();
                         llenarDatosCalificaciones();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con exito')", true);
-                        //presentacion.Text = "Subido con éxito";
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
                     FileUpload2.SaveAs(Server.MapPath(ruta + "/" + "CartaPresentación-" + NoControl + ".pdf"));
-                    //BtnSubirSolicitud.Text = "Subida con éxito";
                     actulizarCartaPresentacion();
                     llenarTablaCalificaciones();
                     llenarDatosCalificaciones();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subida con éxito')", true);
-                    //presentacion.Text = "Subido con éxito";
                 }
             }
             else
             {
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //presentacion.Text = "Selecciona un archivo primero";
             }
 
         }
@@ -1032,8 +935,7 @@ namespace GestionServicioSocial
         protected void BtnSolicitud_Click(object sender, EventArgs e)
         {
             String NC = txtNc.Text;
-            Response.Write("<script type='text/javascript'>window.open('ReporteSolicitudRecidencia2.aspx');</script>");
-            
+            Response.Write("<script type='text/javascript'>window.open('ReporteSolicitudRecidencia2.aspx');</script>");   
         }
 
         protected void BtnPrecentacion_Click(object sender, EventArgs e)
@@ -1058,43 +960,31 @@ namespace GestionServicioSocial
         {
             string nc = txtNc.Text;
             string ruta = "~/" + nc;
-            //"~/16XX00N"
             string documento = DropDownList1.SelectedItem.Value;
             if (documento.Equals("Solicitud Residencia"))
             {
-                //Label1.Text = "Entro";
                 string rutaArchivo = ruta + "/" + "SolicitudResidencia-" + nc + ".pdf";
                 if (Directory.Exists(MapPath(ruta)))
                 {
                     if (File.Exists(MapPath(rutaArchivo)))
                     {
-                        //Label1.Text = "Existe";
                         File.Delete(MapPath(rutaArchivo));
                         if (File.Exists(MapPath(rutaArchivo)))
                         {
-                            //Label1.Text = "Archivo aun existe";
-                            //descarga.Text = "Archivo aun existe";
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Archivo aun existente')", true);
                         }
                         else
                         {
-                            //Label1.Text = "Archivo Eliminado";
-                            //descarga.Text = "Archivo eliminado";
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Archivo eliminado')", true);
                         }
                     }
                     else
                     {
-                        //Label1.Text = "El archivo no existe";
-                        //descarga.Text = "El archivo no existe!";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El archivo no existe')", true);
                     }
                 }
                 else
                 {
-
-                    // Label1.Text = "El directorio no existe";
-                    //descarga.Text = "El directorio no existe";
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El directorio no existe')", true);
                 }
             }
@@ -1278,10 +1168,8 @@ namespace GestionServicioSocial
             }
 
             else {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Error')", true);
-                //descarga.Text = "error";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Error')", true);             
             }
-
         }
 
         protected void BtnEditarInformacion_Click(object sender, EventArgs e)

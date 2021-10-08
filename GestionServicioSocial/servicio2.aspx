@@ -171,7 +171,8 @@
                     <td class="auto-style18">
                         <asp:Label ID="Label7" runat="server" Text="Domicilio:" Width="150px"></asp:Label>
             
-                        <asp:TextBox ID="txtDomicilio" runat="server" Width="300px" required placeholder="Calle: Ejemplo # 1, Zacapoaxtla, Puebla" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                        <asp:TextBox ID="txtDomicilio" runat="server" Width="300px" required placeholder="Calle: Ejemplo # 1, Zacapoaxtla, Puebla" 
+                            onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
             
                     </td>
                     <td>

@@ -47,7 +47,6 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@puestoAcesor", SqlDbType.VarChar).Value = txtPuesto.Text.Trim();
                     cmd.Parameters.Add("@nombrePrograma", SqlDbType.VarChar).Value = txtNombrePrograma.Text.Trim();
                     cmd.Parameters.Add("@programaActividad", SqlDbType.VarChar).Value = "ACTIVIDADES PLASMADAS EN EL PLAN DE TRABAJO";
-
                     if (txttipoprograma.SelectedItem.ToString().Equals("OTRO"))
                     {
                         cmd.Parameters.Add("@tipoPrograma", SqlDbType.VarChar).Value = TextBox1.Text.Trim(); ;
@@ -55,8 +54,7 @@ namespace GestionServicioSocial
                     else
                     {
                         cmd.Parameters.Add("@tipoPrograma", SqlDbType.VarChar).Value = txttipoprograma.SelectedItem.ToString();
-                    }
-                 
+                    }                
                     cmd.Parameters.Add("@servicioTec", SqlDbType.VarChar).Value = txtServicio.SelectedItem.ToString();
                     cmd.Parameters.Add("@numerocontrol", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
                     cmd.Parameters.Add("@correoAsesorExterno", SqlDbType.VarChar).Value = "";
@@ -80,8 +78,7 @@ namespace GestionServicioSocial
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
-                {
-                   
+                {                 
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarrpyss";
@@ -102,14 +99,8 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
-
-
-
-
             }
-
         }
 
         public void validarCamposServicioTec() {
@@ -152,33 +143,25 @@ namespace GestionServicioSocial
             {
                 LinkButton2.Visible = true;
                 LinkButton1.Visible = false;
-
                 txtDependenciaOficial.Enabled = false;
                 txtTitularDependencia.Enabled = false;
                 txtPuestoTitular.Enabled = false;
-
                 txtCopiaNombre.Enabled = false;
                 txtCopiaPuesto.Enabled = false;
-
                 txtDependenciaOficial.Text = "INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA";
                 txtTitularDependencia.Text = "GUSTAVO URBANO JUÁREZ";
-                txtPuestoTitular.Text = "DIRECTOR GENERAL";
-                
+                txtPuestoTitular.Text = "DIRECTOR GENERAL";               
             }
             else
             {
-
                 BtnContinuar.Enabled = true;
                 LinkButton2.Visible = false;
                 LinkButton1.Visible = true;
-
                 txtDependenciaOficial.Enabled = true;
                 txtTitularDependencia.Enabled = true;
                 txtPuestoTitular.Enabled = true;
-
                 txtCopiaNombre.Enabled = true;
                 txtCopiaPuesto.Enabled = true;
-
                 txtDependenciaOficial.Text = "";
                 txtTitularDependencia.Text = "";
                 txtPuestoTitular.Text = "";

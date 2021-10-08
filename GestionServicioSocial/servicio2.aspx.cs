@@ -31,51 +31,41 @@ namespace GestionServicioSocial
 
         public void llenarTabla()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
-                    SqlCommand consulta = new SqlCommand("SELECT * FROM validarResidencia where numerocontrol = '" + txtNumeroControl.Text + "';", conn);
+                    SqlCommand consulta = new SqlCommand("SELECT * FROM validarResidencia where numerocontrol = '" +
+                        txtNumeroControl.Text + "';", conn);
 
                     ArrayList lista = new ArrayList();
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView2.DataSource = dt;
                     GridView2.DataBind();
-
-
                 }
                 catch (Exception ex)
                 {
                 }
-
             }
 
         }
 
         public void llenarDatosAlumno()
         {
-
             foreach (GridViewRow row in GridView2.Rows)
             {
-
                 txtNumeroControl.Text = HttpUtility.HtmlDecode(row.Cells[0].Text);
                 txtCreditos.Text = HttpUtility.HtmlDecode(row.Cells[1].Text);
                 txtnombre.Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
                 txtAp.Text = HttpUtility.HtmlDecode(row.Cells[3].Text);
                 txtAm.Text = HttpUtility.HtmlDecode(row.Cells[4].Text);
                 txtGenero.Text = HttpUtility.HtmlDecode(row.Cells[5].Text);
-                //TxtCarrera.Text= HttpUtility.HtmlDecode(row.Cells[6].Text);
                 string carrera = row.Cells[6].Text;
                 if (carrera.StartsWith("IINF"))
                 {
@@ -142,13 +132,10 @@ namespace GestionServicioSocial
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
-
-
-
         }
+        
         public void insertarDomicilio() {
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
@@ -171,15 +158,8 @@ namespace GestionServicioSocial
                     conn.Close();
                 } catch (Exception ex) {
                     txtMunicipio.Text = ex.Message.ToString();
-                }
-
-                
-
-
-            }
-
-           
-
+                }             
+            }         
         }
         public void insertarEscolar() {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
@@ -203,18 +183,13 @@ namespace GestionServicioSocial
                     conn.Close();
                 } catch (Exception ex) {
                     txtLocalidad.Text = ex.Message.ToString();
-                }
-                
-            }
-
-            
-
+                }             
+            }         
         }
         public void insertarAlumno() {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-                try {
-                    
+                try {                   
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarAlumno";
@@ -234,12 +209,8 @@ namespace GestionServicioSocial
                     conn.Close();
                 } catch (Exception ex) {
                     txtnombre.Text = ex.Message.ToString();
-                }
-                
-            }
-
-             
-
+                }               
+            }            
         }
 
         public void llenardatos()

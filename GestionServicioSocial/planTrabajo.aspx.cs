@@ -35,22 +35,17 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText = "update documentosServicio set planTrabajo=@planTrabajo where numeroControl=@numeroControl";
-
                     cmd.Parameters.AddWithValue("@planTrabajo", dateTime.ToString("dd/MM/yyyy"));
                     cmd.Parameters.AddWithValue("@numeroControl", txtNc.Text);
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
-
-
                 }
                 catch (Exception ex)
                 {
-                    //Label3.Text = ex.Message;
                 }
             }
         }
@@ -58,16 +53,12 @@ namespace GestionServicioSocial
         {
             string NoControl = txtNc.Text;
             string ruta = "~/" + NoControl;
-            //string ruta1 = @"C:\Users\GENERICO\source\repos\pdf\pdf\16ZP0010";
-            //Label1.Text = ruta;
             if (FileUpload1.HasFile)
             {
                 if (Directory.Exists(MapPath(ruta)))
                 {
-
                     if (File.Exists(MapPath(ruta + "/" + "PlanTrabajoServicioSocial-" + NoControl + ".pdf")))
                     {
-                        //BtnSubirSolicitud.Text = "Existe archivo ya existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Este archvio ya existe')", true);
                     }
                     else
@@ -78,19 +69,16 @@ namespace GestionServicioSocial
                         }
                         else
                         {
-                            //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                             FileUpload1.SaveAs(Server.MapPath(ruta + "/" + "PlanTrabajoServicioSocial-" + NoControl + ".pdf"));
                             actulizarPlanTrabajo();
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                             insertarCorreo();
-                            //BtnSubirSolicitud.Text = "Subido con éxito";
                         }
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory(MapPath("~/" + NoControl));
-                    //FileUpload1.SaveAs(Server.MapPath(ruta + "/" + FileUpload1.FileName));
                     if (Correo.Text.Equals(""))
                     {
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Correo de asesor obligatorio')", true);
@@ -101,14 +89,12 @@ namespace GestionServicioSocial
                         actulizarPlanTrabajo();
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Subido con éxito')", true);
                         insertarCorreo();
-                        //BtnSubirSolicitud.Text = "Subida con éxito";
                     }
                 }
             }
             else
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selecciona un archivo primero')", true);
-                //BtnSubirSolicitud.Text = "Selecciona un archivo primero";
             }
 
         }
