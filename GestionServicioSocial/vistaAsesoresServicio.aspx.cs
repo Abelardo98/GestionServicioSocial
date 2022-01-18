@@ -32,30 +32,27 @@ namespace GestionServicioSocial
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
-                    SqlCommand consulta = new SqlCommand("select numeroControl as \"N.C\",solicitudServicio as \"Solicitud de Servicio Social\",cartaPresentacion as \"Carta de Presentación\",cartaAceptacion as \"Carta de Aceptación\",responsiva as \"Responsiva\",cartaCompromiso as \"Carta Compromiso\",planTrabajo as \"Plan de Trabajo\",reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\",reporteFinal as \"Reporte Final\",cartaLiberacion as \"Carta de liberación\",constanciaTerminacion as \"Constancia de Terminación\" from documentosServicio where numeroControl = '" + txtNumerocontrol.Text + "';", conn);
-
-
+                    SqlCommand consulta = new SqlCommand("select numeroControl as \"N.C\",solicitudServicio as " +
+                        "\"Solicitud de Servicio Social\",cartaPresentacion as \"Carta de Presentación\",cartaAceptacion as " +
+                        "\"Carta de Aceptación\",responsiva as \"Responsiva\",cartaCompromiso as \"Carta Compromiso\",planTrabajo as " +
+                        "\"Plan de Trabajo\",reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as " +
+                        "\"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\",reporteFinal as " +
+                        "\"Reporte Final\",cartaLiberacion as \"Carta de liberación\",constanciaTerminacion as " +
+                        "\"Constancia de Terminación\" from documentosServicio where numeroControl = '" + txtNumerocontrol.Text + "';", conn);
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView2.DataSource = dt;
                     GridView2.DataBind();
-
-
                 }
                 catch (Exception ex)
                 {
-
                 }
 
             }
@@ -64,60 +61,61 @@ namespace GestionServicioSocial
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
-
                 try
                 {
-
                     DataTable dt = new DataTable();
                     DataSet ds = new DataSet();
                     conn.Open();
-                    SqlCommand consulta = new SqlCommand("select numeroControl as \"N.C\",solicitudServicio as \"Solicitud de Servicio Social\",cartaPresentacion as \"Carta de Presentación\",cartaAceptacion as \"Carta de Aceptación\",responsiva as \"Responsiva\",cartaCompromiso as \"Carta Compromiso\",planTrabajo as \"Plan de Trabajo\",reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\",reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\",reporteFinal as \"Reporte Final\",cartaLiberacion as \"Carta de liberación\",constanciaTerminacion as \"Constancia de Terminación\" from documentosServicio where carrera = '" + txtCarreras.Text.ToString() + "';", conn);
-
-
+                    SqlCommand consulta = new SqlCommand("select numeroControl as \"N.C\",solicitudServicio as \"Solicitud de Servicio Social\"," +
+                        "cartaPresentacion as \"Carta de Presentación\",cartaAceptacion as \"Carta de Aceptación\",responsiva as \"Responsiva\"," +
+                        "cartaCompromiso as \"Carta Compromiso\",planTrabajo as \"Plan de Trabajo\",reporte1 as \"Reporte 1\",reporte2 as \"Reporte 2\"," +
+                        "reporte3 as \"Reporte 3\",reporte4 as \"Reporte 4\",reporte5 as \"Reporte 5\",evaluacionFinal as \"Evaluación Final\"," +
+                        "reporteFinal as \"Reporte Final\",cartaLiberacion as \"Carta de liberación\",constanciaTerminacion as " +
+                        "\"Constancia de Terminación\" from documentosServicio where carrera = '" + txtCarreras.Text.ToString() + "';", conn);
                     SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
                     con.Fill(ds);
                     dt = ds.Tables[0];
                     dt.AcceptChanges();
                     GridView2.DataSource = dt;
                     GridView2.DataBind();
-
-
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
         }
 
 
         public void busquedaIndividual()
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
                 {
-                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\",apellidom as \"Apellido Materno\",edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss where inf.idescolar= '" + txtNumerocontrol.Text + "'; ", conn);
+                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as " +
+                        "\"Apellido Paterno\",apellidom as \"Apellido Materno\",edad as \"Edad\",genero as \"Género\",estadocivil as " +
+                        "\"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as " +
+                        "\"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as " +
+                        "\"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as " +
+                        "\"Código Postal\",municipio as \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as " +
+                        "\"Nombre Dependencia\", nombretitular as \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as " +
+                        "\"Área Alumno\",copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as " +
+                        "\"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as " +
+                        "\"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio " +
+                        "\",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as " +
+                        "\"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar " +
+                        "join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss rp " +
+                        "on pro.idprograma = rp.idrpyss where inf.idescolar= '" + txtNumerocontrol.Text + "'; ", conn);
                     dt = new DataTable();
                     da.Fill(dt);
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
-
-
-
                 }
                 catch (Exception ex)
                 {
 
                 }
-
             }
-
         }
         public void busquedaGeneral()
         {
@@ -125,16 +123,24 @@ namespace GestionServicioSocial
             {
                 try
                 {
-
-                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\",apellidom as \"Apellido Materno\",edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss where carrera = '" + txtCarreras.Text.ToString() + "';", conn);
+                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as " +
+                        "\"Apellido Paterno\",apellidom as \"Apellido Materno\",edad as \"Edad\",genero as \"Género\",estadocivil as " +
+                        "\"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", " +
+                        "periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as " +
+                        "\"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as " +
+                        "\"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as " +
+                        "\"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as " +
+                        "\"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as " +
+                        "\"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as " +
+                        "\"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as " +
+                        "\"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as " +
+                        "\"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar " +
+                        "join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss rp " +
+                        "on pro.idprograma = rp.idrpyss where carrera = '" + txtCarreras.Text.ToString() + "';", conn);
                     dt = new DataTable();
                     da.Fill(dt);
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-
-
-
-
                 }
                 catch (Exception ex)
                 {
@@ -179,13 +185,23 @@ namespace GestionServicioSocial
                     {
                         try
                         {
-                            da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\",apellidom as \"Apellido Materno\",edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss where carrera = '" + txtCarreras.Text.ToString() + "';", conn);
+                            da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\",apellidom as " +
+                                "\"Apellido Materno\",edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\"," +
+                                " carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as " +
+                                "\"Modalidad\",creditosAprovados as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as " +
+                                "\"Código Postal\",municipio as \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as " +
+                                "\"Nombre Dependencia\", nombretitular as \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\"," +
+                                "copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\"," +
+                                " puestoacesor as \"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\"," +
+                                "tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \"," +
+                                "fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\"," +
+                                " motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar " +
+                                "join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join " +
+                                "rpyss rp on pro.idprograma = rp.idrpyss where carrera = '" + txtCarreras.Text.ToString() + "';", conn);
                             dt = new DataTable();
                             da.Fill(dt);
-
                             List<string> lineas = new List<string>(), columnas = new List<string>();
                             foreach (DataColumn col in dt.Columns) columnas.Add(col.ColumnName);
-
                             lineas.Add(string.Join(";", columnas));
                             foreach (DataRow fila in dt.Rows)
                             {
@@ -299,7 +315,6 @@ namespace GestionServicioSocial
                     {
                         if (File.Exists(MapPath(rutaArchivo)))
                         {
-                            //BtnDescargar.Text = "Existe";
                             Response.ContentType = "application/octet-stream";
                             Response.AppendHeader("Content-Disposition", "attachment;filename=SolicitudServicioSocial-" + nc + ".pdf");
                             Response.TransmitFile(Server.MapPath(rutaArchivo));
@@ -307,13 +322,11 @@ namespace GestionServicioSocial
                         }
                         else
                         {
-                            //descarminar.Text = "No existe archivo";
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('No existe documento')", true);
                         }
                     }
                     else
                     {
-                        //descarminar.Text = "El Directorio no existe";
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El directorio no existe')", true);
                     }
                 }
