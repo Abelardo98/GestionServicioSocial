@@ -2713,3 +2713,4 @@ C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\
 C:\Users\Administrador\Source\Repos\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csproj.AssemblyReference.cache
 =======
 >>>>>>> c583583c0bf5bdf58fb2f9ad9e53c04be63a931b
+C:\Users\kalam\source\repos\respando 07_07_2021\GestionServicioSocial\GestionServicioSocial\obj\Debug\GestionServicioSocial.csproj.AssemblyReference.cache

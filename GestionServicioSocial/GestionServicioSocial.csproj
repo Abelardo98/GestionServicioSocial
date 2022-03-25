@@ -132,6 +132,7 @@
     <Content Include="ExportarReportes.aspx" />
     <Content Include="ExportarReportesReci.aspx" />
     <Content Include="imagenes\enbacezado.PNG" />
+    <Content Include="imagenes\Encabezado25_2022.jpg" />
     <Content Include="imagenes\encabezadoDoc 2.png" />
     <Content Include="imagenes\encabezadoDoc 3.png" />
     <Content Include="imagenes\encabezadoDoc.png" />
@@ -145,6 +146,7 @@
     <Content Include="imagenes\membrete2022.png" />
     <Content Include="imagenes\Pie de pagina 2.png" />
     <Content Include="imagenes\Pie de pagina 3.png" />
+    <Content Include="imagenes\Pie15_2022.jpg" />
     <Content Include="imagenes\piePagina.PNG" />
     <Content Include="index.aspx" />
     <Content Include="js\bootstrap.js" />
