@@ -26,6 +26,7 @@ namespace GestionServicioSocial
                 else
                 {
                     txtNc.Text = Session["userResidencia"].ToString();
+                    BtnPrecentacion.Visible = false;
                 }
 
             }

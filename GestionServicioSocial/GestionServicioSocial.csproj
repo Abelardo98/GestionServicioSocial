@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CostanciaTerminacionDatosFinales.aspx" />
     <Content Include="css\animate.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-theme.css" />
@@ -261,6 +262,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConstanciaTerminacion2.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CostanciaTerminacionDatosFinales.aspx.cs">
+      <DependentUpon>CostanciaTerminacionDatosFinales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CostanciaTerminacionDatosFinales.aspx.designer.cs">
+      <DependentUpon>CostanciaTerminacionDatosFinales.aspx</DependentUpon>
     </Compile>
     <Compile Include="DatosPermiso.Designer.cs">
       <AutoGen>True</AutoGen>

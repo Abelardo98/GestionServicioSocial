@@ -90,7 +90,7 @@ namespace GestionServicioSocial {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_contador {
+        public CrystalDecisions.Shared.IParameterField Parameter_contadorIngresado {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -146,7 +146,7 @@ namespace GestionServicioSocial {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_municipio {
+        public CrystalDecisions.Shared.IParameterField Parameter_municipioDependencia {
             get {
                 return this.DataDefinition.ParameterFields[7];
             }
@@ -154,7 +154,7 @@ namespace GestionServicioSocial {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_estado {
+        public CrystalDecisions.Shared.IParameterField Parameter_estadoDependencia {
             get {
                 return this.DataDefinition.ParameterFields[8];
             }
@@ -162,7 +162,7 @@ namespace GestionServicioSocial {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_tipoPrograma {
+        public CrystalDecisions.Shared.IParameterField Parameter_nombrePrograma {
             get {
                 return this.DataDefinition.ParameterFields[9];
             }
@@ -202,7 +202,7 @@ namespace GestionServicioSocial {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dia {
+        public CrystalDecisions.Shared.IParameterField Parameter_diaTerminacion {
             get {
                 return this.DataDefinition.ParameterFields[14];
             }
@@ -210,9 +210,25 @@ namespace GestionServicioSocial {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_mes {
+        public CrystalDecisions.Shared.IParameterField Parameter_mesTerminacion {
             get {
                 return this.DataDefinition.ParameterFields[15];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_anioTerminacion {
+            get {
+                return this.DataDefinition.ParameterFields[16];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_horasServicio {
+            get {
+                return this.DataDefinition.ParameterFields[17];
             }
         }
     }

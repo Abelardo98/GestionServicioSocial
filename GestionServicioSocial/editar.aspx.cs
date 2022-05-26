@@ -105,7 +105,11 @@ namespace GestionServicioSocial
                 txtPuesto.Text = HttpUtility.HtmlDecode(row.Cells[26].Text);
                 txtNombrePrograma.Text = HttpUtility.HtmlDecode(row.Cells[27].Text);
                 txtProgramaActividades.Text = HttpUtility.HtmlDecode(row.Cells[28].Text);
+
+                txttipoprograma.Items.Add(HttpUtility.HtmlDecode(row.Cells[29].Text));
                 txttipoprograma.Text = HttpUtility.HtmlDecode(row.Cells[29].Text);
+
+
                 txtServicio.Text = HttpUtility.HtmlDecode(row.Cells[30].Text);
                 txtFechaInicioServ.Text = HttpUtility.HtmlDecode(row.Cells[31].Text);
                 txtFechaTerminoServ.Text = HttpUtility.HtmlDecode(row.Cells[32].Text);

@@ -31,6 +31,20 @@
 
     </style>
     <a href="vistaRecidencia.aspx">vistaRecidencia.aspx</a>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1074px;
+        }
+        .auto-style2 {
+            width: 1151px;
+        }
+        .auto-style3 {
+            width: 1287px;
+        }
+        .auto-style4 {
+            width: 1381px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
@@ -55,6 +69,9 @@
         
         
     </header>
+    <section style="text-align:right" class="auto-style4">
+        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#exampleModal">Eliminar</button>
+    </section>
 
 
     <br />
@@ -67,8 +84,7 @@
         &nbsp;
         <asp:TextBox ID="txtNumerocontrol" runat="server"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="BTNeditar" runat="server" Text="Editar" class="btn btn-info" Height="40px" OnClick="BTNeditar_Click" />
-        &nbsp;&nbsp; &nbsp;<button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal">Eliminar</button>
-        &nbsp;&nbsp; &nbsp;
+        &nbsp;
 
 
         &nbsp;&nbsp;&nbsp;<asp:Button ID="BtnGenerarReporte" runat="server" class="btn btn-info" Text="Generar Reportes" OnClick="BtnGenerarReporte_Click" />

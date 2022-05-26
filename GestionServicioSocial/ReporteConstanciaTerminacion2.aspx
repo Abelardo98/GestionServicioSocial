@@ -11,6 +11,7 @@
     <br />
     <article style="padding-left:150px">
         <asp:TextBox ID="txtNumeroControl" runat="server" ReadOnly="True"></asp:TextBox>
+       &nbsp;<asp:Button ID="BtnRegresar" runat="server" OnClick="BtnRegresar_Click" Text="Regresar" />
        </article>
         <br />
         <br />

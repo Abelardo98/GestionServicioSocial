@@ -26,6 +26,7 @@ namespace GestionServicioSocial
                 else 
                 {
                     txtNc.Text = Session["userServicio"].ToString();
+                    generarCarta.Visible = false;
                 }
             }
             llenarTablaCalificaciones();

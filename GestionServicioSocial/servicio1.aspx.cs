@@ -62,6 +62,9 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@fechaTerminoServ", SqlDbType.VarChar).Value = "";
                     cmd.Parameters.Add("@copiaNombrePersona", SqlDbType.VarChar).Value = txtCopiaNombre.Text.Trim();
                     cmd.Parameters.Add("@copiaPuestoPersona", SqlDbType.VarChar).Value = txtCopiaPuesto.Text.Trim();
+                    cmd.Parameters.Add("@municipioDependencia", SqlDbType.VarChar).Value = txtMuncipioDependencia.Text.Trim();
+                    cmd.Parameters.Add("@estadoDependencia", SqlDbType.VarChar).Value = txtEstadoDependencia.Text.Trim();
+
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();

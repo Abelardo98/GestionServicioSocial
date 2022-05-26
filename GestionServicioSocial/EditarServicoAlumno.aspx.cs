@@ -161,10 +161,6 @@ namespace GestionServicioSocial
                 {
                     txtnombre.Text = ex.Message.ToString();
                 }
-
-
-
-
             }
 
         }

@@ -69,11 +69,23 @@
             
             <table class="auto-style16">
                 <tr>
-                    <td >
-                        
-                        <asp:Label ID="Label2" runat="server" Text="Nombre del lugar donde vas a realizar servicio social:" Width="400px"></asp:Label>
-            
+                    <td >                        
+                        <asp:Label ID="Label2" runat="server" Text="Nombre del lugar donde vas a realizar servicio social:" Width="400px"></asp:Label>            
                         <asp:TextBox ID="txtDependenciaOficial" runat="server" Width="880px" required OnTextChanged="txtDependenciaOficial_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td >                        
+                        <asp:Label ID="Label14" runat="server" Text="Municipio de la dependencia:" Width="400px"></asp:Label>            
+                        <asp:TextBox ID="txtMuncipioDependencia" runat="server" Width="880px" required OnTextChanged="txtDependenciaOficial_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td >                        
+                        <asp:Label ID="Label15" runat="server" Text="Estado de la dependencia:" Width="400px"></asp:Label>            
+                        <asp:TextBox ID="txtEstadoDependencia" runat="server" Width="880px" required OnTextChanged="txtDependenciaOficial_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                     
                 </tr>

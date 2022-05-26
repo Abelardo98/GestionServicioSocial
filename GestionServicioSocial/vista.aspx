@@ -14,6 +14,7 @@
 
         .auto-style1 {
             width: 1447px;
+            text-align:right;
         }
 
         .auto-style2 {
@@ -49,26 +50,22 @@
         &nbsp;
         <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Size="Smaller" OnClick="LinkButton1_Click">Cerrar Sesión</asp:LinkButton>
         </header>
-
-
-    <br />
-    <br />
-    <br />
-
     <section class="auto-style1">
+        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#exampleModal2">Eliminar</button>
+    </section>
+
+
+    <br />
+    <br />
+    <br />
+
+    <section>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
   <asp:Label ID="Label1" runat="server" Text="Número Control: "></asp:Label>
         &nbsp;
         <asp:TextBox ID="txtNumerocontrol" runat="server"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="BTNeditar" runat="server" Text="Editar" class="btn btn-info" Height="40px" OnClick="BTNeditar_Click" />
-        &nbsp;&nbsp;
-
-        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal2">Eliminar</button>
-        
-
-
-
         &nbsp;&nbsp;<asp:Button ID="BtnGenerarReporte" runat="server" class="btn btn-info" Text="Generar Reportes" OnClick="BtnGenerarReporte_Click" Width="156px" />
 
 

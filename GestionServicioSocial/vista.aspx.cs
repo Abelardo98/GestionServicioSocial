@@ -186,12 +186,7 @@ namespace GestionServicioSocial
                 {
                     try
                     {
-                        conn.Open();
-                        string cadena = "select numerocontrol from Alumno where numerocontrol='" + txtNumerocontrol.Text + "';";
-                        SqlCommand comando = new SqlCommand(cadena, conn);
-                        SqlDataReader registro = comando.ExecuteReader();
-                        if (registro.Read())
-                        {
+                        
                             eliminarRpyys();
                             eliminarPrograma();
                             eliminarDocumentosServicio();
@@ -202,11 +197,8 @@ namespace GestionServicioSocial
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('dato eliminado')", true);
                             txtNumerocontrol.Text = "";
                             busquedaGeneral();
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ese numero de control ya no existe!')", true);
-                        }
+                        
+                        
 
                     }
                     catch (Exception ex)

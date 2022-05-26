@@ -35,8 +35,8 @@ namespace GestionServicioSocial
                 try
                 {
                     conn.Open();
-                    string cadena = "SELECT contador,alu.numerocontrol,nombre,apellidoP,apellidoM,carrera,nombreDependencia,municipio,estado" +
-                        ",tipoPrograma,fechaInicioServ,fechaTerminoServ,LEFT(final, 3) as 'final',nivelDesempenio from Domicilio dom join " +
+                    string cadena = "SELECT contadorIngresado,alu.numerocontrol,nombre,apellidoP,apellidoM,carrera,horasServicio,nombreDependencia,municipioDependencia,estadoDependencia" +
+                        ",nombrePrograma,fechaInicioServ,fechaTerminoServ,diaTerminacion,mesTerminacion,anioTerminacion,LEFT(final, 3) as 'final',nivelDesempenio from Domicilio dom join " +
                         "infoEscolar inf on dom.iddomicilio =inf.idescolar join Alumno alu on inf.idescolar = alu.numerocontrol join Programa " +
                         "pro on alu.numerocontrol=pro.idPrograma join calificaciones cali on alu.numerocontrol=cali.idCalificaciones where" +
                         " alu.numerocontrol='" + txtNumeroControl.Text + "';";
@@ -46,22 +46,25 @@ namespace GestionServicioSocial
                     {
                         DateTime dateTime = DateTime.UtcNow.Date;
                         ConstanciaTerminacion2 reporte = new ConstanciaTerminacion2();
-                        reporte.SetParameterValue("@contador", registro["contador"].ToString());
+                        reporte.SetParameterValue("@contadorIngresado", registro["contadorIngresado"].ToString());
                         reporte.SetParameterValue("@numerocontrol", registro["numerocontrol"].ToString());
                         reporte.SetParameterValue("@nombre", registro["nombre"].ToString());
                         reporte.SetParameterValue("@apellidoP", registro["apellidoP"].ToString());
                         reporte.SetParameterValue("@apellidoM", registro["apellidoM"].ToString());
                         reporte.SetParameterValue("@carrera", registro["carrera"].ToString());
+                        reporte.SetParameterValue("@horasServicio", registro["horasServicio"].ToString());
                         reporte.SetParameterValue("@nombreDependencia", registro["nombreDependencia"].ToString());
-                        reporte.SetParameterValue("@municipio", registro["municipio"].ToString());
-                        reporte.SetParameterValue("@estado", registro["estado"].ToString());
-                        reporte.SetParameterValue("@tipoPrograma", registro["tipoPrograma"].ToString());
+                        reporte.SetParameterValue("@municipioDependencia", registro["municipioDependencia"].ToString());
+                        reporte.SetParameterValue("@estadoDependencia", registro["estadoDependencia"].ToString());
+                        reporte.SetParameterValue("@nombrePrograma", registro["nombrePrograma"].ToString());
                         reporte.SetParameterValue("@fechaInicioServ", registro["fechaInicioServ"].ToString());
                         reporte.SetParameterValue("@fechaTerminoServ", registro["fechaTerminoServ"].ToString());
                         reporte.SetParameterValue("@final", registro["final"].ToString());
                         reporte.SetParameterValue("@nivelDesempeño", registro["nivelDesempenio"].ToString());
-                        reporte.SetParameterValue("@dia", dateTime.ToString("dd"));
-                        reporte.SetParameterValue("@mes", dateTime.ToString("MMMM"));
+                        reporte.SetParameterValue("@diaTerminacion", registro["diaTerminacion"].ToString());
+                        reporte.SetParameterValue("@mesTerminacion", registro["mesTerminacion"].ToString());
+                        reporte.SetParameterValue("@anioTerminacion", registro["anioTerminacion"].ToString());
+
                         //mensaje.Text = registro["nombre"].ToString();
                         CrystalReportViewer1.ReportSource = reporte;
                     }
@@ -71,6 +74,12 @@ namespace GestionServicioSocial
                     txtNumeroControl.Text = e.Message;
                 }
             }
+        }
+
+        protected void BtnRegresar_Click(object sender, EventArgs e)
+        {
+            Session["userAdmin"] = "ADMIN";
+            Server.Transfer("vista.aspx");
         }
     }
 }

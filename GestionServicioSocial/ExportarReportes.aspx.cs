@@ -99,10 +99,13 @@ namespace GestionServicioSocial
 
         protected void BtnConstanciaTerminacion_Click(object sender, EventArgs e)
         {
+            /* String NC = txtNumeroControl.Text;
+             Session["userServicio"] = NC;
+             Response.Write("<script type='text/javascript'>window.open('ReporteConstanciaTerminacion2.aspx');</script>");*/
             String NC = txtNumeroControl.Text;
             Session["userServicio"] = NC;
-            Response.Write("<script type='text/javascript'>window.open('ReporteConstanciaTerminacion2.aspx');</script>");
-            
+            Response.Redirect("CostanciaTerminacionDatosFinales.aspx");
+
         }
     }
 }
