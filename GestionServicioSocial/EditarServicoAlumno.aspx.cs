@@ -66,8 +66,9 @@ namespace GestionServicioSocial
             {
                 txtNumeroControl.Text = HttpUtility.HtmlDecode(row.Cells[0].Text);
                 txtnombre.Text = HttpUtility.HtmlDecode(row.Cells[1].Text);
-                txtAm.Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
-                txtAp.Text = HttpUtility.HtmlDecode(row.Cells[3].Text);
+                txtAp.Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
+                txtAm.Text = HttpUtility.HtmlDecode(row.Cells[3].Text);
+               
                 txtcontraseña.Text = HttpUtility.HtmlDecode(row.Cells[4].Text);
                 txtedad.Text = HttpUtility.HtmlDecode(row.Cells[5].Text);
                 txtGenero.Text = HttpUtility.HtmlDecode(row.Cells[6].Text);

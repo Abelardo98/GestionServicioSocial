@@ -36,7 +36,7 @@ namespace GestionServicioSocial
                 {
                     conn.Open();
                     string cadena = "SELECT contadorIngresado,alu.numerocontrol,nombre,apellidoP,apellidoM,carrera,horasServicio,nombreDependencia,municipioDependencia,estadoDependencia" +
-                        ",nombrePrograma,fechaInicioServ,fechaTerminoServ,diaTerminacion,mesTerminacion,anioTerminacion,LEFT(final, 3) as 'final',nivelDesempenio from Domicilio dom join " +
+                        ",nombrePrograma,fechaInicioServ,fechaTerminoServ,diaTerminacion,mesTerminacion,anioTerminacion,LEFT(final, 1) as 'final',nivelDesempenio from Domicilio dom join " +
                         "infoEscolar inf on dom.iddomicilio =inf.idescolar join Alumno alu on inf.idescolar = alu.numerocontrol join Programa " +
                         "pro on alu.numerocontrol=pro.idPrograma join calificaciones cali on alu.numerocontrol=cali.idCalificaciones where" +
                         " alu.numerocontrol='" + txtNumeroControl.Text + "';";

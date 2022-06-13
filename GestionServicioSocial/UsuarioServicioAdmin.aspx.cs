@@ -362,16 +362,16 @@ namespace GestionServicioSocial
               if (txtNreportes.Text.ToString().Equals("3")) {
                     calcularCalificaciones();
                     gurdarCalificaciones();
-                    txtnombre.Text = "entre 3 reportes";
+                    //txtnombre.Text = "entre 3 reportes";
                 } else if (txtNreportes.Text.ToString().Equals("4")) {
                     calcularCalificaciones4Reportes();
                     gurdarCalificaciones();
-                    txtnombre.Text = "entre 4 reportes";
+                   // txtnombre.Text = "entre 4 reportes";
                 } else if(txtNreportes.Text.ToString().Equals("5"))
                 {
                     calcularCalificaciones5Reportes();
                     gurdarCalificaciones();
-                    txtnombre.Text = "entre 5 reportes";
+                   // txtnombre.Text = "entre 5 reportes";
                     
                 }
                 else {

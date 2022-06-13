@@ -451,7 +451,7 @@ namespace GestionServicioSocial
 
         protected void BtnProvicional_Click(object sender, EventArgs e)
         {
-            Response.Redirect("http://cartaprovisionalitsz.access.ly");
+            Response.Redirect("http://201.108.108.253:8080/CartaProvisional.aspx");
         }
     }
 }

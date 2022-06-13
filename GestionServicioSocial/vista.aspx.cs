@@ -644,9 +644,9 @@ namespace GestionServicioSocial
                             "copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\"," +
                             " nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec" +
                             " as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\"," +
-                            "correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" " +
+                            "correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\",calificacion,nivelDesempenio " +
                             "from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join " +
-                            "programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss; ", conn);
+                            "programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss join calificaciones on idCalificaciones = rp.idrpyss; ", conn);
                         dt = new DataTable();
                         da.Fill(dt);
                         List<string> lineas = new List<string>(), columnas = new List<string>();
