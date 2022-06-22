@@ -107,5 +107,28 @@ namespace GestionServicioSocial
             Response.Write("<script type='text/javascript'>window.open('ReporteConstanciaTerminacion2.aspx?parametro=" + NC + "');</script>");
             
         }
+
+        protected void btnGuardarNumeracion_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    // cmd.CommandText = "update documentosServicio set reporte1=@reporte1 where numeroControl=@numeroControl";
+                    cmd.CommandText = "update AlumnoReci set contadorIngresado=@contadorIngresado where numerocontrol=@numerocontrol";
+                    cmd.Parameters.AddWithValue("@numerocontrol", txtNumeroControl.Text);
+                    cmd.Parameters.AddWithValue("@contadorIngresado", txtNumeracion.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    txtNumeroControl.Text = ex.Message;
+                }
+            }
+        }
     }
 }

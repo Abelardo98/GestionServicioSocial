@@ -98,15 +98,15 @@
                 <tr>
                     <td class="auto-style17">
                         <asp:Label ID="Label1" runat="server" Text="Nómbre:" Width="150px"></asp:Label>
-                        <asp:TextBox ID="txtnombre" runat="server" Width="300px" required ReadOnly="True"></asp:TextBox>
+                        <asp:TextBox ID="txtnombre" runat="server" Width="300px" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
                         <asp:Label ID="Label20" runat="server" Text="Apellido Paterno:" Width="150px"></asp:Label>
-                        <asp:TextBox ID="txtAp" runat="server" required ReadOnly="True" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txtAp" runat="server" required Width="300px" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:Label ID="Label21" runat="server" Text="Apellido Materno:" Width="150px"></asp:Label>
-                        <asp:TextBox ID="txtAm" runat="server" ReadOnly="True" TextMode="Search" Width="300px"></asp:TextBox>
+                        <asp:Label ID="Label21" runat="server" Text="Apellido Materno:" Width="150px" ></asp:Label>
+                        <asp:TextBox ID="txtAm" runat="server" TextMode="Search" Width="300px" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -152,8 +152,11 @@
                     </td>
                     <td class="auto-style16">
                         <asp:Label ID="Label2" runat="server" Text="Género: " Width="150px"></asp:Label>
-
-                         <asp:Label ID="txtGenero" runat="server" Width="300px"></asp:Label>
+                        <asp:DropDownList ID="txtGenero" runat="server" Width="300px">
+                            <asp:ListItem>H</asp:ListItem>
+                            <asp:ListItem>M</asp:ListItem>
+                        </asp:DropDownList>
+                         
                     </td>
                     <td class="auto-style6">
                          <asp:Label ID="Label6" runat="server" Text="Estado Civil:" Width="150px"></asp:Label>
@@ -229,7 +232,16 @@
                     </td>
                      <td class="auto-style19">
                          <asp:Label ID="Label13" runat="server" Text="Carrera:" Width="150px"></asp:Label> 
-                         <asp:Label ID="TxtCarrera" runat="server" Text="Label" Width="300px"></asp:Label>
+                         <asp:DropDownList ID="TxtCarrera" runat="server" Width="300px">
+                             <asp:ListItem>INGENIERÍA INFORMÁTICA</asp:ListItem>
+                             <asp:ListItem>INGENIERÍA MECATRÓNICA</asp:ListItem>
+                             <asp:ListItem>INGENIERÍA EN ADMINISTRACIÓN</asp:ListItem>
+                             <asp:ListItem>INGENIERÍA INDUSTRIAL </asp:ListItem>
+                             <asp:ListItem>INGENIERÍA FORESTAL </asp:ListItem>
+                             <asp:ListItem>LICENCIATURA EN BIOLOGÍA </asp:ListItem>
+                             <asp:ListItem>GASTRONOMÍA</asp:ListItem>
+                         </asp:DropDownList>
+                         
                     </td>
                      <td>
                          <asp:Label ID="Label14" runat="server" Text="Periodo:" Width="150px"></asp:Label>
@@ -273,7 +285,7 @@
                 <tr>
                     <td class="auto-style18">
                         <asp:Label ID="Label26" runat="server" Text="Créditos Aprobados:" Width="150px"></asp:Label>
-                        <asp:Label ID="txtCreditos" runat="server" Width="300px"></asp:Label>
+                        <asp:TextBox ID="txtCreditos" runat="server" Width="300px" required></asp:TextBox>
 
                     </td>
                      <td class="auto-style19">

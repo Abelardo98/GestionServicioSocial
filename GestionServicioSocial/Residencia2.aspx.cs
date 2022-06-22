@@ -169,7 +169,7 @@ namespace GestionServicioSocial
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarEscolarReci";
                     cmd.Parameters.Add("@idescolar", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
-                    cmd.Parameters.Add("@carrera", SqlDbType.VarChar).Value = TxtCarrera.Text.Trim();
+                    cmd.Parameters.Add("@carrera", SqlDbType.VarChar).Value = TxtCarrera.SelectedItem.ToString();
                     cmd.Parameters.Add("@periodo", SqlDbType.VarChar).Value = txtPeriodo.SelectedItem.ToString();
                     cmd.Parameters.Add("@semestre", SqlDbType.VarChar).Value = txtSemestre.Text.Trim();
                     cmd.Parameters.Add("@inscrito", SqlDbType.VarChar).Value = txtInscrito.SelectedValue.ToString();
@@ -203,7 +203,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@apellidoM", SqlDbType.VarChar).Value = txtAm.Text.Trim();
                     cmd.Parameters.Add("@contraseña", SqlDbType.VarChar).Value = txtContraseña.Text.Trim();
                     cmd.Parameters.Add("@edad", SqlDbType.VarChar).Value = txtEdad.Text.Trim(); ;
-                    cmd.Parameters.Add("@genero", SqlDbType.VarChar).Value = txtgenero.Text.Trim();
+                    cmd.Parameters.Add("@genero", SqlDbType.VarChar).Value = txtgenero.SelectedItem.ToString();
                     cmd.Parameters.Add("@estadoCivil", SqlDbType.VarChar).Value = txtEstadoCivil.Text.Trim().ToString();
                     cmd.Parameters.Add("@correoElectronico", SqlDbType.VarChar).Value = txtcorreo.Text.Trim();
                     cmd.Parameters.Add("@idescolar", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
@@ -219,46 +219,64 @@ namespace GestionServicioSocial
             }
         }
         public void llenardatos() {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+
+            int creditosV = Convert.ToInt32(txtCreditos.Text);
+
+            if (creditosV >= 208)
             {
-
-                try
-                {
-
-                    DataTable dt = new DataTable();
-                    DataSet ds = new DataSet();
-                    conn.Open();
-                    SqlCommand consulta = new SqlCommand("select * from validarResidencia where numerocontrol = '" + txtNumeroControl.Text + "';; ", conn);
-
-                    ArrayList lista = new ArrayList();
-                    SqlDataAdapter con = new SqlDataAdapter(consulta);
-
-
-                    con.Fill(ds);
-                    dt = ds.Tables[0];
-                    dt.AcceptChanges();
-                    GridView1.DataSource = dt;
-                    GridView1.DataBind();
-
-                    if (validarRecidencia() == true)
-                    {
-                        insertarDomicilio();
-                        insertarEscolar();
-                        insertarAlumno();
-                        insertarDocumentoReci();
-                        Response.Redirect("Residencia1.aspx?parametro=" + txtNumeroControl.Text);
-                    }
-                    else {
-                        txtCreditos.Text = "Creditos no superados";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    txtCreditos.Text = "Creditos no superados";
-                }
+                insertarDomicilio();
+                insertarEscolar();
+                insertarAlumno();
+                insertarDocumentoReci();
+                Response.Redirect("Residencia1.aspx?parametro=" + txtNumeroControl.Text);
+            }
+            else {
+                txtCreditos.Text = "Creditos no superados";
 
             }
-        }
+
+
+
+                /* using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+                 {
+
+                     try
+                     {
+
+                         DataTable dt = new DataTable();
+                         DataSet ds = new DataSet();
+                         conn.Open();
+                         SqlCommand consulta = new SqlCommand("select * from validarResidencia where numerocontrol = '" + txtNumeroControl.Text + "';; ", conn);
+
+                         ArrayList lista = new ArrayList();
+                         SqlDataAdapter con = new SqlDataAdapter(consulta);
+
+
+                         con.Fill(ds);
+                         dt = ds.Tables[0];
+                         dt.AcceptChanges();
+                         GridView1.DataSource = dt;
+                         GridView1.DataBind();
+
+                         if (validarRecidencia() == true)
+                         {
+                             insertarDomicilio();
+                             insertarEscolar();
+                             insertarAlumno();
+                             insertarDocumentoReci();
+                             Response.Redirect("Residencia1.aspx?parametro=" + txtNumeroControl.Text);
+                         }
+                         else {
+                             txtCreditos.Text = "Creditos no superados";
+                         }
+                     }
+                     catch (Exception ex)
+                     {
+                         txtCreditos.Text = "Creditos no superados";
+                     }
+
+                 }*/
+            }
 
         public Boolean validarRecidencia() {
 

@@ -48,6 +48,11 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@numerocontrol", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
                     cmd.Parameters.Add("@copiaNombrePersona", SqlDbType.VarChar).Value = txtCopiaNombre.Text.Trim();
                     cmd.Parameters.Add("@copiaPuestoPersona", SqlDbType.VarChar).Value = txtCopiaPuesto.Text.Trim();
+                    cmd.Parameters.Add("@municipioDependencia", SqlDbType.VarChar).Value = txtMunicipioDependencia.Text.Trim();
+                    cmd.Parameters.Add("@estadoDependencia", SqlDbType.VarChar).Value = txtEstadoDependencia.Text.Trim();
+                    cmd.Parameters.Add("@telefonoDependencia", SqlDbType.VarChar).Value = txtTelefonoDependencia.Text.Trim();
+                    cmd.Parameters.Add("@correoDependencia", SqlDbType.VarChar).Value = txtCorreoDependencia.Text.Trim();
+
                     cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -111,11 +116,19 @@ namespace GestionServicioSocial
                 Label9.Enabled = false;
                 Label12.Enabled = false;
                 BtnContinuar.Enabled = false;
+                txtMunicipioDependencia.Enabled = false;
+                txtEstadoDependencia.Enabled = false;
+                txtTelefonoDependencia.Enabled = false;
+                txtCorreoDependencia.Enabled = false;
                 txtRazonSocial.Text = "INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA";
                 txtTitularDependencia.Text = "GUSTAVO URBANO JUÁREZ";
                 txtPuestoTitular.Text = "DIRECTOR GENERAL";
                 txtTipo.SelectedValue= "Público";
                 txtTipo.Enabled = false;
+                txtMunicipioDependencia.Text = "ZACAPOAXTLA";
+                txtEstadoDependencia.Text = "PUEBLA";
+                txtTelefonoDependencia.Text = "233 317 5000";
+                txtCorreoDependencia.Text = "recepcion.dg@zacapoaxtla.tecnm.mx";
             }
             else {              
                 LinkButton2.Visible = false;
@@ -128,11 +141,19 @@ namespace GestionServicioSocial
                 txtCopiaPuesto.Enabled = true;
                 Label9.Enabled = true;
                 Label12.Enabled = true;
+                txtMunicipioDependencia.Enabled = true;
+                txtEstadoDependencia.Enabled = true;
+                txtTelefonoDependencia.Enabled = true;
+                txtCorreoDependencia.Enabled = true;
                 txtRazonSocial.Text = "";
                 txtTitularDependencia.Text = "";
                 txtPuestoTitular.Text = "";               
                 txtAreaAlumno.Text = "";
                 txtNombreAsesorExterno.Text = "";
+                txtMunicipioDependencia.Text = "";
+                txtEstadoDependencia.Text = "";
+                txtTelefonoDependencia.Text = "";
+                txtCorreoDependencia.Text = "";
             }
         }
 

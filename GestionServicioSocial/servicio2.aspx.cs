@@ -170,7 +170,7 @@ namespace GestionServicioSocial
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "insertarEscolar";
                     cmd.Parameters.Add("@idescolar", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
-                    cmd.Parameters.Add("@carrera", SqlDbType.VarChar).Value = TxtCarrera.Text.Trim();
+                    cmd.Parameters.Add("@carrera", SqlDbType.VarChar).Value = TxtCarrera.SelectedItem.ToString();
                     cmd.Parameters.Add("@periodo", SqlDbType.VarChar).Value = txtPeriodo.Text.Trim();
                     cmd.Parameters.Add("@semestre", SqlDbType.VarChar).Value = txtSemestre.Text.Trim();
                     cmd.Parameters.Add("@inscrito", SqlDbType.VarChar).Value = txtInscrito.SelectedValue.ToString();
@@ -199,7 +199,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@apellidoM", SqlDbType.VarChar).Value = txtAm.Text.Trim();
                     cmd.Parameters.Add("@contraseña", SqlDbType.VarChar).Value = txtcontraseña.Text.Trim();
                     cmd.Parameters.Add("@edad", SqlDbType.VarChar).Value = txtedad.SelectedItem.ToString(); ;
-                    cmd.Parameters.Add("@genero", SqlDbType.VarChar).Value = txtGenero.Text.Trim();
+                    cmd.Parameters.Add("@genero", SqlDbType.VarChar).Value = txtGenero.SelectedItem.ToString();
                     cmd.Parameters.Add("@estadoCivil", SqlDbType.VarChar).Value = txtEstadoCivil.SelectedItem.ToString();
                     cmd.Parameters.Add("@correoElectronico", SqlDbType.VarChar).Value = txtcorreo.Text.Trim();
                     cmd.Parameters.Add("@idescolar", SqlDbType.VarChar).Value = txtNumeroControl.Text.Trim();
@@ -215,7 +215,22 @@ namespace GestionServicioSocial
 
         public void llenardatos()
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            int creditosV = Convert.ToInt32(txtCreditos.Text);
+
+            if (creditosV >= 177)
+            {
+                insertarDomicilio();
+                insertarEscolar();
+                insertarAlumno();
+                insertarDocumentoServicio();
+                Response.Redirect("servicio1.aspx?parametro=" + txtNumeroControl.Text);
+            }
+            else {
+                txtCreditos.Text = "Creditos no superados";
+            }
+
+
+           /* using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
 
                 try
@@ -253,13 +268,12 @@ namespace GestionServicioSocial
                 {
                     txtCreditos.Text = "Numero de control no valido";
                 }
-
-            }
+               
+            }*/
         }
 
         public Boolean validarRecidencia()
         {
-
             int creditosValidos = 177;
             string creditosAlumno;
 
@@ -287,9 +301,6 @@ namespace GestionServicioSocial
                 }
             }
             return false;
-
-
-
         }
 
         protected void BtnContinuar_Click(object sender, EventArgs e)

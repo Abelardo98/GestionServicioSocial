@@ -114,6 +114,15 @@ namespace GestionServicioSocial
         protected global::System.Web.UI.WebControls.Button BtnLimpiarBD;
 
         /// <summary>
+        /// Control BtnSie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSie;
+
+        /// <summary>
         /// Control BTN_Eliminar.
         /// </summary>
         /// <remarks>

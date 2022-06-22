@@ -91,6 +91,21 @@
                 </tr>
 
                 <tr>
+                    <td class="auto-style21" >                        
+                        <asp:Label ID="Label16" runat="server" Text="Teléfono dependencia:" Width="400px"></asp:Label>            
+                        <asp:TextBox ID="txtTelefonoDependencia" runat="server" Width="880px" required OnTextChanged="txtDependenciaOficial_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="auto-style21" >                        
+                        <asp:Label ID="Label17" runat="server" Text="Correo dependencia:" Width="400px"></asp:Label>            
+                        <asp:TextBox ID="txtCorreoDependencia" runat="server" Width="880px" required OnTextChanged="txtDependenciaOficial_TextChanged"></asp:TextBox>
+                    </td>
+                    
+                </tr>
+
+                <tr>
                     <td class="auto-style21" >
                          <asp:Label ID="Label3" runat="server" Text="Titular de la dependencia:" Width="400px"></asp:Label>
                          <asp:TextBox ID="txtTitularDependencia" runat="server" Width="880px" required OnTextChanged="txtTitularDependencia_TextChanged" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>

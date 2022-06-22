@@ -73,7 +73,26 @@
 
     &nbsp;&nbsp;<asp:Button ID="BtnLimpiarBD" class="btn btn-info" runat="server" Text="Limpiar BD" OnClick="BtnLimpiarBD_Click" />
         &nbsp;&nbsp;
-    <button id="btn" class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal">Cargar Base De Datos</button>
+    <button id="btn" class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal">Cargar Base De Datos</button>&nbsp;&nbsp;
+        <button id="BtnS" class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal3">Validar SIE</button>
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel3">¿El alumno se encuentra de la lista SIE?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="NO">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+        <asp:Button ID="BtnSie" runat="server" class="btn btn-info" Text="SI" OnClick="BtnSie_Click" />
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

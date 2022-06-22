@@ -120,7 +120,7 @@
                 <asp:Label ID="Label2" runat="server" Text="Ingresa tú número de control : "></asp:Label>
                 <asp:TextBox ID="numeroControlReg" runat="server" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Número de control"></asp:TextBox>
                 <br />
-                <asp:Label ID="alertaControl" runat="server" Text=""></asp:Label>
+                <asp:Label ID="alertaControl" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
             </div><br/>
                 <div>
                  <p>Selecciona el proceso que vas a cursar</p>  

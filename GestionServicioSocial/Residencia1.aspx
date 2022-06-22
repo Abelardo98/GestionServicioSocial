@@ -75,6 +75,9 @@
         .auto-style23 {
             height: 36px;
         }
+        .auto-style24 {
+            height: 48px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -107,6 +110,28 @@
                              <asp:ListItem>Privado</asp:ListItem>
                              <asp:ListItem>Social</asp:ListItem>
                          </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style24">
+                        <asp:Label ID="Label13" runat="server" Text="Municipio de la dependencia:" Width="340px"></asp:Label>            
+                        <asp:TextBox ID="txtMunicipioDependencia" runat="server" Width="400px" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    </td>
+                    <td class="auto-style24">
+                         <asp:Label ID="Label14" runat="server" Text="Estado de la dependencia:" Width="200px"></asp:Label>
+            
+                         <asp:TextBox ID="txtEstadoDependencia" required runat="server" Width="405px" onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style24">
+                        <asp:Label ID="Label15" runat="server" Text="Teléfono dependencia:" Width="340px"></asp:Label>            
+                        <asp:TextBox ID="txtTelefonoDependencia" runat="server" Width="400px" required onkeyup="javascript:this.value=this.value.toUpperCase();"></asp:TextBox>
+                    </td>
+                    <td class="auto-style24">
+                         <asp:Label ID="Label16" runat="server" Text="Correo dependencia:" Width="200px"></asp:Label>
+            
+                         <asp:TextBox ID="txtCorreoDependencia" required runat="server" Width="405px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

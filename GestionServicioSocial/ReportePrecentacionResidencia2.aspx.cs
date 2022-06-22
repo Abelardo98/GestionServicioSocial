@@ -39,7 +39,7 @@ namespace GestionServicioSocial
                 try
                 {
                     conn.Open();
-                    string cadena = "SELECT alu.numerocontrol,nombre,apellidoP,apellidoM,carrera, seguroFacultativo,nombreTitular,puestoTitular,razonSocial,nombreAcesor,puestoAcesor,contador,copiaNombrePersona,copiaPuestoPersona from infoEscolarReci inf join AlumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='" + txtNumeroControl.Text + "';";
+                    string cadena = "SELECT alu.numerocontrol,nombre,apellidoP,apellidoM,carrera, seguroFacultativo,nombreTitular,puestoTitular,razonSocial,nombreAcesor,puestoAcesor,contadorIngresado,copiaNombrePersona,copiaPuestoPersona from infoEscolarReci inf join AlumnoReci alu on inf.idescolar = alu.numerocontrol join ProgramaReci pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='" + txtNumeroControl.Text + "';";
                     SqlCommand comando = new SqlCommand(cadena, conn);
                     SqlDataReader registro = comando.ExecuteReader();
                     if (registro.Read())
@@ -55,7 +55,7 @@ namespace GestionServicioSocial
                         reporte.SetParameterValue("@carrera", registro["carrera"].ToString());
                         reporte.SetParameterValue("@numeroControl", registro["numerocontrol"].ToString());
                         reporte.SetParameterValue("@imss", registro["seguroFacultativo"].ToString());
-                        reporte.SetParameterValue("@contador", registro["contador"].ToString());
+                        reporte.SetParameterValue("@contadorIngresado", registro["contadorIngresado"].ToString());
                         reporte.SetParameterValue("@fecha", dateTime.ToString("dd/MMMM/yyyy"));
 
                         if (validarReporte()== true) {

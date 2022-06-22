@@ -64,6 +64,8 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@copiaPuestoPersona", SqlDbType.VarChar).Value = txtCopiaPuesto.Text.Trim();
                     cmd.Parameters.Add("@municipioDependencia", SqlDbType.VarChar).Value = txtMuncipioDependencia.Text.Trim();
                     cmd.Parameters.Add("@estadoDependencia", SqlDbType.VarChar).Value = txtEstadoDependencia.Text.Trim();
+                    cmd.Parameters.Add("@telefonoDependencia", SqlDbType.VarChar).Value = txtTelefonoDependencia.Text.Trim();
+                    cmd.Parameters.Add("@correoDependencia", SqlDbType.VarChar).Value = txtCorreoDependencia.Text.Trim();
 
                     cmd.Connection = conn;
                     conn.Open();
@@ -151,9 +153,17 @@ namespace GestionServicioSocial
                 txtPuestoTitular.Enabled = false;
                 txtCopiaNombre.Enabled = false;
                 txtCopiaPuesto.Enabled = false;
+                txtMuncipioDependencia.Enabled = false;
+                txtEstadoDependencia.Enabled = false;
+                txtTelefonoDependencia.Enabled = false;
+                txtCorreoDependencia.Enabled = false;
                 txtDependenciaOficial.Text = "INSTITUTO TECNOLÓGICO SUPERIOR DE ZACAPOAXTLA";
                 txtTitularDependencia.Text = "GUSTAVO URBANO JUÁREZ";
-                txtPuestoTitular.Text = "DIRECTOR GENERAL";               
+                txtPuestoTitular.Text = "DIRECTOR GENERAL";
+                txtMuncipioDependencia.Text = "ZACAPOAXTLA";
+                txtEstadoDependencia.Text = "PUEBLA";
+                txtTelefonoDependencia.Text = "233 317 5000";
+                txtCorreoDependencia.Text = "recepcion.dg@zacapoaxtla.tecnm.mx";
             }
             else
             {
@@ -165,11 +175,19 @@ namespace GestionServicioSocial
                 txtPuestoTitular.Enabled = true;
                 txtCopiaNombre.Enabled = true;
                 txtCopiaPuesto.Enabled = true;
+                txtMuncipioDependencia.Enabled = true;
+                txtEstadoDependencia.Enabled = true;
+                txtTelefonoDependencia.Enabled = true;
+                txtCorreoDependencia.Enabled = true;
                 txtDependenciaOficial.Text = "";
                 txtTitularDependencia.Text = "";
                 txtPuestoTitular.Text = "";
                 txtAreaAlumno.Text = "";
                 txtNombrePersonaServicio.Text = "";
+                txtMuncipioDependencia.Text = "";
+                txtEstadoDependencia.Text = "";
+                txtTelefonoDependencia.Text = "";
+                txtCorreoDependencia.Text = "";
             }
         }
 
