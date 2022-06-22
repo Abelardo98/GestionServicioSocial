@@ -102,7 +102,7 @@ namespace GestionServicioSocial
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtgenero;
+        protected global::System.Web.UI.WebControls.DropDownList txtgenero;
 
         /// <summary>
         /// Control Label6.
@@ -282,7 +282,7 @@ namespace GestionServicioSocial
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TxtCarrera;
+        protected global::System.Web.UI.WebControls.DropDownList TxtCarrera;
 
         /// <summary>
         /// Control Label14.
@@ -390,7 +390,7 @@ namespace GestionServicioSocial
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtCreditos;
+        protected global::System.Web.UI.WebControls.TextBox txtCreditos;
 
         /// <summary>
         /// Control Label4.

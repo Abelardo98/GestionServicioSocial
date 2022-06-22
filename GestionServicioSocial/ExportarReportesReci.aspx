@@ -10,7 +10,16 @@
         <asp:Label ID="txtNumeroControl" runat="server"></asp:Label>
         <br />
         <br />
+        <br />
+        <article>
+            <asp:Label ID="Label1" runat="server" Text="Numeración documentación: "></asp:Label>
+            &nbsp;<asp:TextBox ID="txtNumeracion" runat="server"></asp:TextBox>
+            &nbsp;
+            <asp:Button ID="btnGuardarNumeracion" runat="server" Text="Guardar numeración " Width="169px" OnClick="btnGuardarNumeracion_Click" />
+        </article>
 
+        <br />
+        <br />
         <article id="expo">
         
            

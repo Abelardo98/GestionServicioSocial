@@ -349,7 +349,7 @@ namespace GestionServicioSocial
             }
             else
             {
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+                /*using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
                 {
                     try
                     {
@@ -371,8 +371,10 @@ namespace GestionServicioSocial
                     {
                         txtusername.Text = ex.Message;
                     }
-                }
-                
+                }*/
+
+                Response.Redirect("servicio2.aspx?parametro=" + numeroControlReg.Text);
+
             }
 
         }
@@ -380,35 +382,38 @@ namespace GestionServicioSocial
 
         protected void btnResidencia_Click(object sender, EventArgs e)
         {
-            if (numeroControlReg.Text.Equals("")) 
-            {
-                alertaControl.Text = "Ingresa tu numero de control";
+             if (numeroControlReg.Text.Equals("")) 
+             {
+                 alertaControl.Text = "Ingresa tu numero de control";
+             }
+             else
+             {
+                /* using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+                 {
+                     try
+                     {
+                         conn.Open();
+                         string cadena = "select numerocontrol from validarResidencia where numerocontrol='" + numeroControlReg.Text + "';";
+                         SqlCommand comando = new SqlCommand(cadena, conn);
+                         SqlDataReader registro = comando.ExecuteReader();
+                         if (registro.Read())
+                         {
+                             Response.Redirect("Residencia2.aspx?parametro=" + numeroControlReg.Text);
+                         }
+                         else
+                         {
+                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ese numero de control no existe!')", true);
+                         }
+                     }
+                     catch (Exception ex)
+                     {
+                     }
+                 }*/
+
+
+                Response.Redirect("Residencia2.aspx?parametro=" + numeroControlReg.Text);
             }
-            else
-            {
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
-                {
-                    try
-                    {
-                        conn.Open();
-                        string cadena = "select numerocontrol from validarResidencia where numerocontrol='" + numeroControlReg.Text + "';";
-                        SqlCommand comando = new SqlCommand(cadena, conn);
-                        SqlDataReader registro = comando.ExecuteReader();
-                        if (registro.Read())
-                        {
-                            Response.Redirect("Residencia2.aspx?parametro=" + numeroControlReg.Text);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ese numero de control no existe!')", true);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-                }
-                
-            }
+           
         }
 
         protected void BtnVisitas_Click(object sender, EventArgs e)
@@ -451,7 +456,7 @@ namespace GestionServicioSocial
 
         protected void BtnProvicional_Click(object sender, EventArgs e)
         {
-            Response.Redirect("http://201.108.108.253:8080/CartaProvisional.aspx");
+            Response.Redirect("http://drpyssitsz.ddns.net:81/");
         }
     }
 }

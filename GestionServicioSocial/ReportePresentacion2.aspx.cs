@@ -37,7 +37,7 @@ namespace GestionServicioSocial
                 try 
                 {
                     conn.Open();
-                    string cadena = "SELECT alu.numerocontrol,nombre, contador,apellidoP,apellidoM,carrera,nombreTitular,puestoTitular,nombreDependencia,nombreAcesor,puestoAcesor,copiaNombrePersona,copiaPuestoPersona from infoEscolar inf join Alumno alu on inf.idescolar = alu.numerocontrol join Programa pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='" + txtNumeroControl.Text+"';";
+                    string cadena = "SELECT alu.numerocontrol,nombre, contadorIngresado,apellidoP,apellidoM,carrera,nombreTitular,puestoTitular,nombreDependencia,nombreAcesor,puestoAcesor,copiaNombrePersona,copiaPuestoPersona from infoEscolar inf join Alumno alu on inf.idescolar = alu.numerocontrol join Programa pro on alu.numerocontrol=pro.idPrograma where alu.numerocontrol='" + txtNumeroControl.Text+"';";
                     SqlCommand comando = new SqlCommand(cadena, conn);
                     SqlDataReader registro = comando.ExecuteReader();
                     if(registro.Read()) 
@@ -51,7 +51,7 @@ namespace GestionServicioSocial
                         reporte.SetParameterValue("@apellidoPal", registro["apellidoP"].ToString());
                         reporte.SetParameterValue("@apellidoMal", registro["apellidoM"].ToString());
                         reporte.SetParameterValue("@carrea", registro["carrera"].ToString());
-                        reporte.SetParameterValue("@contador", registro["contador"].ToString());
+                        reporte.SetParameterValue("@contadorIngresado", registro["contadorIngresado"].ToString());
                         reporte.SetParameterValue("@nc", registro["numerocontrol"].ToString());
                         reporte.SetParameterValue("@fecha", dateTime.ToString("dd/MM/yyyy"));
 
@@ -61,6 +61,7 @@ namespace GestionServicioSocial
                             reporte.SetParameterValue("@copiaNombre", registro["copiaNombrePersona"]);
                             reporte.SetParameterValue("@copiaPuesto", registro["copiaPuestoPersona"]);
                         }
+                        
 
                         //mensaje.Text = registro["nombre"].ToString();
                         CrystalReportViewer1.ReportSource = reporte;

@@ -154,7 +154,7 @@ namespace GestionServicioSocial {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_contador {
+        public CrystalDecisions.Shared.IParameterField Parameter_contadorIngresado {
             get {
                 return this.DataDefinition.ParameterFields[8];
             }

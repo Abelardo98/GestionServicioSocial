@@ -257,19 +257,20 @@ namespace GestionServicioSocial
             {
                 try
                 {
-                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\"" +
-                        ",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\" ,fechaRegistro as \"Fecha de registro\",edad as \"Edad\"," +
+                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,SIE as \"Validación SIE\",nombre as \"Nombre\",apellidop as \"Apellido Paterno\"" +
+                        ",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\" ,fechaRegistro as \"Fecha de registro\",contadorIngresado as \"Contador Documentación\" ,horasServicio as \"Horas Totales Servicio\",edad as \"Edad\"," +
                         "genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\"," +
                         " semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados" +
                         " as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as" +
-                        " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as" +
+                        " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\",municipioDependencia as \"Municipio Dependencia\",estadoDependencia as \"Estado Dependencia\"," +
+                        "telefonoDependencia as \"Teléfono Dependencia\",correoDependencia as \"Correo Dependencia\", nombretitular as" +
                         " \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\"," +
                         "copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\"," +
                         " nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec " +
                         "as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno" +
-                        " as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio" +
+                        " as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\",LEFT(final, 1) as \"Final\",LEFT(calificacion, 5) as \"Calificación\",nivelDesempenio as \"Nivel Desempeño\" from domicilio" +
                         " dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro" +
-                        " on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss; ", conn);
+                        " on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss full join calificaciones on rp.idrpyss = idCalificaciones; ", conn);
                     dt = new DataTable();
                     da.Fill(dt);
                     GridView1.DataSource = dt;
@@ -288,7 +289,21 @@ namespace GestionServicioSocial
             {
                 try
                 {
-                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\",fechaRegistro as \"Fecha de registro\" ,edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss where inf.idescolar= '" + txtNumerocontrol.Text + "'; ", conn);
+                    //da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\",fechaRegistro as \"Fecha de registro\" ,edad as \"Edad\",genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss where inf.idescolar= '" + txtNumerocontrol.Text + "'; ", conn);
+                    da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,SIE as \"Validación SIE\",nombre as \"Nombre\",apellidop as \"Apellido Paterno\"" +
+                        ",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\" ,fechaRegistro as \"Fecha de registro\",contadorIngresado as \"Contador Documentación\" ,horasServicio as \"Horas Totales Servicio\",edad as \"Edad\"," +
+                        "genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\"," +
+                        " semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados" +
+                        " as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as" +
+                        " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\",municipioDependencia as \"Municipio Dependencia\",estadoDependencia as \"Estado Dependencia\"," +
+                        "telefonoDependencia as \"Teléfono Dependencia\",correoDependencia as \"Correo Dependencia\", nombretitular as" +
+                        " \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\"," +
+                        "copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\"," +
+                        " nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec " +
+                        "as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno" +
+                        " as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\",LEFT(final, 1) as \"Final\",LEFT(calificacion, 5) as \"Calificación\",nivelDesempenio as \"Nivel Desempeño\" from domicilio" +
+                        " dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro" +
+                        " on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss full join calificaciones on rp.idrpyss = idCalificaciones where inf.idescolar= '" + txtNumerocontrol.Text + "';", conn);
                     dt = new DataTable();
                     da.Fill(dt);
                     GridView1.DataSource = dt;
@@ -542,20 +557,20 @@ namespace GestionServicioSocial
                     {
                         try
                         {
-                            da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\"," +
-                                "apellidom as \"Apellido Materno\",contraseña as \"Contraseña\" ,fechaRegistro as \"Fecha de registro\",edad as \"Edad\"," +
-                                "genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\"," +
-                                " semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as" +
-                                " \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as" +
-                                " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as" +
-                                " \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia" +
-                                " Para\",copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto" +
-                                " del Supervisor\", nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as" +
-                                " \"Tipo Programa\",servicioTec as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as" +
-                                " \"Fecha Terminación del Servicio\",correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as" +
-                                " \"Motivo\", observaciones as \"Observaciones\" from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar" +
-                                " join alumno alu on inf.idescolar = alu.numerocontrol join programa pro on alu.numerocontrol = pro.idprograma join rpyss" +
-                                " rp on pro.idprograma = rp.idrpyss; ", conn);
+                            da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,SIE as \"Validación SIE\",nombre as \"Nombre\",apellidop as \"Apellido Paterno\"" +
+                        ",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\" ,fechaRegistro as \"Fecha de registro\",contadorIngresado as \"Contador Documentación\" ,horasServicio as \"Horas Totales Servicio\",edad as \"Edad\"," +
+                        "genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\"," +
+                        " semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados" +
+                        " as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as" +
+                        " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\",municipioDependencia as \"Municipio Dependencia\",estadoDependencia as \"Estado Dependencia\"," +
+                        "telefonoDependencia as \"Teléfono Dependencia\",correoDependencia as \"Correo Dependencia\", nombretitular as" +
+                        " \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\"," +
+                        "copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\"," +
+                        " nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec " +
+                        "as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno" +
+                        " as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\",LEFT(final, 1) as \"Final\",LEFT(calificacion, 5) as \"Calificación\",nivelDesempenio as \"Nivel Desempeño\" from domicilio" +
+                        " dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro" +
+                        " on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss full join calificaciones on rp.idrpyss = idCalificaciones; ", conn);
                             dt = new DataTable();
                             da.Fill(dt);
                             List<string> lineas = new List<string>(), columnas = new List<string>();
@@ -587,19 +602,20 @@ namespace GestionServicioSocial
                     {
                         try
                         {
-                            da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\"," +
-                                "apellidom as \"Apellido Materno\",contraseña as \"Contraseña\",fechaRegistro as \"Fecha de registro\" ,edad as \"Edad\",genero" +
-                                " as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\", semestre as" +
-                                " \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados as \"Creditos" +
-                                " Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as \"Municipio\"," +
-                                " estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as \"Nombre Titular\"," +
-                                " puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\",copiaPuestoPersona as" +
-                                " \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\", nombreprograma as" +
-                                " \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec as \"Servicio Tec\"," +
-                                "fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno as" +
-                                " \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\" from domicilio dom" +
-                                " join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro" +
-                                " on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss; ", conn);
+                            da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,SIE as \"Validación SIE\",nombre as \"Nombre\",apellidop as \"Apellido Paterno\"" +
+                        ",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\" ,fechaRegistro as \"Fecha de registro\",contadorIngresado as \"Contador Documentación\" ,horasServicio as \"Horas Totales Servicio\",edad as \"Edad\"," +
+                        "genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\"," +
+                        " semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados" +
+                        " as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as" +
+                        " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\",municipioDependencia as \"Municipio Dependencia\",estadoDependencia as \"Estado Dependencia\"," +
+                        "telefonoDependencia as \"Teléfono Dependencia\",correoDependencia as \"Correo Dependencia\", nombretitular as" +
+                        " \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\"," +
+                        "copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\"," +
+                        " nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec " +
+                        "as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno" +
+                        " as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\",LEFT(final, 1) as \"Final\",LEFT(calificacion, 5) as \"Calificación\",nivelDesempenio as \"Nivel Desempeño\" from domicilio" +
+                        " dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro" +
+                        " on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss full join calificaciones on rp.idrpyss = idCalificaciones; ", conn);
                             dt = new DataTable();
                             da.Fill(dt);
                             List<string> lineas = new List<string>(), columnas = new List<string>();
@@ -634,19 +650,20 @@ namespace GestionServicioSocial
                 {
                     try
                     {
-                        da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,nombre as \"Nombre\",apellidop as \"Apellido Paterno\"," +
-                            "apellidom as \"Apellido Materno\",contraseña as \"Contraseña\",fechaRegistro as \"Fecha de registro\" ,edad as \"Edad\"," +
-                            "genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\"," +
-                            " semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados" +
-                            " as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as" +
-                            " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\", nombretitular as" +
-                            " \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\"," +
-                            "copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\"," +
-                            " nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec" +
-                            " as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\"," +
-                            "correoAsesorExterno as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\",calificacion,nivelDesempenio " +
-                            "from domicilio dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join " +
-                            "programa pro on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss join calificaciones on idCalificaciones = rp.idrpyss; ", conn);
+                        da = new SqlDataAdapter("select alu.numerocontrol as \"Número Control\" ,SIE as \"Validación SIE\",nombre as \"Nombre\",apellidop as \"Apellido Paterno\"" +
+                        ",apellidom as \"Apellido Materno\",contraseña as \"Contraseña\" ,fechaRegistro as \"Fecha de registro\",contadorIngresado as \"Contador Documentación\" ,horasServicio as \"Horas Totales Servicio\",edad as \"Edad\"," +
+                        "genero as \"Género\",estadocivil as \"Estado Civil\",correoelectronico as \"Correo Electrónico\", carrera as \"Carrera\"," +
+                        " semestre as \"Semestre\", periodo as \"Periodo\", inscrito as \"Inscrito\",inf.modalidad as \"Modalidad\",creditosAprovados" +
+                        " as \"Creditos Aprobados\",calle as \"Dirección\", localidad as \"Localidad\", codigopostal as \"Código Postal\",municipio as" +
+                        " \"Municipio\", estado as \"Estado\", telefono as \"Teléfono\", nombredependencia as \"Nombre Dependencia\",municipioDependencia as \"Municipio Dependencia\",estadoDependencia as \"Estado Dependencia\"," +
+                        "telefonoDependencia as \"Teléfono Dependencia\",correoDependencia as \"Correo Dependencia\", nombretitular as" +
+                        " \"Nombre Titular\", puestotitular as \"Puesto Titular\",areaalumno as \"Área Alumno\",copiaNombrePersona as \"Con Copia Para\"," +
+                        "copiaPuestoPersona as \"Puesto de la Persona\", nombreacesor as \"Nombre del Supervisor\", puestoacesor as \"Puesto del Supervisor\"," +
+                        " nombreprograma as \"Nombre Programa\", programaactividad as \"Programa Actividad\",tipoprograma as \"Tipo Programa\",servicioTec " +
+                        "as \"Servicio Tec\",fechaInicioServ as \"Fecha Inicio del Servicio \",fechaTerminoServ as \"Fecha Terminación del Servicio\",correoAsesorExterno" +
+                        " as \"Correo del Supervisor\", aceptado as \"Aceptado\", motivo as \"Motivo\", observaciones as \"Observaciones\",LEFT(final, 1) as \"Final\",LEFT(calificacion, 5) as \"Calificación\",nivelDesempenio as \"Nivel Desempeño\" from domicilio" +
+                        " dom join infoescolar inf on dom.iddomicilio = inf.idescolar join alumno alu on inf.idescolar = alu.numerocontrol join programa pro" +
+                        " on alu.numerocontrol = pro.idprograma join rpyss rp on pro.idprograma = rp.idrpyss full join calificaciones on rp.idrpyss = idCalificaciones; ", conn);
                         dt = new DataTable();
                         da.Fill(dt);
                         List<string> lineas = new List<string>(), columnas = new List<string>();
@@ -701,6 +718,30 @@ namespace GestionServicioSocial
                     }
                 }
 
+            }
+        }
+
+        protected void BtnSie_Click(object sender, EventArgs e)
+        {
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Si entre')", true);
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "update Programa set SIE=@SIE where idPrograma=@idPrograma";
+                    cmd.Parameters.AddWithValue("@idPrograma", txtNumerocontrol.Text);
+                    cmd.Parameters.AddWithValue("@SIE", "SIE");
+                    
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                   // txtNumeroControl.Text = ex.Message;
+                }
             }
         }
     }
