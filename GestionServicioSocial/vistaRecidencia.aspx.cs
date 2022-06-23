@@ -543,7 +543,7 @@ namespace GestionServicioSocial
 
         protected void BtnSie_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Si entre')", true);
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Si entre')", true);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["coonBd"].ConnectionString))
             {
                 try
@@ -557,6 +557,7 @@ namespace GestionServicioSocial
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
+                    busquedaGeneral();
                 }
                 catch (Exception ex)
                 {

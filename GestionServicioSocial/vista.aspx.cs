@@ -737,6 +737,8 @@ namespace GestionServicioSocial
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
+
+                    busquedaGeneral();
                 }
                 catch (Exception ex)
                 {
