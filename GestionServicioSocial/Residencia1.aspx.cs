@@ -52,6 +52,7 @@ namespace GestionServicioSocial
                     cmd.Parameters.Add("@estadoDependencia", SqlDbType.VarChar).Value = txtEstadoDependencia.Text.Trim();
                     cmd.Parameters.Add("@telefonoDependencia", SqlDbType.VarChar).Value = txtTelefonoDependencia.Text.Trim();
                     cmd.Parameters.Add("@correoDependencia", SqlDbType.VarChar).Value = txtCorreoDependencia.Text.Trim();
+                    cmd.Parameters.Add("@SIE", SqlDbType.VarChar).Value = " ";
 
                     cmd.Connection = conn;
                     conn.Open();

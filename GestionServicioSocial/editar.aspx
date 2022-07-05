@@ -252,6 +252,7 @@
                          <asp:Label ID="Label14" runat="server" Text="Periodo:" Width="150px"></asp:Label>
                         <asp:DropDownList ID="txtPeriodo" runat="server" Width="300px">
                             <asp:ListItem>Enero-Junio</asp:ListItem>
+                            <asp:ListItem>Verano</asp:ListItem>
                             <asp:ListItem>Julio-Diciembre</asp:ListItem>
                         </asp:DropDownList>
                     </td>
